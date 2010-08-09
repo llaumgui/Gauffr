@@ -48,6 +48,7 @@ class GauffrLog extends GauffrPersistentObject
             'Message' => $this->Message,
             'Severity' => $this->Severity,
             'Source' => $this->Source,
+            'Time' => $this->Time,
         );
     }
 

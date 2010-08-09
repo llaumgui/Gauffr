@@ -3,6 +3,7 @@
 #
 [GauffrSettings]
 LogLevel = GauffrLog::DEBUG
+LogTTL = 31
 
 
 
