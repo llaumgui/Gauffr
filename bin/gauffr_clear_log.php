@@ -10,7 +10,7 @@
  */
 
 // Load gauffr
-if ( !isset($GLOBALS['GAUFFR_INIT']) || !$GLOBALS['GAUFFR_INIT'] )
+if ( !defined('GAUFFR__ENABLED') )
     include 'Gauffr/gauffr.php';
 
 // Get configuration

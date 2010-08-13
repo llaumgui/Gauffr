@@ -198,26 +198,25 @@ class Gauffr
      */
     public static function gauffrInitialization()
     {
-        if ( !isset($GLOBALS['GAUFFR_INIT']) || !$GLOBALS['GAUFFR_INIT'] )
+        // Load eZ Components
+        if ( !defined( 'EZCBASE_ENABLED' ) )
         {
-            /* Load eZ Components */
-            if ( !class_exists( 'ezcBase', false ) )
-                require_once 'ezc/Base/base.php';
-
-            /* autoload */
-            if ( function_exists( 'spl_autoload_register' ) )
+            $baseEnabled = @include 'ezc/Base/base.php';
+            if ( !$baseEnabled )
             {
-                spl_autoload_register( array( 'ezcBase', 'autoload' ) );
+                $baseEnabled = include 'Base/src/base.php';
             }
-            else {
-                function __autoload( $className )
-                {
-                    ezcBase::autoload( $className );
-                }
-            }
+            define( 'EZCBASE_ENABLED', $baseEnabled );
+        }
+
+        // Load Gauffr
+        if ( !defined('GAUFFR__ENABLED') )
+        {
+            // autoload
+            spl_autoload_register( array( 'ezcBase', 'autoload' ) );
 
             ezcBase::addClassRepository( dirname( __FILE__ ), dirname( __FILE__ ).'/autoloads' );
-            $GLOBALS['GAUFFR_INIT'] = true;
+            define( 'GAUFFR__ENABLED', true );
         }
     }
 

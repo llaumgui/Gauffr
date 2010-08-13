@@ -2,11 +2,7 @@
 
 if ( isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password']) && !empty($_POST['password']) )
 {
-    if ( !isset($GLOBALS['GAUFFR_INIT']) || !$GLOBALS['GAUFFR_INIT'] )
-    {
-        if ( !@include 'Gauffr/gauffr.php' )
-            include '../Gauffr/gauffr.php';
-    }
+    include 'bootstrap.php';
 
     /*
      * Authentication of user "test" with password "test"
