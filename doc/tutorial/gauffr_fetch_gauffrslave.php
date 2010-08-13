@@ -2,20 +2,30 @@
 
 include 'bootstrap.php';
 
+/*
+ * GauffrSlave is a eZC Persistent Object
+ */
 $persistentSession = GauffrSlave::getPersistentSessionInstance();
 $q = $persistentSession->createFindQuery('GauffrSlave' );
-$objects = $persistentSession->find( $q, 'GauffrSlave' );
-echo "<XMP>";
-print_r($objects);
-echo "</XMP>";
-$object = null;
+$slave = $persistentSession->find( $q, 'GauffrSlave' );
+
+echo 'All GauffrSlaves';
+var_dump( $slave );
 
 echo "<hr />";
+$slave = null;
 
-$object = GauffrSlave::unique(GauffrSlave::fetchSlaveByIdentifier( 'svn' ));
-echo "<XMP>";
-print_r($object);
-echo "</XMP>";
-$object = null;
+
+
+/*
+ * You can fetch GauffrSlave by Identifier
+ */
+$slave = GauffrSlave::unique(GauffrSlave::fetchSlaveByIdentifier( 'svn' ));
+
+echo 'Get GauffrSlave by identifier';
+var_dump( $slave );
+
+echo "<hr />";
+$slave = null;
 
 ?>

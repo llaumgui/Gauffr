@@ -6,10 +6,10 @@ Gauffr::log("Test", 'tutorial', GauffrLog::DEBUG, array( "category" => "tutorial
 
 $persistentSession = GauffrLog::getPersistentSessionInstance();
 $q = $persistentSession->createFindQuery('GauffrLog' );
-$objects = $persistentSession->find( $q, 'GauffrLog' );
-echo "<XMP>";
-print_r($objects);
-echo "</XMP>";
+$log = $persistentSession->find( $q, 'GauffrLog' );
+
+var_dump( $log );
+
 $object = null;
 
 ?>

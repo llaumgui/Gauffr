@@ -9,11 +9,7 @@ if ( isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password
      */
     $user = Gauffr::authenticationDatabase($_POST['login'], $_POST['password']);
 
-    echo "<XMP>";
-
-    print_r( $user );
-
-    echo "</XMP>";
+    var_dump( $user );
 }
 else
 { ?>
