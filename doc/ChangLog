@@ -1,0 +1,10 @@
+Gauffr 0.3
+ - Rename some method, table, classes
+ - Log in database insted file
+ - Persistance
+ - Remove GauffrSynchro
+ - API documentation
+
+
+Gauffr 0.1
+ - Proof of Concept
