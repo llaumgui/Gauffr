@@ -446,10 +446,10 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
     {
         $db = ezcDbInstance::get(self::GAUFFR_DB_INSTANCE);
 
-        if ( !$use_alt_login )
+        //if ( !$use_alt_login )
             $loginInfo = $this->gauffrUserTable['Login'];
-        else
-            $loginInfo = $this->gauffrUserTable['AltLogin'];
+        //else
+        //    $loginInfo = $this->gauffrUserTable['AltLogin'];
 
         $credentials = new ezcAuthenticationPasswordCredentials( $login, self::cryptPasswd($password) );
         $database = new ezcAuthenticationDatabaseInfo(
@@ -466,7 +466,6 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
             $this->gauffrUserTable['ID'],
             $this->gauffrUserTable['GroupID'],
             $this->gauffrUserTable['Login'],
-            $this->gauffrUserTable['AltLogin'],
             $this->gauffrUserTable['Mail']
         ) );
     }
@@ -503,7 +502,6 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
             'ID' => reset($data[$gauffr->gauffrUserTable['ID']]),
             'GroupID' => reset($data[$gauffr->gauffrUserTable['GroupID']]),
             'Login' => reset($data[$gauffr->gauffrUserTable['Login']]),
-            'AltLogin' => reset($data[$gauffr->gauffrUserTable['AltLogin']]),
             'Mail' => reset($data[$gauffr->gauffrUserTable['Mail']])
         ) );
 

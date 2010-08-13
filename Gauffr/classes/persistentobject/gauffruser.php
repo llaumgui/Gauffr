@@ -21,7 +21,6 @@ class GauffrUser extends GauffrPersistentObject
     protected $ID;
     public $GroupID;
     public $Login;
-    public $AltLogin;
     public $Mail;
 
 
@@ -37,7 +36,6 @@ class GauffrUser extends GauffrPersistentObject
             'ID' => $this->ID,
             'GroupID' => $this->GroupID,
             'Login' => $this->Login,
-            'AltLogin' => $this->AltLogin,
             'Mail' => $this->Mail,
         );
     }
