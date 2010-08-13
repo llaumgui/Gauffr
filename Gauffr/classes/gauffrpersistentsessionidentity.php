@@ -52,6 +52,6 @@ class GauffrPersistentSessionIdentity extends ezcPersistentSessionIdentityDecora
         throw new Exception ('Clone is not allowed');
     }
 
-} // EOC
+} 
 
 ?>

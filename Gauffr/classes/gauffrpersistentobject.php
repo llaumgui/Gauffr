@@ -94,6 +94,6 @@ abstract class GauffrPersistentObject
         return reset($array);
     }
 
-} // EOC
+} 
 
 ?>
