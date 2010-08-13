@@ -87,7 +87,7 @@ class Gauffr
         /* Define path */
         Gauffr::$gauffrPath =  dirname( __FILE__ );
         Gauffr::$confDir = Gauffr::$gauffrPath . '/conf';
-        Gauffr::$gauffrMappingDir =  Gauffr::$gauffrPath . '/mapping/';
+        Gauffr::$gauffrMappingDir =  Gauffr::$gauffrPath . '/lib/persistentobjectmapping/';
 
         $this->loadCallback(); // Load ezc Callback
         $this->loadTableSchema(); // Load ini with ezcConfigurationManager

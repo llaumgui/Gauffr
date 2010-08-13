@@ -12,23 +12,23 @@ return array (
     'Gauffr' => 'gauffr.php',
 
     /* Classes */
-    'GauffrPersistentObject' => 'classes/gauffrpersistentobject.php',
-    'GauffrPersistentSessionIdentity' => 'classes/gauffrpersistentsessionidentity.php',
+    'GauffrPersistentObject' => 'lib/gauffrpersistentobject.php',
+    'GauffrPersistentSessionIdentity' => 'lib/gauffrpersistentsessionidentity.php',
 
 
     /* PO */
-    'GauffrCredential' => 'classes/persistentobject/gauffrcredential.php',
-    'GauffrLog' => 'classes/persistentobject/gauffrlog.php',
-    'GauffrUser' => 'classes/persistentobject/gauffruser.php',
-    'GauffrUserExtended' => 'classes/persistentobject/gauffruserextended.php',
-    'GauffrSlave' => 'classes/persistentobject/gauffrslave.php',
+    'GauffrCredential' => 'lib/persistentobject/gauffrcredential.php',
+    'GauffrLog' => 'lib/persistentobject/gauffrlog.php',
+    'GauffrUser' => 'lib/persistentobject/gauffruser.php',
+    'GauffrUserExtended' => 'lib/persistentobject/gauffruserextended.php',
+    'GauffrSlave' => 'lib/persistentobject/gauffrslave.php',
 
 
     /* lazyconfiguration */
-    'GauffrLazyConfigurationConfiguration' => 'lazyconfiguration/gauffrlazyconfigurationconfiguration.php',
-    'GauffrLazyDatabaseConfiguration' => 'lazyconfiguration/gauffrlazydatabaseconfiguration.php',
-    'GauffrLazyLogConfiguration' => 'lazyconfiguration/gauffrlazylogconfiguration.php',
-    'GauffrLazyPersistentSessionConfiguration' => 'lazyconfiguration/gauffrlazypersistentsessionconfiguration.php',
+    'GauffrLazyConfigurationConfiguration' => 'lib/lazyconfiguration/gauffrlazyconfigurationconfiguration.php',
+    'GauffrLazyDatabaseConfiguration' => 'lib/lazyconfiguration/gauffrlazydatabaseconfiguration.php',
+    'GauffrLazyLogConfiguration' => 'lib/lazyconfiguration/gauffrlazylogconfiguration.php',
+    'GauffrLazyPersistentSessionConfiguration' => 'lib/lazyconfiguration/gauffrlazypersistentsessionconfiguration.php',
 );
 
 ?>
