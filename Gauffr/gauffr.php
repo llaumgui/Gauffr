@@ -210,13 +210,13 @@ class Gauffr
         }
 
         // Load Gauffr
-        if ( !defined('GAUFFR__ENABLED') )
+        if ( !defined('GAUFFR_ENABLED') )
         {
             // autoload
             spl_autoload_register( array( 'ezcBase', 'autoload' ) );
 
             ezcBase::addClassRepository( dirname( __FILE__ ), dirname( __FILE__ ).'/autoloads' );
-            define( 'GAUFFR__ENABLED', true );
+            define( 'GAUFFR_ENABLED', true );
         }
     }
 
