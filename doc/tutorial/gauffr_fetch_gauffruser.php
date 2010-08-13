@@ -25,68 +25,55 @@ $user1 = null; $user2 = null; $user3 = null;
 /*
  * You can get credential for a GauffrUser
  */
-$user = GauffrUser::fetchUserByID( 1 );
+$user = GauffrUser::fetchUserByID( 347 );
 
 echo "Get credential for an user";
 var_dump($user);
 
 if ( $user instanceof GauffrUser )
 {
+	var_dump( $user->getCredential() );
     $can1 = $user->hasCredentialByID(1);
-    //$can2 = $user->hasCredentialByIdentifier('svn');
+    $can2 = $user->hasCredentialByIdentifier('svn');
 
     $can1 = $can1 ? 'access' : 'no access';
     $can2 = $can2 ? 'access' : 'no access';
-    echo $user->Login . ' has ' . $can1 . "\n";
-    echo $user->Login . ' has ' . $can2 . "\n";
+    echo $user->Login . ' has ' . $can1 . "<br />";
+    echo $user->Login . ' has ' . $can2 . "<br />";
 }
 else
 {
     echo "Not a GauffrUser";
 }
-/*
-echo "</XMP>";
 
 echo "<hr />";
-
-$user = null;
-$can1 = null;
-$can2 = null;
-
+$user = null; $can1 = null; $can2 = null;
 
 
 /*
  * You can get extended information for a GauffrUser
- * /
-echo "<XMP>";
-$user = GauffrUser::fetchUserByID( 1 );
-print_r($user);
+ */
+$user = GauffrUser::fetchUserByID( 347 );
+echo "Get extended information for an user";
+var_dump($user);
 
 if ( $user instanceof GauffrUser )
-{
-    print_r( $user->getExtended() );
-}
+    var_dump( $user->getExtended() );
 else
-{
     echo "Not a GauffrUser";
-}
 
-echo "</XMP>";
 echo "<hr />";
-
 $user = null;
 
 
 
 /*
  * You can fetch user with all related objects
- * /
-$user = GauffrUser::fetchWithRelatedObjectsUserByID( 1 );
-echo "<XMP>";
-print_r($user);
-echo "</XMP>";
-echo "<hr />";
+ */
+$user = GauffrUser::fetchWithRelatedObjectsUserByID( 347 );
+echo "Get all information for an user";
+var_dump($user);
 
-$user = null;*/
+$user = null;
 
 ?>
