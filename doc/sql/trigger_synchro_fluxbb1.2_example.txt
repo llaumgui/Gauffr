@@ -1,8 +1,0 @@
-DROP TRIGGER IF EXISTS `gauff_synchro_onupdate`//
-CREATE TRIGGER `gauff_synchro_onupdate` AFTER UPDATE ON `punbb_users`
-    FOR EACH ROW BEGIN
-        IF NEW.email <> OLD.email THEN
-            INSERT INTO gauffr_synchro (gauffruser_id) values (NEW.id);
-        END IF;
-    END
-//
