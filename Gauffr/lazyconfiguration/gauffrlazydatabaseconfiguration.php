@@ -39,7 +39,7 @@ class GauffrLazyDatabaseConfiguration implements ezcBaseConfigurationInitializer
         }
 
         $db = ezcDbFactory::create( "$driver://$user:$password@$host/$database" );
-        $db->setAttribute( PDO::ATTR_CASE, PDO::CASE_NATURAL );
+        $db->setAttribute( PDO::ATTR_CASE, PDO::CASE_LOWER );
         return $db;
     }
 
