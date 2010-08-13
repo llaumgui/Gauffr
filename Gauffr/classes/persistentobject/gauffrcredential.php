@@ -9,7 +9,7 @@
  */
 
 /**
- * The GauffrUser classes.
+ * The GauffrCredential classes.
  *
  * Allow persistence for object GauffrCredential
  *
@@ -18,8 +18,11 @@
  */
 class GauffrCredential extends GauffrPersistentObject
 {
-    protected $GauffrUserID;
-    public $AltLogin;
+	// Mapping
+    protected $ID;
+    public $GauffrUserID;
+    public $GauffrSlaveID;
+    public $Can;
 
 
 
@@ -32,10 +35,12 @@ class GauffrCredential extends GauffrPersistentObject
     {
         return array(
             'ID' => $this->ID,
-            'AltLogin' => $this->AltLogin,
+            'GauffrUserID' => $this->GauffrUserID,
+            'GauffrSlaveID' => $this->GauffrSlaveID,
+            'Can' => $this->Can,
         );
     }
 
-} // EOC
+}
 
 ?>

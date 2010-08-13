@@ -18,10 +18,15 @@
  */
 class GauffrUser extends GauffrPersistentObject
 {
+    // Mapping
     protected $ID;
     public $GroupID;
     public $Login;
     public $Mail;
+
+    // Related Objects
+    public $Credential = array();
+    public $Extended = array();
 
 
 
@@ -42,26 +47,74 @@ class GauffrUser extends GauffrPersistentObject
 
 
 
+    /**
+     * Get prefetched relation
+     *
+     * @return array
+     */
+    private static function getPrefetchRelations()
+    {
+        return array(
+            'GauffrCredential' =>  new ezcPersistentRelationFindDefinition(
+                'GauffrCredential'
+            ),
+            'GauffrUserExtended' =>  new ezcPersistentRelationFindDefinition(
+                'GauffrUserExtended'
+            )
+        );
+    }
+
+
+
 
 
 /* ******************************************************************** Fetch */
 
     /**
-     * Fetch user by Identifiant
+     * Fetch user by ID
      *
+     * <code>
+     * $user = GauffrUser::fetchUserByID( 1 );
+     * </code>
      * @param mixed $id
      * @return GauffrUser
      */
     public static function fetchUserByID( $id )
     {
-        $identitySession = self::ezcPersistentSessionIdentityDecorator();
-        return $identitySession->load( 'GauffrUser', $id );
+        $session = self::getPersistentSessionInstance();
+
+        return $session->load( 'GauffrUser', $id );
+    }
+
+
+
+    /**
+     * Fetch user by ID with all related objects
+     *
+     * @param mixed $id
+     * @return GauffrUser
+     */
+    public static function fetchWithRelatedObjectsUserByID( $id )
+    {
+        $session = self::getPersistentSessionInstance();
+
+        $user =  $session->load( 'GauffrUser', $id );
+
+        /* Add RO */
+        $user->Credential = $user->getCredential();
+        $user->Extended = $user->getExtended();
+
+        return $user;
     }
 
 
 
     /**
      * Fetch user by Login
+     *
+     * <code>
+     * $user = GauffrUser::fetchUserByLogin( 'test' );
+     * </code>
      *
      * @param string $login
      * @return GauffrUser
@@ -75,6 +128,10 @@ class GauffrUser extends GauffrPersistentObject
 
     /**
      * Fetch user by Mail
+     *
+     * <code>
+     * $user = GauffrUser::fetchUserByLogin( 'test@test.com' );
+     * </code>
      *
      * @param string $mail
      * @return GauffrUser
@@ -95,29 +152,32 @@ class GauffrUser extends GauffrPersistentObject
      *
      * @return Array of GauffrCredential
      */
-    public static function getCredential( GauffrUser $gauffrUser )
+    public function getCredential()
     {
-        $identitySession = self::ezcPersistentSessionIdentityDecorator();
+        /* 1: Try to load session identity */
+        $identitySession = self::getPersistentSessionIdentity();
         try {
-            return $identitySession->getRelatedObjects( $gauffrUser, 'GauffrCredential' );
+            return $identitySession->getRelatedObjects( $this, 'GauffrCredential' );
         }
-         catch (ezcPersistentIdentityMissingException $e) {
-             return array();
-         }
 
+        /* 2: Use query */
+        catch (ezcPersistentIdentityMissingException $e) {
+             $session = self::getPersistentSessionInstance();
+             return $session->getRelatedObjects( $this, 'GauffrCredential' );
+        }
     }
 
 
 
     /**
-     * The GauffrUser has access to GauffrSlave ?
+     * The GauffrUser has access to GauffrSlave by GauffrSlave's identifier ?
      *
      * @param $id
      * @return boolean
      */
     public function hasCredentialByID( $id )
     {
-        $credential = self::getCredential( $this );
+        $credential = $this->getCredential();
         if ( isset($credential[$id]) && $credential[$id]->Can )
             return true;
         else
@@ -134,7 +194,7 @@ class GauffrUser extends GauffrPersistentObject
      */
     public function hasCredentialByIdentifier( $identifier )
     {
-        $credential = self::getCredential( $this );
+        $credential = $this->getCredential();
 
         if ( empty($credential) )
             return false;
@@ -152,6 +212,34 @@ class GauffrUser extends GauffrPersistentObject
             return false;
     }
 
-} // EOC
+
+
+
+
+/* ***************************************************************** Extended */
+
+    /**
+     * Get GauffrUser extended informations
+     *
+     * @return array
+     */
+    public function getExtended()
+    {
+        /* 1: Try to load session identity */
+        $identitySession = self::getPersistentSessionIdentity();
+        try {
+            $extended = $identitySession->getRelatedObjects( $this, 'GauffrUserExtended' );
+            return reset($extended);
+        }
+
+        /* 2: Use query */
+        catch (ezcPersistentIdentityMissingException $e) {
+            $session = self::getPersistentSessionInstance();
+            $extended = $session->getRelatedObjects( $this, 'GauffrUserExtended' );
+            return reset($extended);
+        }
+    }
+
+}
 
 ?>

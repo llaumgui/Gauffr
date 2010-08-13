@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 /**
- * File containing the bin for clear old log.
+ * File containing the script for prune old log.
  *
  * @version //autogentag//
  * @package Gauffr
@@ -10,29 +10,21 @@
  */
 
 /*
- * Check your include path.
- * If eZ Components or Gauffr is not in include path, add it:
- */
-#set_include_path(get_include_path() . PATH_SEPARATOR . "/my/ezc/path/" . PATH_SEPARATOR . "/my/gauffr/path/");
-
-
-/*
  * Load gauffr
  */
-if ( !defined('GAUFFR_ENABLED') )
-    include 'Gauffr/gauffr.php';
-$gauffr = Gauffr::getInstance();
+include 'Gauffr/gauffr.php';
 
 
 /*
  * Load eZC ezcConsoleOutput
  * Configure console output and script option
  */
+// Setup output
 $output = new ezcConsoleOutput();
 $output->formats->info->color = 'blue';
-$output->outputLine( 'Gauffr log cleaner', 'info' );
-$output->outputLine( "" );
+$output->outputLine( 'Gauffr log cleaner' . "\n", 'info' );
 
+// Setup input and options
 $input = new ezcConsoleInput();
 
 $helpOption = $input->registerOption( new ezcConsoleOption( 'h', 'help' ) );
@@ -51,6 +43,7 @@ catch ( ezcConsoleOptionException $e ) {
     die( $e->getMessage() );
 }
 
+// Print help
 if ( $helpOption->value !== false )
 {
     $output->outputLine( 'Gauffr log cleaner prune old GauffrLog from your database' );
@@ -61,9 +54,8 @@ if ( $helpOption->value !== false )
 }
 
 
-
 /*
- * Clean up !
+ * Clean log
  */
 
 // Get TTL

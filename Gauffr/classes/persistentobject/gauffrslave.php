@@ -63,6 +63,6 @@ class GauffrSlave extends GauffrPersistentObject
         return self::fetchPersistantObjectByAttribute( 'GauffrSlave', 'Identifier', $identifier );
     }
 
-} // EOC
+}
 
 ?>

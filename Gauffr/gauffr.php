@@ -29,7 +29,7 @@ class Gauffr
     /**
      * Application version.
      */
-    const APP_VERSION = "0.3.5";
+    const APP_VERSION = "0.4-dev";
     /**
      * Gauffr global configuration file.
      */
@@ -89,11 +89,11 @@ class Gauffr
         Gauffr::$confDir = Gauffr::$gauffrPath . '/conf';
         Gauffr::$gauffrMappingDir =  Gauffr::$gauffrPath . '/mapping/';
 
-        $this->loadCallback();      // Load ezc Callback
-        $this->loadTableSchema();   // Load ini with ezcConfigurationManager
+        $this->loadCallback(); // Load ezc Callback
+        $this->loadTableSchema(); // Load ini with ezcConfigurationManager
 
         $cfg = ezcConfigurationManager::getInstance();
-        $this->debugLevel =  constant($cfg->getSetting( 'gauffr', 'GauffrSettings', 'LogLevel' ));
+        $this->debugLevel = constant( $cfg->getSetting( 'gauffr', 'GauffrSettings', 'LogLevel' ) );
     }
 
 
@@ -218,6 +218,9 @@ class Gauffr
             ezcBase::addClassRepository( dirname( __FILE__ ), dirname( __FILE__ ).'/autoloads' );
             define( 'GAUFFR_ENABLED', true );
         }
+
+        // Launch first instance of Gauffr
+        $gauffr = Gauffr::getInstance();
     }
 
 
@@ -304,9 +307,17 @@ class Gauffr
                         'Result' => (class_exists('ezcConfiguration')) ? 'Pass' : 'Failed'
                     ),
                     array(
+                        'Tests' => 'eZC ConsoleTools',
+                        'Result' => (class_exists('ezcConsoleOption')) ? 'Pass' : 'Failed'
+                    ),
+                    array(
                         'Tests' => 'eZC Database',
                         'Result' => (class_exists('ezcDbInstance')) ? 'Pass' : 'Failed'
                     ),
+                    /*array(
+                        'Tests' => 'eZC DatabaseSchema',
+                        'Result' => (class_exists('ezcDbSchema')) ? 'Pass' : 'Failed'
+                    ),*/
                     array(
                         'Tests' => 'eZC EventLog',
                         'Result' => (class_exists('ezcLog')) ? 'Pass' : 'Failed'
@@ -420,6 +431,8 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
     /**
      * Crypt password with Gauffr method
      *
+     * @TODO Allow personnal method
+     *
      * @param string $password
      * @return
      */
@@ -513,12 +526,13 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
         }
     }
 
-} // EOC
+}
 
 
 /*
  * Gauffr Initialization on include
  */
-Gauffr::gauffrInitialization();
+if ( !defined('GAUFFR_ENABLED') )
+    Gauffr::gauffrInitialization();
 
 ?>

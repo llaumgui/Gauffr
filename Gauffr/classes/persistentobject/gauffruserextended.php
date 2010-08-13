@@ -9,18 +9,18 @@
  */
 
 /**
- * The GauffrUser classes.
+ * The GauffrUserExtended classes.
  *
- * Allow persistence for object GauffrUser
+ * Allow persistence for object GauffrCredential
  *
  * @package Gauffr
  * @version //autogentag//
  */
 class GauffrUserExtended extends GauffrPersistentObject
 {
+	// Mapping
     protected $ID;
-    public $Can;
-    public $GauffrUserID;
+    public $AltLogin;
 
 
 
@@ -33,11 +33,10 @@ class GauffrUserExtended extends GauffrPersistentObject
     {
         return array(
             'ID' => $this->ID,
-            'Can' => $this->Can,
-            'GauffrUserID' => $this->GauffrUserID
+            'AltLogin' => $this->AltLogin,
         );
     }
 
-} // EOC
+}
 
 ?>

@@ -11,8 +11,8 @@
 
 $gauffr = Gauffr::getInstance();
 $def = new ezcPersistentObjectDefinition();
-$def->table = $gauffr->gauffrUserTable['TableName'];
-$def->class = "GauffrUser";
+$def->table = $gauffr->gauffrTables['GauffrUserExtended'];
+$def->class = "GauffrUserExtended";
 
 $def->idProperty = new ezcPersistentObjectIdProperty;
 $def->idProperty->columnName = 'gauffruser_id';
@@ -20,7 +20,7 @@ $def->idProperty->propertyName = 'ID';
 $def->idProperty->generator = new ezcPersistentGeneratorDefinition( 'ezcPersistentNativeGenerator' );
 
 $def->properties['AltLogin'] = new ezcPersistentObjectProperty;
-$def->properties['AltLogin']->columnName = $gauffr->gauffrUserTable['AltLogin'];
+$def->properties['AltLogin']->columnName = 'alt_login';
 $def->properties['AltLogin']->propertyName = 'AltLogin';
 $def->properties['AltLogin']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_STRING;
 

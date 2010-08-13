@@ -17,12 +17,14 @@
 class GauffrLog extends GauffrPersistentObject
 {
 
+	// Constant for debug level
     const DEBUG = ezcLog::DEBUG;
     const INFO = ezcLog::INFO;
     const WARNING = ezcLog::WARNING;
     const ERROR = ezcLog::ERROR;
     const SYSTEM = ezcLog::SUCCESS_AUDIT;
 
+    // Mapping
     protected $ID;
     public $Category;
     public $File;

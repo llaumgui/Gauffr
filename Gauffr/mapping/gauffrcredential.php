@@ -19,15 +19,20 @@ $def->idProperty->columnName = 'id';
 $def->idProperty->propertyName = 'ID';
 $def->idProperty->generator = new ezcPersistentGeneratorDefinition( 'ezcPersistentNativeGenerator' );
 
-$def->properties['Can'] = new ezcPersistentObjectProperty;
-$def->properties['Can']->columnName = 'can';
-$def->properties['Can']->propertyName = 'Can';
-$def->properties['Can']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
-
 $def->properties['GauffrUserID'] = new ezcPersistentObjectProperty;
 $def->properties['GauffrUserID']->columnName = 'gauffruser_id';
 $def->properties['GauffrUserID']->propertyName = 'GauffrUserID';
 $def->properties['GauffrUserID']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['GauffrSlaveID'] = new ezcPersistentObjectProperty;
+$def->properties['GauffrSlaveID']->columnName = 'gauffrslave_id';
+$def->properties['GauffrSlaveID']->propertyName = 'GauffrSlaveID';
+$def->properties['GauffrSlaveID']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['Can'] = new ezcPersistentObjectProperty;
+$def->properties['Can']->columnName = 'can';
+$def->properties['Can']->propertyName = 'Can';
+$def->properties['Can']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
 return $def;
 
