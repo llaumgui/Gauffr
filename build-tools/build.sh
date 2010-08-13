@@ -7,8 +7,9 @@
 
 # Variables
 API_PATH=doc/api
-GAUFFR_VERSION=0.3.1
-BUILD_PATH=../gauffr-${GAUFFR_VERSION}
+GAUFFR_VERSION=0.4
+GAUFFR_PATH=../
+BUILD_PATH=../../gauffr-${GAUFFR_VERSION}
 
 
 # Pre cleanup
@@ -19,8 +20,8 @@ fi
 
 # Create package
 mkdir ${BUILD_PATH}
-cp -R doc ${BUILD_PATH}
-cp -R Gauffr ${BUILD_PATH}
+cp -R ${GAUFFR_PATH}doc ${BUILD_PATH}
+cp -R ${GAUFFR_PATH}Gauffr ${BUILD_PATH}
 
 
 # Use gauffr.ini
