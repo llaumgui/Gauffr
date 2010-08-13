@@ -31,12 +31,12 @@ ID = id
 GroupID = group_id
 Login = username
 Password = password
-#AltLogin = gauffr_altlogin
-#OpenID = gauffr_openid
 Mail = email
 CryptoMethod = sha1
 
 
 [GauffrTables]
+GauffrCredential = gauffr_credential
 GauffrSlave = gauffr_slave
 GauffrLog = gauffr_log
+GauffrUserExtended = gauffr_userextended
