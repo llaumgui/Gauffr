@@ -1,4 +1,7 @@
+
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+-- --------------------------------------------------------
 
 --
 -- Structure de la table `gauffr_credential`
@@ -11,6 +14,12 @@ CREATE TABLE IF NOT EXISTS `gauffr_credential` (
   `can` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS POUR LA TABLE `gauffr_credential`:
+--   `gauffrslave_id`
+--       `gauffr_slave` -> `id`
+--
 
 -- --------------------------------------------------------
 
