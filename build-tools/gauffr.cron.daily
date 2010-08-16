@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Gauffr's cron script
+#
+
+/usr/bin/gauffr_clear_log
+
+exit 0
