@@ -83,7 +83,12 @@ class GauffrUser extends GauffrPersistentObject
     {
         $session = self::getPersistentSessionInstance();
 
-        return $session->load( 'GauffrUser', $id );
+        try {
+            return  $session->load( 'GauffrUser', $id );
+        }
+        catch ( ezcPersistentObjectNotFoundException $e ) {
+            return false;
+        }
     }
 
 
@@ -98,7 +103,12 @@ class GauffrUser extends GauffrPersistentObject
     {
         $session = self::getPersistentSessionInstance();
 
-        $user =  $session->load( 'GauffrUser', $id );
+        try {
+            $user =  $session->load( 'GauffrUser', $id );
+        }
+        catch ( ezcPersistentObjectNotFoundException $e ) {
+            return false;
+        }
 
         /* Add RO */
         $user->Credential = $user->getCredential();
