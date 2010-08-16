@@ -24,6 +24,15 @@ $def->properties['AltLogin']->columnName = 'alt_login';
 $def->properties['AltLogin']->propertyName = 'AltLogin';
 $def->properties['AltLogin']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_STRING;
 
+/* Relation with extended information */
+$def->relations["GauffrUser"] = new ezcPersistentOneToOneRelation(
+    $gauffr->gauffrTables['GauffrUserExtended'],
+    $gauffr->gauffrUserTable['TableName']
+);
+$def->relations["GauffrUser"]->columnMap = array(
+    new ezcPersistentSingleTableMap( "gauffruser_id", $gauffr->gauffrUserTable['ID'] )
+);
+
 return $def;
 
 ?>

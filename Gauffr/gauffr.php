@@ -453,22 +453,20 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
      * @param ezcAuthenticationDatabaseFilter &$filter
      * @param string $login
      * @param string $password
-     * @param string $alt_login
+     * @param boolean $login_is_alt_login The $login is an altLogin ?
      */
-    private function authenticationDatabaseFilter( &$authentication, &$filter, $login, $password, $use_alt_login=false )
+    private function authenticationDatabaseFilter( &$authentication, &$filter, $login, $password, $login_is_alt_login = false )
     {
         $db = ezcDbInstance::get(self::GAUFFR_DB_INSTANCE);
 
-        //if ( !$use_alt_login )
-            $loginInfo = $this->gauffrUserTable['Login'];
-        //else
-        //    $loginInfo = $this->gauffrUserTable['AltLogin'];
+        if ( $login_is_alt_login )
+            $login = GauffrUser::fetchUserByAltLogin($login)->Login;
 
         $credentials = new ezcAuthenticationPasswordCredentials( $login, self::cryptPasswd($password) );
         $database = new ezcAuthenticationDatabaseInfo(
             $db,
             $this->gauffrUserTable['TableName'],
-            array( $loginInfo, $this->gauffrUserTable['Password'] )
+            array( $this->gauffrUserTable['Login'], $this->gauffrUserTable['Password'] )
         );
 
         $authentication = new ezcAuthentication( $credentials );
@@ -492,38 +490,38 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
      * $user = Gauffr::authenticationDatabase(
      *      $_POST['login'],
      *      $_POST['password'],
-     *      $use_alt_login,
-     *      $slave_identifier
+     *      'gauffradmin'
+     *      true
      * );
      * </code>
      *
      * @param string $login
      * @param string $password
-     * @param boolean $alt_login
      * @param string $slave_identifier
+     * @param boolean $login_is_alt_login The $login is an altLogin ?
      */
-    public static function authenticationDatabase( $login, $password, $use_alt_login = false, $slave_identifier = false )
+    public static function authenticationDatabase( $login, $password, $slave_identifier = false, $login_is_alt_login = false )
     {
         $gauffr = self::getInstance();
-        $gauffr->authenticationDatabaseFilter( $authentication, $filter, $login, $password, $use_alt_login );
+        $gauffr->authenticationDatabaseFilter( $authentication, $filter, $login, $password, $login_is_alt_login );
 
         if ( !$authentication->run() )
         {
-            Gauffr::log("Authentification failled for user \"$login\"", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
+            Gauffr::log("Authentification failled for user \"$login\" (".$login_is_alt_login ? "AltLogin" : "Login" . ")", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
             return false;
         }
 
-        $data = $filter->fetchData();
-        /* Artificiel GauffrUser */
+        // Create an GauffrUser
+        $data =  $filter->fetchData();
         $user = new GauffrUser();
         $user->setState( array(
-            'ID' => reset($data[$gauffr->gauffrUserTable['ID']]),
-            'GroupID' => reset($data[$gauffr->gauffrUserTable['GroupID']]),
-            'Login' => reset($data[$gauffr->gauffrUserTable['Login']]),
-            'Mail' => reset($data[$gauffr->gauffrUserTable['Mail']])
+            'ID' => reset( $data[$gauffr->gauffrUserTable['ID']] ),
+            'GroupID' => reset( $data[$gauffr->gauffrUserTable['GroupID']] ),
+            'Login' => reset( $data[$gauffr->gauffrUserTable['Login']] ),
+            'Mail' => reset( $data[$gauffr->gauffrUserTable['Mail']] )
         ) );
 
-        /* No slave_identifier control */
+        // No slave_identifier control
         if ( !$slave_identifier )
         {
             Gauffr::log("Authentification successful for user \"$login\"", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
@@ -543,7 +541,6 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
             }
         }
     }
-
 }
 
 

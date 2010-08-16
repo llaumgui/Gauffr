@@ -127,6 +127,31 @@ class GauffrUser extends GauffrPersistentObject
 
 
     /**
+     * Fetch user by Login
+     *
+     * <code>
+     * $user = GauffrUser::fetchUserByAltLogin( 'TestTest' );
+     * </code>
+     *
+     * @param string $alt_login
+     * @return GauffrUser
+     */
+    public static function fetchUserByAltLogin($alt_login)
+    {
+        $extended = GauffrUserExtended::unique( self::fetchPersistantObjectByAttribute( 'GauffrUserExtended', 'AltLogin', $alt_login ) );
+        if ( !$extended )
+            return false;
+
+        $session = self::getPersistentSessionInstance();
+        $user = GauffrUser::unique( $session->getRelatedObjects( $extended, 'GauffrUser' ) );
+        $user->Extended = $extended;
+
+        return $user;
+    }
+
+
+
+    /**
      * Fetch user by Mail
      *
      * <code>

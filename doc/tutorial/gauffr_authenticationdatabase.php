@@ -16,7 +16,16 @@ elseif ( isset($_POST['login_c']) && !empty($_POST['login_c']) && isset($_POST['
     /*
      * Authentication of user "test" with password "test"
      */
-    $user = Gauffr::authenticationDatabase($_POST['login_c'], $_POST['password_c'], false, "gauffradmin");
+    $user = Gauffr::authenticationDatabase($_POST['login_c'], $_POST['password_c'], "gauffradmin", false );
+
+    var_dump( $user );
+}
+elseif ( isset($_POST['login_a']) && !empty($_POST['login_a']) && isset($_POST['password_a']) && !empty($_POST['password_a']) )
+{
+    /*
+     * Authentication of user "test" with password "test"
+     */
+    $user = Gauffr::authenticationDatabase($_POST['login_a'], $_POST['password_a'], false, true );
 
     var_dump( $user );
 }
@@ -35,6 +44,14 @@ else
     <p>login : <input type="text" name="login_c" value="" /></p>
     <p>password : <input type="password" name="password_c" /></p>
 <input type="submit" value="Login with 'gauffradmin' credential" />
+</form>
+
+<hr />
+
+<form method="POST" action="">
+    <p>login : <input type="text" name="login_a" value="" /></p>
+    <p>password : <input type="password" name="password_a" /></p>
+<input type="submit" value="Login with AltLogin" />
 </form>
 
 <?php } ?>
