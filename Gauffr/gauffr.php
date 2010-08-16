@@ -489,7 +489,12 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
      * Process Gauffr authentication with a database
      *
      * <code>
-     * $user = Gauffr::authenticationDatabase($_POST['login'], $_POST['password']);
+     * $user = Gauffr::authenticationDatabase(
+     *      $_POST['login'],
+     *      $_POST['password'],
+     *      $use_alt_login,
+     *      $slave_identifier
+     * );
      * </code>
      *
      * @param string $login
@@ -509,8 +514,8 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
         }
 
         $data = $filter->fetchData();
-        $user = new GauffrUser();
         /* Artificiel GauffrUser */
+        $user = new GauffrUser();
         $user->setState( array(
             'ID' => reset($data[$gauffr->gauffrUserTable['ID']]),
             'GroupID' => reset($data[$gauffr->gauffrUserTable['GroupID']]),
@@ -519,10 +524,23 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
         ) );
 
         /* No slave_identifier control */
-        //if ( !$slave_identifier )
+        if ( !$slave_identifier )
         {
             Gauffr::log("Authentification successful for user \"$login\"", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
             return $user;
+        }
+        else
+        {
+            if ( $user->hasCredentialByIdentifier($slave_identifier) )
+            {
+                Gauffr::log("Authentification successful on \"$slave_identifier\" for user \"$login\"", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
+                return $user;
+            }
+            else
+            {
+                Gauffr::log("User \"$login\" don't have access to \"$slave_identifier\"", 'gauffr', GauffrLog::SYSTEM, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
+                return false;
+            }
         }
     }
 
