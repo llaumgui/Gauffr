@@ -460,7 +460,13 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
         $db = ezcDbInstance::get(self::GAUFFR_DB_INSTANCE);
 
         if ( $login_is_alt_login )
-            $login = GauffrUser::fetchUserByAltLogin($login)->Login;
+        {
+            $user = GauffrUser::fetchUserByAltLogin($login);
+            if ( $user )
+                $login = $user->Login;
+            else
+                $login = false;
+        }
 
         $credentials = new ezcAuthenticationPasswordCredentials( $login, self::cryptPasswd($password) );
         $database = new ezcAuthenticationDatabaseInfo(
