@@ -20,6 +20,7 @@ fi
 
 # Create package
 mkdir ${BUILD_PATH}
+cp -R ${GAUFFR_PATH}bin ${BUILD_PATH}
 cp -R ${GAUFFR_PATH}doc ${BUILD_PATH}
 cp -R ${GAUFFR_PATH}Gauffr ${BUILD_PATH}
 
