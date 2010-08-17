@@ -1,8 +1,3 @@
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
--- --------------------------------------------------------
-
 --
 -- Structure de la table `gauffr_credential`
 --
@@ -12,7 +7,8 @@ CREATE TABLE IF NOT EXISTS `gauffr_credential` (
   `gauffruser_id` int(10) NOT NULL,
   `gauffrslave_id` int(10) NOT NULL,
   `can` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `gauffruser_id` (`gauffruser_id`,`gauffrslave_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
@@ -57,28 +53,12 @@ CREATE TABLE IF NOT EXISTS `gauffr_slave` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `gauffr_synchro`
---
-
-CREATE TABLE IF NOT EXISTS `gauffr_synchro` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `gauffruser_id` int(10) NOT NULL,
-  `update_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `process_timestamp` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `process_code` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `gauffruser_id` (`gauffruser_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `gauffr_userextended`
 --
 
 CREATE TABLE IF NOT EXISTS `gauffr_userextended` (
   `gauffruser_id` int(11) NOT NULL,
   `alt_login` varchar(255) NOT NULL,
-  PRIMARY KEY (`gauffruser_id`)
+  PRIMARY KEY (`gauffruser_id`),
+  UNIQUE KEY `alt_login` (`alt_login`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
