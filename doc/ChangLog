@@ -1,13 +1,25 @@
+Next Release ([0.4](http://projects.llaumgui.com/index.php/p/gauffr/issues/label/668/open/) ?)
+---------------------------
+The first version usable in production !
+
+ - New database schema defined by .sql and .XML
+ - Fetch GauffrUser and GauffrUserExtended, GauffrCredential, informations
+ - News tutorials
+ - New organisation of code
+ - New script usable in cronjob for prune old log (issues 14)
+
 Gauffr 0.3.1
+------------
  - Fix some bug in GauffrLog
 
 Gauffr 0.3
+----------
  - Rename some method, table, classes
- - Log in database insted file
- - Persistance
+ - Log in database instead of file
+ - Persistent object
  - Remove GauffrSynchro
  - API documentation
 
-
 Gauffr 0.1
+----------
  - Proof of Concept

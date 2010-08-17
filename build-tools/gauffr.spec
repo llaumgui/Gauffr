@@ -6,8 +6,8 @@ Summary(fr):    Gestion de l'Authentification Unifiée Fedora FR
 
 Group:          Development/Libraries
 License:        GPLv2+
-URL:            http://dev.llaumgui.com/wiki/eZ%20Components/Gauffr
-Source0:        http://www.llaumgui.com/public/gauffr/%{name}-%{version}.tar.gz
+URL:            http://projects.llaumgui.com/index.php/p/gauffr/doc/
+Source0:        http://projects.llaumgui.com/media/upload/gauffr/files/%{name}-%{version}.tar.gz
 Source1:        %{name}.cron.daily
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
@@ -42,18 +42,22 @@ application maitresse (le GauffrMaster) et des applications esclaves
 %install
 %{__rm} -rf %{buildroot}
 %{__install} -d %{buildroot}%{_datadir}/php/
-%{__install} -d %{buildroot}/%{_sysconfdir}/%{name}
+%{__install} -d %{buildroot}%{_sysconfdir}/%{name}
+%{__install} -d %{buildroot}%{_bindir}/%{name}
+
 %{__cp} -pr Gauffr %{buildroot}%{_datadir}/php
 %{__cp} -pr %{name}.ini %{buildroot}/%{_sysconfdir}/%{name}
 
 # script
-%{__cp} -pr bin/%{name}_clear_log.php %{buildroot}/%{_bindir}/%{name}_clear_log
+%{__chmod}  755 bin/%{name}_clear_log.php
+%{__cp} -pr bin/%{name}_clear_log.php %{buildroot}%{_bindir}/%{name}_clear_log
 
 # Conf in /etc/
-ln -s %{_sysconfdir}/%{name}/%{name}.ini %{buildroot}/%{_datadir}/php/Gauffr/conf/%{name}.ini
+ln -s %{_sysconfdir}/%{name}/%{name}.ini %{buildroot}%{_datadir}/php/Gauffr/conf/%{name}.ini
 
 # Add cron.daily
 %{__install} -p -D -m 0755 %{SOURCE1} %{buildroot}%{_sysconfdir}/cron.daily/%{name}.cron
+
 
 
 %clean
@@ -62,7 +66,7 @@ ln -s %{_sysconfdir}/%{name}/%{name}.ini %{buildroot}/%{_datadir}/php/Gauffr/con
 
 %files
 %defattr(-,root,root,-)
-%doc doc/AUTHORS doc/ChangLog doc/INSTALL doc/LICENSE doc/tutorial doc/database
+%doc doc/AUTHORS doc/ChangLog doc/LICENSE doc/tutorial doc/database
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.ini
 %{_sysconfdir}/cron.daily/%{name}.cron
 %{_bindir}/%{name}_clear_log
