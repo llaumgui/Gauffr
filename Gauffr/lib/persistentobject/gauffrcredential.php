@@ -11,10 +11,10 @@
 /**
  * The GauffrCredential classes.
  *
- * Allow persistence for object GauffrCredential
+ * Allow persistence for object GauffrCredential.
  *
- * @package Gauffr
  * @version //autogentag//
+ * @brief GauffrCredential persistant object
  */
 class GauffrCredential extends GauffrPersistentObject
 {

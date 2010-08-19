@@ -9,12 +9,10 @@
  */
 
 /**
- * The Gauffr classes.
+ * The Gauffr classes called by all aplication using Gauffr.
  *
- * Gauffr is the "Gestion Authentification Unifiée Fedora-FR".
- *
- * @package Gauffr
  * @version //autogentag//
+ * @brief Gauffr main class
  */
 class Gauffr
 {
@@ -129,6 +127,7 @@ class Gauffr
 
     /**
      * Don't allow clone
+     *
      * @throws Exception because Gauffr don't allow clone.
      */
     private function __clone ()

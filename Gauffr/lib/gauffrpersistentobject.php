@@ -11,10 +11,10 @@
 /**
  * The GauffrPersistentObject classes.
  *
- * Persistence for all Gauffr* objects
+ * Persistence object main class use by all Gauffr Persistants objects
  *
- * @package Gauffr
  * @version //autogentag//
+ * @brief Gauffr Persistant Object main class
  */
 abstract class GauffrPersistentObject
 {
@@ -94,6 +94,6 @@ abstract class GauffrPersistentObject
         return reset($array);
     }
 
-} 
+}
 
 ?>

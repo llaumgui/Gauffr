@@ -11,10 +11,10 @@
 /**
  * The GauffrSlave classes.
  *
- * Allow persistence for object GauffrSlave
+ * Allow persistence for object GauffrSlave.
  *
- * @package Gauffr
  * @version //autogentag//
+ * @brief GauffrSlave persistant object
  */
 class GauffrSlave extends GauffrPersistentObject
 {

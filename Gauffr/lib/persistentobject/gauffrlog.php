@@ -11,8 +11,10 @@
 /**
  * The GauffrLog classes.
  *
- * @package Gauffr
+ * Allow persistence for object GauffrLog.
+ *
  * @version //autogentag//
+ * @brief GauffrLog persistant object
  */
 class GauffrLog extends GauffrPersistentObject
 {
