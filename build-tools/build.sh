@@ -22,6 +22,7 @@ fi
 mkdir ${BUILD_PATH}
 cp -R ${GAUFFR_PATH}bin ${BUILD_PATH}
 cp -R ${GAUFFR_PATH}doc ${BUILD_PATH}
+cp -R ${GAUFFR_PATH}build-tools/Doxyfile ${BUILD_PATH}/doc
 cp -R ${GAUFFR_PATH}Gauffr ${BUILD_PATH}
 
 
@@ -35,12 +36,13 @@ find ${BUILD_PATH}/ -name '.svn' -type d -exec rm -rf {} \;
 
 # Tag version in header
 find ${BUILD_PATH}/Gauffr/ -name '*.php' -exec sed -i "s/@version \/\/autogentag\/\//@version ${GAUFFR_VERSION}/g" {} \;
+sed -i "s/@version \/\/autogentag\/\//@version ${GAUFFR_VERSION}/g" ${BUILD_PATH}/Doxyfile;
 
 # phpDoc
 if [ -d ${BUILD_PATH}}/${API_PATH} ]; then
     rm -rf ${BUILD_PATH}}/${API_PATH}
 fi
-phpdoc --title "Gauffr v${GAUFFR_VERSION}" -ue on -i '*_autoload.php' -t  ${BUILD_PATH}/${API_PATH} -d ${BUILD_PATH}/Gauffr/
+doxygen ${BUILD_PATH}/doc/Doxyfile
 
 # tar.gz
 tar -czvf ${BUILD_PATH}.tar.gz ${BUILD_PATH}/
