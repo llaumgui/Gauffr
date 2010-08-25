@@ -1,12 +1,14 @@
-Next Release ([0.4](http://projects.llaumgui.com/index.php/p/gauffr/issues/label/668/open/) ?)
----------------------------
+Gauffr 0.4
+----------
 The first version usable in production !
 
  - New database schema defined by .sql and .XML
- - Fetch GauffrUser and GauffrUserExtended, GauffrCredential, informations
+ - Fetch GauffrUser and GauffrUserExtended, GauffrCredential, informations (issues 80 & issues 81)
  - News tutorials
  - New organisation of code
  - New script usable in cronjob for prune old log (issues 14)
+ - New logo (issues 79)
+ - Switch API documentation to Doxygen (issues 76)
 
 Gauffr 0.3.1
 ------------
