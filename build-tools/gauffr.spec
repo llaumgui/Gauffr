@@ -66,7 +66,7 @@ ln -s %{_sysconfdir}/%{name}/%{name}.ini %{buildroot}%{_datadir}/php/Gauffr/conf
 
 %files
 %defattr(-,root,root,-)
-%doc doc/AUTHORS doc/ChangLog doc/LICENSE doc/tutorial doc/database
+%doc doc/api doc/AUTHORS doc/ChangLog doc/LICENSE doc/tutorial doc/database
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.ini
 %{_sysconfdir}/cron.daily/%{name}.cron
 %{_bindir}/%{name}_clear_log
@@ -74,7 +74,7 @@ ln -s %{_sysconfdir}/%{name}/%{name}.ini %{buildroot}%{_datadir}/php/Gauffr/conf
 
 
 %changelog
-* Mon Aug 16 2010 Guillaume Kulakowski <guillaume DOT kulakowski AT fedoraproject DOT org> - 0.4-1
+* Mon Aug 25 2010 Guillaume Kulakowski <guillaume DOT kulakowski AT fedoraproject DOT org> - 0.4-1
 - Update to Gauffr 0.4
 - Add cronjob
 - Add script in /usr/bin
