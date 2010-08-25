@@ -1,0 +1,27 @@
+Gauffr 0.4
+----------
+The first version usable in production !
+
+ - New database schema defined by .sql and .XML
+ - Fetch GauffrUser and GauffrUserExtended, GauffrCredential, informations (issues 80 & issues 81)
+ - News tutorials
+ - New organisation of code
+ - New script usable in cronjob for prune old log (issues 14)
+ - New logo (issues 79)
+ - Switch API documentation to Doxygen (issues 76)
+
+Gauffr 0.3.1
+------------
+ - Fix some bug in GauffrLog
+
+Gauffr 0.3
+----------
+ - Rename some method, table, classes
+ - Log in database instead of file
+ - Persistent object
+ - Remove GauffrSynchro
+ - API documentation
+
+Gauffr 0.1
+----------
+ - Proof of Concept

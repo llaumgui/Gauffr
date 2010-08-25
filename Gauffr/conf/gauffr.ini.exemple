@@ -1,0 +1,42 @@
+#
+# Gauffr global configuration
+#
+[GauffrSettings]
+LogLevel = GauffrLog::DEBUG
+LogTTL = 31
+
+
+
+#
+# The Gauffr database
+# /!\ The Gauffr database is the database where there the 'gauffr' table
+# and your user table
+#
+[GauffrMasterDB]
+Driver = mysql
+Host = localhost
+User = gauffr
+Password = gauffr
+DataBase = my_forums
+
+
+
+#
+# The User table
+# The user table of your forum, CMS, etc...
+#
+[GauffrUserTable]
+TableName = my_users
+ID = id
+GroupID = group_id
+Login = username
+Password = password
+Mail = email
+CryptoMethod = sha1
+
+
+[GauffrTables]
+GauffrCredential = gauffr_credential
+GauffrSlave = gauffr_slave
+GauffrLog = gauffr_log
+GauffrUserExtended = gauffr_userextended
