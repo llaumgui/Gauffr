@@ -27,7 +27,7 @@ class Gauffr
     /**
      * Application version.
      */
-    const APP_VERSION = "0.4";
+    const APP_VERSION = "0.5-dev";
     /**
      * Gauffr global configuration file.
      */
