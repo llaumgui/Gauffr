@@ -8,18 +8,14 @@
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0
  */
 
-require 'Gauffr/gauffr.php';
-
-/*
- * Packager : put GauffrAdmin in php_path (/urs/share/php) and chage the line bellow.
- */
-require '../GauffrAdmin/config.php';
+// Include the configuration file
+include 'GauffrAdmin/bootstrap.php';
 
 // Instantiate the dispatcher configuration object.
-//$config = new helloMvcConfiguration();
+$config = new GauffrAdminMvcConfiguration();
 
 // Send the configuration to the dispatcher, and run it.
-//$dispatcher = new ezcMvcConfigurableDispatcher( $config );
-//$dispatcher->run();
+$dispatcher = new ezcMvcConfigurableDispatcher( $config );
+$dispatcher->run();
 
 ?>
