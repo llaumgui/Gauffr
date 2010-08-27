@@ -85,7 +85,7 @@ class Gauffr
         /* Define path */
         Gauffr::$gauffrPath =  dirname( __FILE__ );
         Gauffr::$confDir = Gauffr::$gauffrPath . '/conf';
-        Gauffr::$gauffrMappingDir =  Gauffr::$gauffrPath . '/lib/persistentobjectmapping/';
+        Gauffr::$gauffrMappingDir =  Gauffr::$gauffrPath . '/Gauffr/lib/persistentobjectmapping/';
 
         $this->loadCallback(); // Load ezc Callback
         $this->loadTableSchema(); // Load ini with ezcConfigurationManager
@@ -214,7 +214,7 @@ class Gauffr
             // autoload
             spl_autoload_register( array( 'ezcBase', 'autoload' ) );
 
-            ezcBase::addClassRepository( dirname( __FILE__ ), dirname( __FILE__ ).'/autoloads' );
+            ezcBase::addClassRepository( dirname( __FILE__ ) );
             define( 'GAUFFR_ENABLED', true );
         }
 

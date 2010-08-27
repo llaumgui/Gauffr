@@ -12,7 +12,7 @@
 require 'Gauffr/gauffr.php';
 
 // Add GauffrAdmin autoloads
-ezcBase::addClassRepository( dirname( __FILE__ ) );
+ezcBase::addClassRepository( dirname( __FILE__ ) . '/..' );
 
 
 // Init and load template system
@@ -23,7 +23,7 @@ ezcBaseInit::setCallback(
 
 define ('GAUFFR_ADMIN_TPL_PATH', dirname( __FILE__ ) . '/templates');
 // Packager, change it ! (/tmp, /var/lib/GauffrAdmin, etc.)
-define ('GAUFFR_ADMIN_CACHE_PATH', dirname( __FILE__ ) . '/../cache');
+define ('GAUFFR_ADMIN_CACHE_PATH', dirname( __FILE__ ) . '/../../cache');
 
 $tpl = new ezcTemplate();
 $tpl->send->charset = 'utf-8';
