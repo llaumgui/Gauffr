@@ -15,7 +15,9 @@ require 'Gauffr/gauffr.php';
 ezcBase::addClassRepository( dirname( __FILE__ ) . '/..' );
 
 
-// Init and load template system
+/*
+ * Init and load template system
+ */
 ezcBaseInit::setCallback(
     'ezcInitTemplateConfiguration',
     'GauffrAdminLazyTemplateConfiguration'
@@ -25,7 +27,7 @@ define ('GAUFFR_ADMIN_TPL_PATH', dirname( __FILE__ ) . '/templates');
 // Packager, change it ! (/tmp, /var/lib/GauffrAdmin, etc.)
 define ('GAUFFR_ADMIN_CACHE_PATH', dirname( __FILE__ ) . '/../../cache');
 
+// Load template
 $tpl = new ezcTemplate();
-$tpl->send->charset = 'utf-8';
 
 ?>

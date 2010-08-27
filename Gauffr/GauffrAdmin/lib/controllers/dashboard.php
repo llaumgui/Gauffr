@@ -28,6 +28,8 @@ class dashboardController extends ezcMvcController
     {
         $ret = new ezcMvcResult;
         $ret->variables['greeting'] = $this->selectGreeting();
+        $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'dashboard', 'Dashboard' );
+
         return $ret;
     }
 

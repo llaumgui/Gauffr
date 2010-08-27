@@ -1,0 +1,4 @@
+{use $installRoot}
+<ul id="menu">
+    <li class="first"><a href="{$installRoot}/">Dashboard</a></li>
+</ul>

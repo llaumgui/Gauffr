@@ -20,14 +20,10 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
 {
 
     /**
-     * We start with the createRequestParser() method, which is required to
-     * return a request parser object that will be used to gather information
-     * from the environment. We're going to write a web site, so we're going to
-     * use the ezcMvcHttpRequestParser class. The method creates a parser object,
-     * and then we set the prefix to the directory in which the application is
-     * run
+     * Creates the request parser able to produce a relevant request object
+     * for this session.
      *
-     * @see MvcTools/interfaces/ezcMvcDispatcherConfiguration::createRequestParser()
+     * @return ezcMvcRequestParser
      */
     function createRequestParser()
     {
@@ -39,15 +35,11 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
 
 
     /**
-     * After the dispatcher created an ezcMvcRequest object with the request
-     * parser, it creates a router object through the createRouter() method.
-     * This method accepts the created ezcMvcRequest object so that it could
-     * chose a different router depending on information contained in the request
-     * object.
-     *
-     * @see MvcTools/interfaces/ezcMvcDispatcherConfiguration::createRouter()
+     * Create the router able to instantiate a relevant controller for this
+     * request.
      *
      * @param ezcMvcRequest $request
+     *
      * @return GauffrAdminRouter
      */
     function createRouter( ezcMvcRequest $request )
@@ -58,25 +50,13 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
 
 
     /**
-     * We'll create the router object itself as first thing after the rest of
-     * the dispatcher configuration. We will create two routes, "/" for a general
-     * "Hello World" greeting and "/" + name for a personalized greeting. The
-     * router and dispatcher will find a controller, execute the action and
-     * return a result in the form of an ezcMvcResult object. This object
-     * needs to be processed with view handlers. View handlers are selected by
-     * returning a specific view class from the createView() method of the
-     * dispatcher configuration. For each of the two routes, we create a view.
-     * We can do that by using the 'matchedRoute' property of the route
-     * information object, which is also passed as argument to the createView()
-     * method.
-     *
-     * @see MvcTools/interfaces/ezcMvcDispatcherConfiguration::createView()
+     * Creates the view handler that is able to process the result.
      *
      * @param ezcMvcRoutingInformation $routeInfo
      * @param ezcMvcRequest $request
      * @param ezcMvcResult $result
      *
-     * @return object
+     * @return ezcMvcView
      */
     function createView( ezcMvcRoutingInformation $routeInfo, ezcMvcRequest $request, ezcMvcResult $result )
     {
@@ -95,20 +75,18 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
 
 
     /**
-     * After the view has rendered the result, the rendered result needs to be
-     * transported back to the client. In order to select such a response writer,
-     * the dispatcher calls the createResponseWriter() method. In our case we're
-     * only interested in HTTP and therefore we'll just select the
-     * ezcMvcHttpResponseWriter as you can see in the implementation of this
-     * method.
+     * Creates a response writer that uses the response and sends its
+     * output.
      *
-     * @see MvcTools/interfaces/ezcMvcDispatcherConfiguration::createResponseWriter()
+     * This method should be able to pick different response writers, but the
+     * response writer itself will only know about the $response.
      *
      * @param ezcMvcRoutingInformation $routeInfo
      * @param ezcMvcRequest $request
-     * @param ezcMvcResult $result, ezcMvcResponse $response
+     * @param ezcMvcResult $result
+     * @param ezcMvcResponse $response
      *
-     * @return ezcMvcHttpResponseWriter
+     * @return ezcMvcResponseWriter
      */
     function createResponseWriter( ezcMvcRoutingInformation $routeInfo, ezcMvcRequest $request, ezcMvcResult $result, ezcMvcResponse $response )
     {
@@ -118,18 +96,14 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
 
 
     /**
-     * The last method that we use, is the createFatalRedirectRequest() method.
-     * This method is called by the configurable dispatcher when no route could
-     * be found by the router, or when the view rendering threw an Exception.
-     * The purpose of the createFatalRedirectRequest() method is to reconstruct
-     * a new ezcMvcRequest object containing the URL parameters that the router
-     * will link to a controller/action handling a fatal request.
-     *
-     * @see MvcTools/interfaces/ezcMvcDispatcherConfiguration::createFatalRedirectRequest()
+     * Create the default internal redirect object in case something goes
+     * wrong in the views.
      *
      * @param ezcMvcRequest $request
-     * @param ezcMvcResult $result
-     * @param Exception $response
+     * @param ezcMvcResult  $result
+     * @param Exception     $e
+     *
+     * @return ezcMvcRedirect
      */
     function createFatalRedirectRequest( ezcMvcRequest $request, ezcMvcResult $result, Exception $response )
     {
@@ -143,8 +117,13 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
 
 
     /**
-     * (non-PHPdoc)
-     * @see MvcTools/interfaces/ezcMvcDispatcherConfiguration::runPreRoutingFilters()
+     * Runs all the pre-routing filters that are deemed necessary depending on
+     * information in $request.
+     *
+     * The pre-routing filters could modify the request data so that a
+     * different router can be chosen.
+     *
+     * @param ezcMvcRequest $request
      */
     function runPreRoutingFilters( ezcMvcRequest $request )
     {
@@ -153,8 +132,19 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
 
 
     /**
-     * (non-PHPdoc)
-     * @see MvcTools/interfaces/ezcMvcDispatcherConfiguration::runRequestFilters()
+     * Runs all the request filters that are deemed necessary depending on
+     * information in $routeInfo and $request.
+     *
+     * This method can return an object of class ezcMvcInternalRedirect in case
+     * the filters require this. A reason for this could be in case an
+     * authentication filter requires authentication credentials to be passed
+     * in through a login form. The method can also not return anything in case
+     * no redirect is necessary.
+     *
+     * @param ezcMvcRoutingInformation $routeInfo
+     * @param ezcMvcRequest $request
+     *
+     * @return ezcMvcInternalRedirect|null
      */
     function runRequestFilters( ezcMvcRoutingInformation $routeInfo, ezcMvcRequest $request )
     {
@@ -163,19 +153,42 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
 
 
     /**
-     * (non-PHPdoc)
-     * @see MvcTools/interfaces/ezcMvcDispatcherConfiguration::runResultFilters()
+     * Runs all the request filters that are deemed necessary depending on
+     * information in $routeInfo, $request and $result.
+     *
+     * @param ezcMvcRoutingInformation $routeInfo
+     * @param ezcMvcRequest $request
+     * @param ezcMvcResult $result
      */
     function runResultFilters( ezcMvcRoutingInformation $routeInfo, ezcMvcRequest $request, ezcMvcResult $result )
     {
         $result->variables['installRoot'] = preg_replace( '@/index\.php$@', '', $_SERVER['SCRIPT_NAME'] );
+
+        // Inject variables in $result
+        $cfg = ezcConfigurationManager::getInstance();
+
+        list( $lang ) =  $cfg->getSettingsAsList( 'gauffr_admin', 'GauffrAdminSettings',
+            array( 'Language' ) );
+        $result->variables['lang'] = $lang;
+
+        list( $charset, $stylesheetsList ) =  $cfg->getSettingsAsList( 'gauffr_admin', 'GauffrAdminTemplatesSettings',
+            array( 'Charset',  'StylesheetsList' ) );
+        $result->variables['charset'] = $charset;
+        $result->variables['stylesheetsList'] = $stylesheetsList;
+
+        $result->variables['appVersion'] = Gauffr::APP_VERSION;
     }
 
 
 
     /**
-     * (non-PHPdoc)
-     * @see MvcTools/interfaces/ezcMvcDispatcherConfiguration::runResponseFilters()
+     * Runs all the request filters that are deemed necessary depending on
+     * information in $routeInfo, $request, $result and $response.
+     *
+     * @param ezcMvcRoutingInformation $routeInfo
+     * @param ezcMvcRequest $request
+     * @param ezcMvcResult  $result
+     * @param ezcMvcResponse $response
      */
     function runResponseFilters( ezcMvcRoutingInformation $routeInfo, ezcMvcRequest $request, ezcMvcResult $result, ezcMvcResponse $response )
     {

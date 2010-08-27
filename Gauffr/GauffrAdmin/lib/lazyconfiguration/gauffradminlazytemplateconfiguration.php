@@ -17,11 +17,12 @@
 class GauffrAdminLazyTemplateConfiguration implements ezcBaseConfigurationInitializer
 {
 
-	public static function configureObject( $tpl )
+	public static function configureObject( $cfg )
     {
     	// Define path
-        $tpl->templatePath = GAUFFR_ADMIN_TPL_PATH;
-        $tpl->compilePath = GAUFFR_ADMIN_CACHE_PATH;
+        $cfg->templatePath = GAUFFR_ADMIN_TPL_PATH;
+        $cfg->compilePath = GAUFFR_ADMIN_CACHE_PATH;
+        $cfg->context = new ezcTemplateXhtmlContext();
     }
 
 }

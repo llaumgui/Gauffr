@@ -1,0 +1,2 @@
+{use $appVersion}
+<h1 id="header">GauffrAdmin  v{$appVersion}</h1>

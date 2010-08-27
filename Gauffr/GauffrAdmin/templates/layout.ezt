@@ -1,21 +1,30 @@
-{use $menu, $content}
+{use $appVersion, $charset, $content, $installRoot, $lang, $menu, $pageName, $stylesheetsList}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{$lang}" lang="{$lang}">
 <head>
-    <title>GauffrAdmin</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{$pageName} (GauffrAdmin v{$appVersion})</title>
+    <meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
     <meta name="MSSmartTagsPreventParsing" content="true" />
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="stylesheet" type="text/css" href="/media/stylesheets/styles.css" media="screen" />
+    {foreach $stylesheetsList as $stylesheet}
+    <link rel="stylesheet" type="text/css" href="{$installRoot}/media/{$stylesheet}" media="screen" />
+    {/foreach}
 </head>
 <body>
-<div id="mainmenu">
+<div id="wrapper">
+    {include "parts/header.ezt"
+        send $appVersion as $appVersion}
+
     {raw $menu}
+
+    <div id="content">
+        {raw $content}
+    </div>
 </div>
-<div id="content">
-    {raw $content}
+
+<div id="footer">
+    {include "parts/footer.ezt"}
 </div>
-<div id="footer">Powered by Gauffr &amp; GauffrAdmin</div>
 </body>
 </html>

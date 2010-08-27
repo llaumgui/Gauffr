@@ -10,6 +10,7 @@
  */
 return array(
 
+    'GauffrAdminI18n' => 'GauffrAdmin/lib/gauffradmini18n.php',
     'GauffrAdminMvcConfiguration' => 'GauffrAdmin/lib/gauffradminmvcconfiguration.php',
     'GauffrAdminRouter' => 'GauffrAdmin/lib/gauffradminrouter.php',
 
