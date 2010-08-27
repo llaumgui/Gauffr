@@ -37,6 +37,42 @@
         </message>
     </context>
 
+    <context>
+        <name>dashboard/full.ezt</name>
+        <message>
+            <source>Last logs</source>
+            <translation>Derniers logs</translation>
+        </message>
+        <message>
+            <source>Category</source>
+            <translation>Catégorie</translation>
+        </message>
+        <message>
+            <source>Message</source>
+            <translation>Message</translation>
+        </message>
+        <message>
+            <source>Severity</source>
+            <translation>Sévérité</translation>
+        </message>
+        <message>
+            <source>Source</source>
+            <translation>Source</translation>
+        </message>
+        <message>
+            <source>File</source>
+            <translation>Fichier</translation>
+        </message>
+        <message>
+            <source>Line</source>
+            <translation>Ligne</translation>
+        </message>
+        <message>
+            <source>Time</source>
+            <translation>Date</translation>
+        </message>
+    </context>
+
 
     <context>
         <name>view/dashboard</name>

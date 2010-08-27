@@ -24,7 +24,7 @@ class GauffrAdminRootView extends ezcMvcView
 
         $zones = array();
         $zones[] = new ezcMvcTemplateViewHandler( 'menu', 'parts/menu.ezt' );
-        $zones[] = new ezcMvcPhpViewHandler( 'content', $tc->templatePath . '/generic_greeting.php' );
+        $zones[] = new ezcMvcTemplateViewHandler( 'content', 'dashboard/full.ezt' );
         $zones[] = new ezcMvcTemplateViewHandler( 'page_layout', 'layout.ezt' );
         return $zones;
     }

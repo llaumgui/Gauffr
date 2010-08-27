@@ -18,27 +18,29 @@
  */
 class dashboardController extends ezcMvcController
 {
-    private function selectGreeting()
-    {
-        $greetings = array( 'Hello', 'Hei', 'こんにちわ', 'доброе утро' );
-        return $greetings[mt_rand( 0, count( $greetings ) - 1 )];
-    }
-
-    public function doDashboard()
+	/**
+	 * Dashboard view
+	 */
+	public function doDashboard()
     {
         $ret = new ezcMvcResult;
-        $ret->variables['greeting'] = $this->selectGreeting();
+        $ret->variables['gauffrInfo'] = Gauffr::info(true);
+        $ret->variables['gauffrLog'] = self::getLastLog(5);
         $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/dashboard', 'Dashboard' );
 
         return $ret;
     }
 
-    public function doGreetPersonally()
+
+    private static function getLastLog( $limit )
     {
-        $ret = new ezcMvcResult;
-        $ret->variables['greeting'] = $this->selectGreeting();
-        $ret->variables['person'] = $this->name;
-        return $ret;
+    	$persistentSession = GauffrLog::getPersistentSessionInstance();
+        $q = $persistentSession->createFindQuery('GauffrLog' )
+            ->orderBy( 'Time', ezcQuerySelect::DESC )
+            ->limit($limit, 0);
+
+        return $persistentSession->find( $q, 'GauffrLog' );
     }
+
 }
 ?>
