@@ -9,7 +9,7 @@
  */
 
 // Include the configuration file
-include 'GauffrAdmin/bootstrap.php';
+include 'Gauffr/GauffrAdmin/bootstrap.php';
 
 // Instantiate the dispatcher configuration object.
 $config = new GauffrAdminMvcConfiguration();
