@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the lazy configuration for the PersistentObject components.
+ * File containing the lazy configuration for the PersistentObject eZ Components.
  *
  * @version //autogentag//
  * @package Gauffr
@@ -11,10 +11,8 @@
 /**
  * The GauffrLazyPersistentSessionConfiguration classes.
  *
- * Lazy configuration for PersistentObject Components.
- *
+ * @package Gauffr
  * @version //autogentag//
- * @brief Lazy configuration for PersistentObject
  */
 class GauffrLazyPersistentSessionConfiguration implements ezcBaseConfigurationInitializer
 {

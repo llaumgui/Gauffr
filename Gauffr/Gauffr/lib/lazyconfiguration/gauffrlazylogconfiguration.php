@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the lazy configuration for the EventLog components.
+ * File containing the lazy configuration for the Log eZ Components.
  *
  * @version //autogentag//
  * @package Gauffr
@@ -9,12 +9,10 @@
  */
 
 /**
- * The GauffrLazyLogConfiguration classes.
+ * The GauffrLazyDatabaseConfiguration classes.
  *
- * Lazy configuration for EvenLog Components.
- *
+ * @package Gauffr
  * @version //autogentag//
- * @brief Lazy configuration for EvenLog
  */
 class GauffrLazyLogConfiguration implements ezcBaseConfigurationInitializer
 {

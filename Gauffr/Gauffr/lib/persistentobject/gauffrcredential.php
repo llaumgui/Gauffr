@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the GauffrUserExtended class.
+ * File containing the GauffrCredential class.
  *
  * @version //autogentag//
  * @package Gauffr
@@ -9,18 +9,20 @@
  */
 
 /**
- * The GauffrUserExtended classes.
+ * The GauffrCredential classes.
  *
- * Allow persistence for object GauffrUserExtended.
+ * Allow persistence for object GauffrCredential
  *
+ * @package Gauffr
  * @version //autogentag//
- * @brief GauffrUserExtended persistant object
  */
-class GauffrUserExtended extends GauffrPersistentObject
+class GauffrCredential extends GauffrPersistentObject
 {
 	// Mapping
     protected $ID;
-    public $AltLogin;
+    public $GauffrUserID;
+    public $GauffrSlaveID;
+    public $Can;
 
 
 
@@ -33,7 +35,9 @@ class GauffrUserExtended extends GauffrPersistentObject
     {
         return array(
             'ID' => $this->ID,
-            'AltLogin' => $this->AltLogin,
+            'GauffrUserID' => $this->GauffrUserID,
+            'GauffrSlaveID' => $this->GauffrSlaveID,
+            'Can' => $this->Can,
         );
     }
 

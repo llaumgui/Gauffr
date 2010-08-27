@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the lazy configuration for the Configuration components.
+ * File containing the lazy configuration for the Configuration eZ Components.
  *
  * @version //autogentag//
  * @package Gauffr
@@ -11,10 +11,8 @@
 /**
  * The GauffrLazyConfigurationConfiguration classes.
  *
- * Lazy configuration for Configuration Components.
- *
+ * @package Gauffr
  * @version //autogentag//
- * @brief Lazy configuration for Configuration
  */
 class GauffrLazyConfigurationConfiguration implements ezcBaseConfigurationInitializer
 {

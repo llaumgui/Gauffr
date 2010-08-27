@@ -11,10 +11,10 @@
 /**
  * The GauffrPersistentSessionIdentity classes.
  *
- * Manage one instance of ezcPersistentSessionIdentityDecorator.
+ * Manage one instance of ezcPersistentSessionIdentityDecorator
  *
+ * @package Gauffr
  * @version //autogentag//
- * @brief Manage ezcPersistentSessionIdentityDecorator
  */
 class GauffrPersistentSessionIdentity extends ezcPersistentSessionIdentityDecorator
 {
@@ -52,6 +52,6 @@ class GauffrPersistentSessionIdentity extends ezcPersistentSessionIdentityDecora
         throw new Exception ('Clone is not allowed');
     }
 
-}
+} 
 
 ?>
