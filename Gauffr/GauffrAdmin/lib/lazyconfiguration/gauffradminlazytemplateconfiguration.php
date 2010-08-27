@@ -23,6 +23,13 @@ class GauffrAdminLazyTemplateConfiguration implements ezcBaseConfigurationInitia
         $cfg->templatePath = GAUFFR_ADMIN_TPL_PATH;
         $cfg->compilePath = GAUFFR_ADMIN_CACHE_PATH;
         $cfg->context = new ezcTemplateXhtmlContext();
+
+        // Translation
+        $manager = GauffrAdminI18n::getManager();
+        $locale = GauffrAdminI18n::getLocale();
+        $cfg->translation = ezcTemplateTranslationConfiguration::getInstance();
+        $cfg->translation->manager = $manager;
+        $cfg->translation->locale = $locale;
     }
 
 }

@@ -1,2 +1,3 @@
 {use $appVersion}
-<h1 id="header">GauffrAdmin  v{$appVersion}</h1>
+{tr_context "parts/header.ezt"}
+<h1 id="header">{tr "GauffrAdmin"} v{$appVersion}</h1>

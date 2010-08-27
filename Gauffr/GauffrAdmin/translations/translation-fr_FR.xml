@@ -2,7 +2,44 @@
 <!DOCTYPE TS>
 <TS>
     <context>
-        <name>dashboard</name>
+        <name>layout.ezt</name>
+        <message>
+            <source>GauffrAdmin</source>
+            <translation>GauffrAdmin</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>parts/header.ezt</name>
+        <message>
+            <source>GauffrAdmin</source>
+            <translation>GauffrAdmin</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>parts/menu.ezt</name>
+        <message>
+            <source>Dashboard</source>
+            <translation>Tableau de bord</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>parts/footer.ezt</name>
+        <message>
+            <source>Powered by</source>
+            <translation>Propulsé</translation>
+        </message>
+        <message>
+            <source>and</source>
+            <translation>et</translation>
+        </message>
+    </context>
+
+
+    <context>
+        <name>view/dashboard</name>
         <message>
             <source>Dashboard</source>
             <translation>Tableau de bord</translation>

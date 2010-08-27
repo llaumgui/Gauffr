@@ -83,6 +83,32 @@ class GauffrAdminI18n
         return $context->getTranslation( $string );
     }
 
+
+
+    /**
+     * ezcTranslationManager accessor
+     *
+     * @return ezcTranslationManager
+     */
+    public static function getManager()
+    {
+        $i18n = self::getInstance();
+        return $i18n->manager;
+    }
+
+
+
+    /**
+     * Locale accessor
+     *
+     * @return string
+     */
+    public static function getLocale()
+    {
+        $i18n = self::getInstance();
+        return $i18n->currentLanguage;
+    }
+
 }
 
 ?>

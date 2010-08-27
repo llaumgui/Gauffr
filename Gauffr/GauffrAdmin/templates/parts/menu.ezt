@@ -1,4 +1,5 @@
 {use $installRoot}
+{tr_context "parts/menu.ezt"}
 <ul id="menu">
-    <li class="first"><a href="{$installRoot}/">Dashboard</a></li>
+    <li class="first"><a href="{$installRoot}/">{tr "Dashboard"}</a></li>
 </ul>

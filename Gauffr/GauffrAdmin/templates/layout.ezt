@@ -1,9 +1,10 @@
 {use $appVersion, $charset, $content, $installRoot, $lang, $menu, $pageName, $stylesheetsList}
+{tr_context "layout.ezt"}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{$lang}" lang="{$lang}">
 <head>
-    <title>{$pageName} (GauffrAdmin v{$appVersion})</title>
+    <title>{$pageName} ({tr "GauffrAdmin"} v{$appVersion})</title>
     <meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
     <meta name="MSSmartTagsPreventParsing" content="true" />
     <meta name="robots" content="noindex, nofollow" />

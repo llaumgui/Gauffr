@@ -1,1 +1,4 @@
-<p>Powered by Gauffr &amp; GauffrAdmin</p>
+{tr_context "parts/footer.ezt"}
+<p>
+    {tr "Powered by"} <a href="http://projects.llaumgui.com/index.php/p/gauffr/">Gauffr</a> {tr "and"} <a href="http://ezcomponents.org">eZ Components</a>.
+</p>
