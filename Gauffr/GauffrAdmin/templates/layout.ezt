@@ -19,7 +19,8 @@
 <body>
 <div id="wrapper">
     {include "parts/header.ezt"
-        send $appVersion as $appVersion}
+        send $appVersion as $appVersion,
+             $installRoot as $installRoot}
 
     {raw $menu}
 
