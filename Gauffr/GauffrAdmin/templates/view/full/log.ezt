@@ -1,0 +1,9 @@
+{use $gauffrLog}
+{tr_context "view/full/log.ezt"}
+
+<div class="block">
+    <h2>{tr "Log"}</h2>
+    {include "view/list/gauffrlog.ezt"
+        send $gauffrLog as $gauffrLog}
+
+</div>

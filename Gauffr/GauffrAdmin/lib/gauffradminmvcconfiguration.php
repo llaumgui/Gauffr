@@ -60,10 +60,13 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
      */
     function createView( ezcMvcRoutingInformation $routeInfo, ezcMvcRequest $request, ezcMvcResult $result )
     {
+    	$routeInfo->matchedRoute = str_replace( 'index.php', '', $routeInfo->matchedRoute );
         switch ( $routeInfo->matchedRoute )
         {
             case '/':
                 return new GauffrAdminRootView( $request, $result );
+            case '/log':
+                return new GauffrAdminLogView( $request, $result );
             case '/ERROR':
                 return new GauffrAdminErrorView( $request, $result );
         }
@@ -104,6 +107,7 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
      */
     function createFatalRedirectRequest( ezcMvcRequest $request, ezcMvcResult $result, Exception $response )
     {
+        var_dump( $request );
         $req = clone $request;
         $req->uri = '/ERROR';
 
@@ -167,10 +171,11 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
             array( 'Language' ) );
         $result->variables['lang'] = $lang;
 
-        list( $charset, $stylesheetsList ) =  $cfg->getSettingsAsList( 'gauffr_admin', 'GauffrAdminTemplatesSettings',
-            array( 'Charset',  'StylesheetsList' ) );
+        list( $charset, $stylesheetsList, $javascriptsList ) =  $cfg->getSettingsAsList( 'gauffr_admin', 'GauffrAdminTemplatesSettings',
+            array( 'Charset',  'StylesheetsList', 'JavascriptsList' ) );
         $result->variables['charset'] = $charset;
         $result->variables['stylesheetsList'] = $stylesheetsList;
+        $result->variables['javascriptsList'] = $javascriptsList;
 
         $result->variables['appVersion'] = Gauffr::APP_VERSION;
     }

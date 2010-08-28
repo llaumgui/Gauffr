@@ -1,0 +1,25 @@
+{use $gauffrLog}
+{tr_context "view/list/gauffrlog.ezt"}
+<table class="list" summary="{tr "Last logs"}">
+    <thead><tr>
+        <th>{tr "Message"}</th>
+        <th>{tr "Category"}</th>
+        <th>{tr "Severity"}</th>
+        <th>{tr "Source"}</th>
+        <th>{tr "File"}</th>
+        <th>{tr "Line"}</th>
+        <th>{tr "Time"}</th>
+    </tr></thead>
+    <tbody>
+{foreach $gauffrLog as $log}
+    <tr>
+        <td>{$log->Message}</td>
+        <td>{$log->Category}</td>
+        <td>{$log->Severity}</td>
+        <td>{$log->Source}</td>
+        <td>{$log->File}</td>
+        <td>{$log->Line}</td>
+        <td>{$log->Time}</td>
+    </tr>
+{/foreach}
+</tbody></table>

@@ -49,6 +49,7 @@ class GauffrAdminI18n
         $this->backend->setOptions( array( 'format' => 'translation-[LOCALE].xml' ) );
 
         $this->manager = new ezcTranslationManager( $this->backend );
+        $this->manager->addFilter( ezcTranslationComplementEmptyFilter::getInstance() );
     }
 
 

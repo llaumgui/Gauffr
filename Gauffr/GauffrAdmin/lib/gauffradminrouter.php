@@ -21,6 +21,8 @@ class GauffrAdminRouter extends ezcMvcRouter
     public function createRoutes()
     {
         return array(
+
+            new ezcMvcRailsRoute( '/log', 'logController', 'log' ),
             new ezcMvcRailsRoute( '/', 'dashboardController', 'dashboard' ),
 
             // System

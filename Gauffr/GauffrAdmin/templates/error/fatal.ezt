@@ -1,1 +1,14 @@
-gfgf
+{use $action, $request, $router}
+{tr_context "error/fatal.ezt"}
+<h2>{tr "Fatal error"}</h2>
+
+<p>{tr "Houston we have a problem ... An error occurred in the application GauffrAdmin."}</p>
+
+{if $action}
+    <h2>{tr "Debug output:"}</h2>
+    <strong>action</strong>: {debug_dump($action)}<br /><br />
+    <strong>request</strong>:
+    <pre>{debug_dump($request)}</pre><br /><br />
+    <strong>router</strong>:
+    <pre>{debug_dump($router)}</pre><br /><br />
+{/if}

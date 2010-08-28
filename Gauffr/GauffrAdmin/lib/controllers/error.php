@@ -26,6 +26,24 @@ class errorController extends ezcMvcController
         $ret = new ezcMvcResult;
         $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/error', 'Error' );
 
+        // Degug information
+        $action = false;
+        $request = false;
+        $router = false;
+
+        $cfg = ezcConfigurationManager::getInstance();
+        if ( $cfg->getSetting( 'gauffr_admin', 'GauffrAdminSettings', 'Debug' ) )
+        {
+            $action = $this->action;
+            $request = $this->request;
+            $router = $this->getRouter();
+
+        }
+
+        $ret->variables['action'] = $action;
+        $ret->variables['request'] = $request;
+        $ret->variables['router'] = $router;
+
         return $ret;
     }
 

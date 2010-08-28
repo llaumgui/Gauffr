@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE TS>
 <TS>
+
+<!-- ___________________________________________________________________________
+                                                                       templates
+-->
     <context>
         <name>layout.ezt</name>
         <message>
@@ -9,6 +13,11 @@
         </message>
     </context>
 
+
+
+<!-- ___________________________________________________________________________
+                                                               templates / parts
+-->
     <context>
         <name>parts/header.ezt</name>
         <message>
@@ -41,8 +50,42 @@
         </message>
     </context>
 
+
+
+<!-- ___________________________________________________________________________
+                                                         templates / view / full
+-->
     <context>
-        <name>dashboard/full.ezt</name>
+        <name>view/full/dashboard.ezt</name>
+        <message>
+            <source>Last logs</source>
+            <translation>Derniers logs</translation>
+        </message>
+        <message>
+            <source>Variables</source>
+            <translation>Variables</translation>
+        </message>
+        <message>
+            <source>Database info</source>
+            <translation>Information sur la base</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>view/full/log.ezt</name>
+        <message>
+            <source>Log</source>
+            <translation>Log</translation>
+        </message>
+    </context>
+
+
+
+<!-- ___________________________________________________________________________
+                                                         templates / view / list
+-->
+    <context>
+        <name>view/list/gauffrlog.ezt</name>
         <message>
             <source>Last logs</source>
             <translation>Derniers logs</translation>
@@ -75,17 +118,37 @@
             <source>Time</source>
             <translation>Date</translation>
         </message>
-        <message>
-            <source>Variables</source>
-            <translation>Variables</translation>
-        </message>
-        <message>
-            <source>Database info</source>
-            <translation>Information sur la base</translation>
-        </message>
     </context>
 
 
+
+<!-- ___________________________________________________________________________
+                                                               templates / error
+-->
+    <context>
+        <name>error/fatal.ezt</name>
+        <message>
+            <source>Fatal error</source>
+            <translation>Erreur fatale</translation>
+        </message>
+        <message>
+            <source>Houston we have a problem ... An error occurred in the application GauffrAdmin.</source>
+            <translation>Houston nous avons un problème... Une erreur c'est produite dans l'application GrauffrAdmin.</translation>
+        </message>
+        <message>
+            <source>Debug output:</source>
+            <translation type="unfinished"></translation>
+        </message>
+
+
+
+    </context>
+
+
+
+<!-- ___________________________________________________________________________
+                                                                            view
+-->
     <context>
         <name>view/dashboard</name>
         <message>
@@ -99,6 +162,14 @@
         <message>
             <source>Error</source>
             <translation>Erreur</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>view/log</name>
+        <message>
+            <source>Log</source>
+            <translation>Log</translation>
         </message>
     </context>
 </TS>

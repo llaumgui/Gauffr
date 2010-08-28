@@ -20,9 +20,11 @@ return array(
     /* Controller */
     'dashboardController' => 'GauffrAdmin/lib/controllers/dashboard.php',
     'errorController' => 'GauffrAdmin/lib/controllers/error.php',
+    'logController' => 'GauffrAdmin/lib/controllers/log.php',
 
     /* View */
     'GauffrAdminErrorView' => 'GauffrAdmin/lib/views/error.php',
+    'GauffrAdminLogView' => 'GauffrAdmin/lib/views/log.php',
     'GauffrAdminRootView' => 'GauffrAdmin/lib/views/root.php',
 
 );
