@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the GauffrAdminRootView class.
+ * File containing the GauffrAdminErrorView class.
  *
  * @version //autogentag//
  * @package GauffrAdmin
@@ -9,14 +9,14 @@
  */
 
 /**
- * The GauffrAdminRootView classes.
+ * The GauffrAdminErrorView classes.
  *
- * Root of GauffrAdmin
+ * Error in GauffrAdmin
  *
  * @package GauffrAdmin
  * @version //autogentag//
  */
-class GauffrAdminRootView extends ezcMvcView
+class GauffrAdminErrorView extends ezcMvcView
 {
     function createZones( $layout )
     {
@@ -24,7 +24,7 @@ class GauffrAdminRootView extends ezcMvcView
 
         $zones = array();
         $zones[] = new ezcMvcTemplateViewHandler( 'menu', 'parts/menu.ezt' );
-        $zones[] = new ezcMvcTemplateViewHandler( 'content', 'view/full/dashboard.ezt' );
+        $zones[] = new ezcMvcTemplateViewHandler( 'content', 'error/fatal.ezt' );
         $zones[] = new ezcMvcTemplateViewHandler( 'page_layout', 'layout.ezt' );
         return $zones;
     }

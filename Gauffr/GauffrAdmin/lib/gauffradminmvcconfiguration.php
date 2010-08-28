@@ -64,11 +64,8 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
         {
             case '/':
                 return new GauffrAdminRootView( $request, $result );
-
-            /* case '/:name':
-                return new helloNameView( $request, $result );
-            case '/downloadTest':
-                return new helloTestView( $request, $result ); */
+            case '/ERROR':
+                return new GauffrAdminErrorView( $request, $result );
         }
     }
 
@@ -107,9 +104,8 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
      */
     function createFatalRedirectRequest( ezcMvcRequest $request, ezcMvcResult $result, Exception $response )
     {
-        var_Dump( $request );
         $req = clone $request;
-        $req->uri = '/FATAL';
+        $req->uri = '/ERROR';
 
         return $req;
     }

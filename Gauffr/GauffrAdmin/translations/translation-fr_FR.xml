@@ -23,6 +23,10 @@
             <source>Dashboard</source>
             <translation>Tableau de bord</translation>
         </message>
+        <message>
+            <source>Logs</source>
+            <translation>Logs</translation>
+        </message>
     </context>
 
     <context>
@@ -71,6 +75,14 @@
             <source>Time</source>
             <translation>Date</translation>
         </message>
+        <message>
+            <source>Variables</source>
+            <translation>Variables</translation>
+        </message>
+        <message>
+            <source>Database info</source>
+            <translation>Information sur la base</translation>
+        </message>
     </context>
 
 
@@ -79,6 +91,14 @@
         <message>
             <source>Dashboard</source>
             <translation>Tableau de bord</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>view/error</name>
+        <message>
+            <source>Error</source>
+            <translation>Erreur</translation>
         </message>
     </context>
 </TS>

@@ -18,6 +18,7 @@
  */
 class dashboardController extends ezcMvcController
 {
+
 	/**
 	 * Dashboard view
 	 */
@@ -25,14 +26,21 @@ class dashboardController extends ezcMvcController
     {
         $ret = new ezcMvcResult;
         $ret->variables['gauffrInfo'] = Gauffr::info(true);
-        $ret->variables['gauffrLog'] = self::getLastLog(5);
+        $ret->variables['gauffrLog'] = self::doDashboardGetLastLog(5);
         $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/dashboard', 'Dashboard' );
 
         return $ret;
     }
 
 
-    private static function getLastLog( $limit )
+
+    /**
+     * Get $limit last log
+     *
+     * @param int $limit
+     * @return array
+     */
+    private static function doDashboardGetLastLog( $limit )
     {
     	$persistentSession = GauffrLog::getPersistentSessionInstance();
         $q = $persistentSession->createFindQuery('GauffrLog' )
@@ -43,4 +51,5 @@ class dashboardController extends ezcMvcController
     }
 
 }
+
 ?>

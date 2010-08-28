@@ -1,0 +1,74 @@
+{use $gauffrInfo, $gauffrLog}
+{tr_context "dashboard/full.ezt"}
+
+<div class="block">
+    <h2>{tr "Last logs"}</h2>
+
+    <table class="list" title="{tr "Last logs"}">
+        <thead><tr>
+            <th>{tr "Message"}</th>
+            <th>{tr "Category"}</th>
+            <th>{tr "Severity"}</th>
+            <th>{tr "Source"}</th>
+            <th>{tr "File"}</th>
+            <th>{tr "Line"}</th>
+            <th>{tr "Time"}</th>
+        </tr></thead>
+        <tbody>
+    {foreach $gauffrLog as $log}
+        <tr>
+            <td>{$log->Message}</td>
+            <td>{$log->Category}</td>
+            <td>{$log->Severity}</td>
+            <td>{$log->Source}</td>
+            <td>{$log->File}</td>
+            <td>{$log->Line}</td>
+            <td>{$log->Time}</td>
+        </tr>
+    {/foreach}
+    </tbody></table>
+</div>
+
+<div class="block">
+    <h2>{tr "Variables"}</h2>
+    <table title="{tr "Variables"}">
+        <thead><tr>
+        {foreach $gauffrInfo['info']['Variables'] as $info}
+            {foreach $info as $key => $value}
+            <th><label>{$key}</label></th>
+            {/foreach}
+            {break}
+        {/foreach}
+        </tr></thead>
+        <tbody>
+        {foreach $gauffrInfo['info']['Variables'] as $info}
+        <tr>
+            {foreach $info as $key => $value}
+            <td>{$value}</td>
+            {/foreach}
+        </tr>
+        {/foreach}
+    </tbody></table>
+</div>
+
+<div class="block half">
+    <h2>{tr "Database info"}</h2>
+    <table title="{tr "Variables"}">
+        <thead><tr>
+        {foreach $gauffrInfo['info']['Database info'] as $info}
+            {foreach $info as $key => $value}
+            <th><label>{$key}</label></th>
+            {/foreach}
+            {break}
+        {/foreach}
+        </tr></thead>
+        <tbody>
+        {foreach $gauffrInfo['info']['Database info'] as $info}
+        <tr>
+            {foreach $info as $key => $value}
+            <td>{$value}</td>
+            {/foreach}
+        </tr>
+        {/foreach}
+    </tbody></table>
+</div>
