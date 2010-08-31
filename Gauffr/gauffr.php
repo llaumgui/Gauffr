@@ -454,7 +454,7 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
      * @param string $password
      * @param boolean $login_is_alt_login The $login is an altLogin ?
      */
-    private function authenticationDatabaseFilter( &$authentication, &$filter, $login, $password, $login_is_alt_login = false )
+    public function authenticationDatabaseFilter( &$authentication, &$filter, $login, $password, $login_is_alt_login = false )
     {
         $db = ezcDbInstance::get(self::GAUFFR_DB_INSTANCE);
 
