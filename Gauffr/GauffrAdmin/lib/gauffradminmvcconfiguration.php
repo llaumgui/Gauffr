@@ -67,6 +67,8 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
                 return new GauffrAdminRootView( $request, $result );
             case '/log':
                 return new GauffrAdminLogView( $request, $result );
+            case '/login':
+                return new GauffrAdminLoginView( $request, $result );
             case '/ERROR':
                 return new GauffrAdminErrorView( $request, $result );
         }
@@ -148,6 +150,21 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
      */
     function runRequestFilters( ezcMvcRoutingInformation $routeInfo, ezcMvcRequest $request )
     {
+
+        $auth = new GauffrMvcAuthenticationFilter();
+    	switch ( $routeInfo->matchedRoute )
+        {
+            case '/':
+	            return $auth->runAuthCheckLoggedIn( $request );
+                break;
+	        case '/login-required':
+	        case '/login':
+	        case '/logout':
+	        case '/error':
+	            break;
+	        default:
+	            return $auth->runAuthRequiredFilter( $request );
+        }
     }
 
 

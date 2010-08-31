@@ -1,3 +1,3 @@
 {use $appVersion, $installRoot}
 {tr_context "parts/header.ezt"}
-<h1 id="header"><a href="{$installRoot}">{tr "GauffrAdmin"} v{$appVersion}</a></h1>
+<h1 id="header"><a href="{$installRoot}">{tr "GauffrAdmin"}{if $appVersion} v{$appVersion}{/if}</a></h1>

@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the dashboardController class.
+ * File containing the logController class.
  *
  * @version //autogentag//
  * @package GauffrAdmin
@@ -9,9 +9,9 @@
  */
 
 /**
- * The dashboardController classes.
+ * The logController classes.
  *
- * Dashboard of GauffrAdmin
+ * Log viewing for Gauffr
  *
  * @package GauffrAdmin
  * @version //autogentag//
@@ -20,7 +20,7 @@ class logController extends ezcMvcController
 {
 
 	/**
-	 * Dashboard view
+	 * Log view
 	 */
 	public function doLog()
     {
