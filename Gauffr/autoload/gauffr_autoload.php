@@ -12,6 +12,8 @@ return array (
     'Gauffr' => 'gauffr.php',
 
     /* Classes */
+    'GauffrMvcAuthenticationFilter' => 'Gauffr/lib/gauffrmvcauthenticationfilter.php',
+    'GauffrMvcAuthenticationFilterOptions' => 'Gauffr/lib/gauffrmvcauthenticationfilteroptions.php',
     'GauffrPersistentObject' => 'Gauffr/lib/gauffrpersistentobject.php',
     'GauffrPersistentSessionIdentity' => 'Gauffr/lib/gauffrpersistentsessionidentity.php',
 
