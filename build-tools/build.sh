@@ -7,7 +7,7 @@
 
 # Variables
 API_PATH=doc/api
-GAUFFR_VERSION=0.4
+GAUFFR_VERSION=0.5-dev
 GAUFFR_PATH=../
 BUILD_PATH=../../gauffr-${GAUFFR_VERSION}
 ECHO="echo -e"
@@ -28,9 +28,11 @@ ${ECHO} "# Clean build path - End\n"
 ${ECHO} "# Create package - Start"
 mkdir ${BUILD_PATH}
 cp -R ${GAUFFR_PATH}bin ${BUILD_PATH}
+mkdir ${BUILD_PATH}/cache
 cp -R ${GAUFFR_PATH}doc ${BUILD_PATH}
 cp -R ${GAUFFR_PATH}build-tools/Doxyfile ${BUILD_PATH}/doc
 cp -R ${GAUFFR_PATH}Gauffr ${BUILD_PATH}
+cp -R ${GAUFFR_PATH}www ${BUILD_PATH}
 ${ECHO} "# Create package - End\n"
 
 
