@@ -1,4 +1,4 @@
-{use $installRoot}
+{use $installRoot, $redirectOnLogin}
 {tr_context "view/full/login.ezt"}
 
 <form action="{$installRoot}/login" method="post" class="login">
@@ -11,6 +11,7 @@
         <input type="password" size="25" id="password" name="password" />
     </p>
     <p>
+        <input type="_hidden" name="redirectOnLogin" value="{$installRoot}{$redirectOnLogin}" />
         <input class="submit" type="submit" name="submit" value="{tr "Login"}" />
     </p>
 </form>

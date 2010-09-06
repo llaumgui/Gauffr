@@ -28,6 +28,7 @@ class GauffrAdminRouter extends ezcMvcRouter
             // System
             new ezcMvcRailsRoute( '/ERROR', 'errorController', 'error' ),
             new ezcMvcRailsRoute( '/login', 'loginController', 'login' ),
+            new ezcMvcRailsRoute( '/logout', 'logoutController', 'logout' ),
         );
     }
 }

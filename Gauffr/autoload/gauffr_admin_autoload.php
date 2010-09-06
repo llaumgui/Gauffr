@@ -22,6 +22,7 @@ return array(
     'errorController' => 'GauffrAdmin/lib/controllers/error.php',
     'logController' => 'GauffrAdmin/lib/controllers/log.php',
     'loginController' => 'GauffrAdmin/lib/controllers/login.php',
+    'logoutController' => 'GauffrAdmin/lib/controllers/logout.php',
 
     /* View */
     'GauffrAdminErrorView' => 'GauffrAdmin/lib/views/error.php',

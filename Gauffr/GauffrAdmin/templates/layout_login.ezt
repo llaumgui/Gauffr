@@ -28,7 +28,9 @@
 </div>
 
 <div id="footer">
-    {include "parts/footer.ezt"}
+    {include "parts/footer.ezt"
+        send false as $username,
+             $installRoot as $installRoot}
 </div>
 </body>
 </html>

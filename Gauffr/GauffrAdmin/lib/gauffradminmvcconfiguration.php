@@ -195,7 +195,11 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
         $result->variables['appVersion'] = Gauffr::APP_VERSION;
 
         // Inject session informations in $result
-        $session = new ezcAuthenticationSession();
+        $options = new ezcAuthenticationSessionOptions();
+        $options->idKey = 'gauffrAuth_id';
+        $options->timestampKey = 'gauffrAuth_timestamp';
+        $session = new ezcAuthenticationSession($options);
+
         $result->variables['username'] = $session->load();
     }
 

@@ -43,12 +43,12 @@ class GauffrMvcAuthenticationFilterOptions extends ezcBaseOptions
     {
         $this->database = ezcDbInstance::get(Gauffr::GAUFFR_DB_INSTANCE);
 
-        $this->varNameFilter   = 'ezcAuth_filter';
-        $this->varNameUserName = 'ezcAuth_user_name';
-        $this->varNameUserId   = 'ezcAuth_user_id';
+        $this->varNameFilter   = 'gauffrAuth_filter';
+        $this->varNameUserName = 'gauffrAuth_user_name';
+        $this->varNameUserId   = 'gauffrAuth_user_id';
 
-        $this->sessionUserIdKey = 'ezcAuth_id';
-        $this->sessionTimestampKey = 'ezcAuth_timestamp';
+        $this->sessionUserIdKey = 'gauffrAuth_id';
+        $this->sessionTimestampKey = 'gauffrAuth_timestamp';
 
         $this->loginRequiredUri = '/login';
         $this->logoutUri = '/';

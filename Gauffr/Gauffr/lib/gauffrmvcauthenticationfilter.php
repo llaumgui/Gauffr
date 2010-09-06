@@ -11,49 +11,58 @@
 /**
  * The GauffrMvcAuthenticationFilter classes.
  *
- * Provide a authentication filter for eZ Comonents MvcTools using Gauffr.
+ * Provide a authentication filter for eZ Components MvcTools using Gauffr.
  *
  * @package Gauffr
  * @version //autogentag//
  */
 class GauffrMvcAuthenticationFilter
 {
+
     /**
      * Contains the filter options object
-     *
-     * @var ezcMvcAuthenticationFilterOptions
+	 *
+     * @var GauffrMvcAuthenticationFilterOptions
      */
     private $options;
 
+
+
     /**
-     * Constructs a new ezcMvcAuthenticationFilter object
+     * Constructs a new GauffrMvcAuthenticationFilter object
      *
-     * @param ezcMvcAuthenticationFilterOptions $options
+     * @param GauffrMvcAuthenticationFilterOptions $options
      */
     function __construct( GauffrMvcAuthenticationFilterOptions $options = null )
     {
         $this->options = $options === null ? new GauffrMvcAuthenticationFilterOptions() : $options;
     }
 
+
+
     /**
      * Sets a new options object
      *
-     * @param ezcMvcAuthenticationFilterOptions $options
+     * @param GauffrMvcAuthenticationFilterOptions $options
      */
-    public function setOptions( ezcMvcAuthenticationFilterOptions $options )
+    public function setOptions( GauffrMvcAuthenticationFilterOptions $options )
     {
         $this->options = $options;
     }
 
+
+
     /**
      * Returns the currently set options
      *
-     * @return ezcMvcAuthenticationFilterOptions
+     * @return GauffrMvcAuthenticationFilterOptions
      */
     public function getOptions()
     {
         return $this->options;
     }
+
+
 
     /**
      * Returns the value of the property $name.
@@ -74,6 +83,8 @@ class GauffrMvcAuthenticationFilter
         throw new ezcBasePropertyNotFoundException( $name );
     }
 
+
+
     /**
      * Sets the property $name to $value.
      *
@@ -90,9 +101,9 @@ class GauffrMvcAuthenticationFilter
         switch ( $name )
         {
             case 'options':
-                if ( !( $value instanceof ezcMvcAuthenticationFilterOptions ) )
+                if ( !( $value instanceof GauffrMvcAuthenticationFilterOptions ) )
                 {
-                    throw new ezcBaseValueException( 'options', $value, 'instanceof ezcMvcAuthenticationFilterOptions' );
+                    throw new ezcBaseValueException( 'options', $value, 'instanceof GauffrMvcAuthenticationFilterOptions' );
                 }
                 $this->options = $value;
                 break;
@@ -101,6 +112,8 @@ class GauffrMvcAuthenticationFilter
                 throw new ezcBasePropertyNotFoundException( $name );
         }
     }
+
+
 
     /**
      * Returns true if the property $name is set, otherwise false.
@@ -121,6 +134,8 @@ class GauffrMvcAuthenticationFilter
         }
     }
 
+
+
     /**
      * This method sets up the authentication mechanism.
      *
@@ -137,15 +152,8 @@ class GauffrMvcAuthenticationFilter
      *
      * @return ezcAuthentication
      */
-    protected function setupAuth( $user = null, $password = null )
+    protected function setupAuth( $login = null, $password = null )
     {
-        $database = new ezcAuthenticationDatabaseInfo(
-            $this->options->database,
-            $this->options->tableName,
-            array( $this->options->userIdField, $this->options->passwordField )
-        );
-        $databaseFilter = new ezcAuthenticationDatabaseFilter( $database );
-
         // use the options object when creating a new Session object
         $options = new ezcAuthenticationSessionOptions();
         $options->validity = 86400;
@@ -155,47 +163,20 @@ class GauffrMvcAuthenticationFilter
         $session = new ezcAuthenticationSession( $options );
         $session->start();
 
-        if ( $user === null )
+        if ( $login === null )
         {
-            $user = $session->load();
+            $login = $session->load();
             $password = null;
         }
 
-        $credentials = new ezcAuthenticationPasswordCredentials( $user, $this->hashPassword( $password ) );
-        $authentication = new ezcAuthentication( $credentials );
+        $gauffr = Gauffr::getInstance();
+        $gauffr->authenticationDatabaseFilter( $authentication, $filter, $login, $password );
         $authentication->session = $session;
-        $authentication->addFilter( $databaseFilter );
 
         return $authentication;
     }
 
-    /**
-     * Returns the username associated with the user ID as stored in the session.
-     *
-     * This method could be a likely candidate to override as well, although it
-     * is as configurable as possible. If usernames are not stored in the
-     * database, this method needs to be overridden as well. The method's
-     * return value is used by the setVars() method to add user ID and user
-     * name to the session so that the application can use this data.
-     *
-     * @return string
-     */
-    protected function fetchUserName()
-    {
-        if ( isset( $_SESSION[$this->options->sessionUserIdKey] ) )
-        {
-            $q = ezcDbInstance::get(Gauffr::GAUFFR_DB_INSTANCE)->createSelectQuery();
-            $q->select( '*' )
-              ->from( $this->options->tableName )
-              ->where( $q->expr->eq( $this->options->userIdField, $q->bindValue( $_SESSION[$this->options->sessionUserIdKey] ) ) );
-            $s = $q->prepare();
-            $s->execute();
-            $r = $s->fetchAll();
 
-            return $r[0][$this->options->userNameField];
-        }
-        return null;
-    }
 
     /**
      * This method sets the user ID and user name variables as part of the
@@ -222,6 +203,8 @@ class GauffrMvcAuthenticationFilter
         }
     }
 
+
+
     /**
      * Sets up the authentication mechanism to be used for routes that do not require authentication.
      *
@@ -237,6 +220,8 @@ class GauffrMvcAuthenticationFilter
         $auth = self::setupAuth();
         $auth->run();
     }
+
+
 
     /**
      * Sets up the authentication mechanism to be used for routes that do require authentication.
@@ -255,16 +240,16 @@ class GauffrMvcAuthenticationFilter
         $auth = self::setupAuth();
         if ( !$auth->run() )
         {
-        	echo 'aaaaaaa';
             $status = $auth->getStatus();
-            $request->variables['ezcAuth_redirUrl'] = $request->uri;
-            $request->variables['ezcAuth_reasons']  = $status;
+            $request->variables['gauffrAuth_redirUrl'] = $request->uri;
+            $request->variables['gauffrAuth_reasons']  = $status;
 
             $request->uri = $this->options->loginRequiredUri;
             return new ezcMvcInternalRedirect( $request );
         }
-        echo 'tttt';
     }
+
+
 
     /**
      * Method to be called from the controller's login action to log a user in.
@@ -277,6 +262,8 @@ class GauffrMvcAuthenticationFilter
     {
         return $this->setupAuth( $user, $password );
     }
+
+
 
     /**
      * Method to be called from the controller's logout action to log a user out.
@@ -294,90 +281,7 @@ class GauffrMvcAuthenticationFilter
         $session->destroy();
     }
 
-    /**
-     * Checks whether a user exists in the database.
-     *
-     * This method should be called from the "register" action to see if the
-     * requested user ID has already been registered or not.
-     *
-     * @param string $username
-     * @return bool
-     */
-    public function checkUserExists( $username )
-    {
-        $q = ezcDbInstance::get()->createSelectQuery();
-        $q->select( $this->options->userIdField )
-          ->from( $this->options->tableName )
-          ->where( $q->expr->eq(
-                $this->options->userIdField,
-                $q->bindValue( $username ) )
-            );
-        $s = $q->prepare();
-        $s->execute();
-        $r = $s->fetchAll();
 
-        return ( count( $r ) == 0 );
-    }
-
-    /**
-     * Returns a generated basic password depending on the $username.
-     *
-     * This method is typically called from the "register" action after a user
-     * ID has been checked for existance.
-     *
-     * @param string $username
-     * @return string
-     */
-    public function generatePassword( $username )
-    {
-        // generate password
-        mt_srand(
-            base_convert( substr( md5( $username ), 0, 6 ), 36, 10 ) *
-            microtime( true )
-        );
-        $a = base_convert( mt_rand(), 10, 36 );
-        $b = base_convert( mt_rand(), 10, 36 );
-        $password = substr( $b . $a, 1, 8 );
-
-        return $password;
-    }
-
-    /**
-     * Returns the hashed version of the clear text password
-     *
-     * @param string $password
-     * @return string
-     */
-    protected function hashPassword( $password )
-    {
-        return md5( $password );
-    }
-
-    /**
-     * Creates an entry in the user database table for $username and $password.
-     *
-     * This method creates a user in the configured user table (through the
-     * options for this class). You can specify extra information as a
-     * key->value pair array as $extraInfo.  This method does *not* check
-     * whether a user already exists.
-     *
-     * @param string $username
-     * @param string $password
-     * @param array(string=>mixed) $extraInfo
-     */
-    public function createUser( $username, $password, array $extraInfo )
-    {
-        $q = ezcDbInstance::get(Gauffr::GAUFFR_DB_INSTANCE)->createInsertQuery();
-        $q->insertInto( $this->options->tableName )
-          ->set( $this->options->userIdField, $q->bindValue( $username ) )
-          ->set( $this->options->passwordField, $q->bindValue( $this->hashPassword( $password ) ) );
-        foreach ( $extraInfo as $key => $value )
-        {
-            $q->set( $key, $q->bindValue( $value ) );
-        }
-        $s = $q->prepare();
-        $s->execute();
-    }
 
     /**
      * Checks the status from the authentication run and adds the reasons as
@@ -420,6 +324,8 @@ class GauffrMvcAuthenticationFilter
         $res->variables['ezcAuth_reasons']  = $reasonText;
     }
 
+
+
     /**
      * Returns either an internal or external redirect depending on whether the
      * user authenticated succesfully.
@@ -442,8 +348,8 @@ class GauffrMvcAuthenticationFilter
         {
             $request = clone $request;
             $status = $authentication->getStatus();
-            $request->variables['ezcAuth_redirUrl'] = $redirUrl;
-            $request->variables['ezcAuth_reasons']  = $status;
+            $request->variables['gauffrAuth_redirUrl'] = $redirUrl;
+            $request->variables['gauffrAuth_reasons']  = $status;
 
             $request->uri = $this->options->loginRequiredUri;
             return new ezcMvcInternalRedirect( $request );
@@ -453,6 +359,8 @@ class GauffrMvcAuthenticationFilter
         $res->status = new ezcMvcExternalRedirect( $redirUrl );
         return $res;
     }
+
+
 
     /**
      * Returns an external redirect depending to the configured logoutUri.
@@ -473,4 +381,5 @@ class GauffrMvcAuthenticationFilter
         return $res;
     }
 }
+
 ?>
