@@ -36,6 +36,10 @@
             <source>Logs</source>
             <translation>Logs</translation>
         </message>
+        <message>
+            <source>Logout</source>
+            <translation>Déconnection</translation>
+        </message>
     </context>
 
     <context>
@@ -47,6 +51,14 @@
         <message>
             <source>and</source>
             <translation>et</translation>
+        </message>
+        <message>
+            <source>Login as %username</source>
+            <translation>Connecté en tant que %username</translation>
+        </message>
+        <message>
+            <source>Logout</source>
+            <translation>Déconnection</translation>
         </message>
     </context>
 
