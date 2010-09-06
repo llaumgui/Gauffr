@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the GauffrAdminLogView class.
+ * File containing the GauffrAdminLoginView class.
  *
  * @version //autogentag//
  * @package GauffrAdmin
@@ -9,9 +9,9 @@
  */
 
 /**
- * The GauffrAdminLogView classes.
+ * The GauffrAdminLoginView classes.
  *
- * Log viewer
+ * Login viewer
  *
  * @package GauffrAdmin
  * @version //autogentag//
