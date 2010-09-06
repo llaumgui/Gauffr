@@ -154,9 +154,6 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
         $auth = new GauffrMvcAuthenticationFilter();
     	switch ( $routeInfo->matchedRoute )
         {
-            case '/':
-	            return $auth->runAuthCheckLoggedIn( $request );
-                break;
 	        case '/login-required':
 	        case '/login':
 	        case '/logout':
@@ -181,7 +178,7 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
     {
         $result->variables['installRoot'] = preg_replace( '@/index\.php$@', '', $_SERVER['SCRIPT_NAME'] );
 
-        // Inject variables in $result
+        // Inject configuration in $result
         $cfg = ezcConfigurationManager::getInstance();
 
         list( $lang ) =  $cfg->getSettingsAsList( 'gauffr_admin', 'GauffrAdminSettings',
@@ -194,7 +191,12 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
         $result->variables['stylesheetsList'] = $stylesheetsList;
         $result->variables['javascriptsList'] = $javascriptsList;
 
+        // Inject informations in $result
         $result->variables['appVersion'] = Gauffr::APP_VERSION;
+
+        // Inject session informations in $result
+        $session = new ezcAuthenticationSession();
+        $result->variables['username'] = $session->load();
     }
 
 
