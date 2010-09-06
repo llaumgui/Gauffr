@@ -24,15 +24,37 @@ class loginController extends ezcMvcController
 	 */
 	public function doLogin()
     {
-        $ret = new ezcMvcResult;
+        if ( !isset($_POST['login']) || !isset($_POST['password']) )
+        {
+        	$ret = new ezcMvcResult;
+        	$ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/login', 'Login' );
+        	return $ret;
+        }
+        else
+        {
+        	$login = $_POST['login'];
+        	$password = $_POST['password'];
 
-        if ( !isset($_POST['login']) || !isset($_POST['login']) )
-            echo 'rrr';
+            $authFilter = new GauffrMvcAuthenticationFilter();
+            $authentication = $authFilter->login( $this->request, $login, $password );
 
-        $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/login', 'Login' );
+            // Bad login
+	        if ( !$authentication->run() )
+	        {
+	        	$ret = new ezcMvcResult;
 
+	            Gauffr::log("Authentification failled for user \"$login\" Login)", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
+	            $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/login', 'Login' );
 
-        return $ret;
+	            return $ret;
+	        }
+	        else
+	        {
+	        	// Redirect on login
+	        	$this->request->uri = "/";
+	        	return new ezcMvcInternalRedirect( $this->request );
+	        }
+        }
     }
 
 }
