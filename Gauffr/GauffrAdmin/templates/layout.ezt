@@ -1,4 +1,4 @@
-{use $appVersion, $charset, $content, $installRoot, $javascriptsList, $lang, $menu, $pageName, $stylesheetsList}
+{use $appVersion, $charset, $content, $installRoot, $javascriptsList, $lang, $menu, $pageName, $stylesheetsList, $username}
 {tr_context "layout.ezt"}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -30,7 +30,9 @@
 </div>
 
 <div id="footer">
-    {include "parts/footer.ezt"}
+    {include "parts/footer.ezt"
+        send $installRoot as $installRoot,
+             $username as $username}
 </div>
 </body>
 </html>
