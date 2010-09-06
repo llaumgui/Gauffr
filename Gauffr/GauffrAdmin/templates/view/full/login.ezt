@@ -1,7 +1,7 @@
 {use $installRoot}
 {tr_context "view/full/login.ezt"}
 
-<form action="{$installRoot}" method="post" class="login">
+<form action="{$installRoot}/login" method="post" class="login">
     <p>
         <label for="login">{tr "Username:"}</label>
         <input type="text" maxlength="25" size="25" id="login" name="login" />

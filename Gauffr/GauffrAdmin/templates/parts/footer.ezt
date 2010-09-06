@@ -1,4 +1,8 @@
+{use $installRoot, $username}
 {tr_context "parts/footer.ezt"}
+<p>
+    {tr "Login as %username" vars 'username' => $username} | <a href="{$installRoot}/logout">{tr "Logout"}</a>
+</p>
 <p>
     {tr "Powered by"} <a href="http://projects.llaumgui.com/index.php/p/gauffr/">Gauffr</a> {tr "and"} <a href="http://ezcomponents.org">eZ Components</a>.
 </p>
