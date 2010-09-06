@@ -1,21 +1,22 @@
 <?php
 /**
- * File containing the ezcMvcAuthenticationFilterOptions class
+ * File containing the GauffrMvcAuthenticationFilterOptions class.
  *
- * @package MvcAuthenticationTiein
- * @version //autogen//
- * @copyright Copyright (C) 2005-2010 eZ Systems AS. All rights reserved.
- * @license http://ez.no/licenses/new_bsd New BSD License
+ * @version //autogentag//
+ * @package Gauffr
+ * @copyright Copyright (c) 2009-2010 Guillaume Kulakowski and contributors
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0
  */
 
 /**
- * Class containing authentication filter options
+ * The GauffrMvcAuthenticationFilterOptions classes.
+ *
+ * Provide options for GauffrMvcAuthenticationFilter components
+ *
+ * @package Gauffr
+ * @version //autogentag//
  *
  * @property ezcDbInstance $database      The database that is used for the user database.
- * @property string $tableName            The table that stores the user information.
- * @property string $userIdField          The field that contains the unique user ID.
- * @property string $userNameField        The field that contains the user's full name.
- * @property string $passwordField        The field that contains the user's password.
  * @property string $varNameFilter        The name of the variable under which the auth filter is available in the controller's actions.
  * @property string $varNameUserName      The name of the variable under which the user name will be provided in the controller's actions.
  * @property string $varNameUserId        The name of the variable under which the user ID will be provided in the controller's actions.
@@ -40,10 +41,6 @@ class GauffrMvcAuthenticationFilterOptions extends ezcBaseOptions
      */
     public function __construct( array $options = array() )
     {
-        $this->tableName = 'fluxbb_users';
-        $this->userIdField = 'email';
-        $this->userNameField = 'username';
-        $this->passwordField = 'password';
         $this->database = ezcDbInstance::get(Gauffr::GAUFFR_DB_INSTANCE);
 
         $this->varNameFilter   = 'ezcAuth_filter';
@@ -81,10 +78,6 @@ class GauffrMvcAuthenticationFilterOptions extends ezcBaseOptions
                 }
                 $this->properties[$name] = $value;
                 break;
-            case 'tableName':
-            case 'userIdField':
-            case 'userNameField':
-            case 'passwordField':
             case 'varNameFilter':
             case 'varNameUserName':
             case 'varNameUserId':
@@ -104,4 +97,5 @@ class GauffrMvcAuthenticationFilterOptions extends ezcBaseOptions
         }
     }
 }
+
 ?>
