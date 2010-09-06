@@ -26,12 +26,17 @@ class loginController extends ezcMvcController
     {
     	$prefix = preg_replace( '@/index\.php$@', '', $_SERVER['SCRIPT_NAME'] );
 
+    	if ( array_key_exists( 'gauffrAuth_redirUrl',$this->request->variables ) )
+            $redirectOnLogin = $this->request->variables['gauffrAuth_redirUrl'];
+        else
+            $redirectOnLogin = '/';
+
         if ( !isset($_POST['login']) || !isset($_POST['password']) )
         {
         	$ret = new ezcMvcResult;
 
         	$ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/login', 'Login' );
-        	$ret->variables['redirectOnLogin'] = $this->request->variables['gauffrAuth_redirUrl'];
+        	$ret->variables['redirectOnLogin'] = $redirectOnLogin;
 
         	return $ret;
         }
@@ -39,7 +44,6 @@ class loginController extends ezcMvcController
         {
         	$login = $_POST['login'];
         	$password = $_POST['password'];
-
 
         	$authFilter = new GauffrMvcAuthenticationFilter();
             $authFilterOptions = $authFilter->getOptions();
@@ -52,16 +56,13 @@ class loginController extends ezcMvcController
 
 	            Gauffr::log("Authentification failled for user \"$login\" Login)", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
 	            $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/login', 'Login' );
-	            $ret->variables['redirectOnLogin'] = $this->request->variables['gauffrAuth_redirUrl'];
+	            $ret->variables['redirectOnLogin'] = $redirectOnLogin;
 
 	            return $ret;
 	        }
 	        else
 	        {
-                if ( $this->request->uri == $prefix . $authFilterOptions['loginRequiredUri'] OR empty($_POSt['redirectOnLogin']) )
-                    $redirUrl = $prefix . '/';
-	        	else
-                    $redirUrl = $_POST['redirectOnLogin'];
+                $redirUrl = $_POST['redirectOnLogin'];
 
 	        	return $authFilter->returnLoginRedirect( $authentication, $this->request, $redirUrl );
 	        }
