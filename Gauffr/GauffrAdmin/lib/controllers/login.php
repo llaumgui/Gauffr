@@ -20,7 +20,7 @@ class loginController extends ezcMvcController
 {
 
 	/**
-	 * Login view
+	 * Do login view
 	 */
 	public function doLogin()
     {

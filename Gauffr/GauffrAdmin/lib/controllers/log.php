@@ -11,7 +11,7 @@
 /**
  * The logController classes.
  *
- * Log viewing for Gauffr
+ * Gauffr log management
  *
  * @package GauffrAdmin
  * @version //autogentag//
@@ -20,7 +20,7 @@ class logController extends ezcMvcController
 {
 
 	/**
-	 * Log view
+	 * Do log
 	 */
 	public function doLog()
     {

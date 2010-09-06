@@ -20,7 +20,7 @@ class dashboardController extends ezcMvcController
 {
 
 	/**
-	 * Dashboard view
+	 * Do dashboard
 	 */
 	public function doDashboard()
     {

@@ -19,7 +19,7 @@
 class errorController extends ezcMvcController
 {
 	/**
-	 * Error view
+	 * Do error
 	 */
 	public function doError()
     {
