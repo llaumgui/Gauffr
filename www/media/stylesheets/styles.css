@@ -24,8 +24,8 @@ body {
 /* ___________________________________________________________________ Header */
 h1#header {
     background:  url(../images/gauffr_logo.png) right 10px no-repeat;
-    padding: 40px 0 0 0;
-    height: 100px;
+    padding: 15px 0 0 0;
+    height: 73px;
     color: #fff;
     font-size: 3em;
 }
@@ -82,7 +82,7 @@ ul#menu li.first a {
 /* ___________________________________________________________________ Footer */
 #footer {
     background: #323232 url(../images/bg_footer.jpg) 0 0 repeat-x;
-    height:100px;
+    height:70px;
     margin:0 auto;
     padding:0;
     width:100%;
@@ -92,7 +92,7 @@ ul#menu li.first a {
     color: #C7DAE5;
     font-size: 1em;
     margin: 0;
-    padding: 30px 0 0;
+    padding: 15px 0 0;
     text-align: center;
 }
 
