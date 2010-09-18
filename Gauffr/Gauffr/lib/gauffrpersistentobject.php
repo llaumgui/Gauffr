@@ -58,6 +58,7 @@ abstract class GauffrPersistentObject
     }
 
 
+/* ____________________________________________________________________ Fetch */
 
     /**
      * Fetch PersistantObject by attribut
@@ -74,7 +75,7 @@ abstract class GauffrPersistentObject
     protected static function fetchPersistantObjectByAttribute( $class, $attribut, $value, $orderby = 'ID')
     {
         trigger_error("Deprecated function GauffrPersistentObject::fetchPersistantObjectByAttribute, use GauffrPersistentObject::fetch()", E_USER_WARNING);
-        return self::fetchPersistantObject($class, array( array( $attribut, '=', $value ) ), $orderby );
+        return self::fetchPersistentObject($class, array( array( $attribut, '=', $value ) ), $orderby );
     }
 
 
@@ -86,39 +87,29 @@ abstract class GauffrPersistentObject
      * @param array $filter
      * @param mixed $orderby
      * @param mixed $limit
+     *
+     * <code>
+     * $objects = GauffrPersistentObjectLog::fetch(
+     *      'GauffrLog',
+     *      array( array( Category, '=' 'tutorial' ) ),
+     *      array( 'Time', 'DESC' ),
+     *      array( 10, 0 )
+     * );
+     * $objects = GauffrPersistentObjectLog::fetch(
+     *      'GauffrLog',
+     *      array( array( Category, '=' 'tutorial' ) ),
+     *      'Time',
+     *      10
+     * );
+     * </code>
      */
-    protected static function fetchPersistantObject( $class, $filters = false, $orderby = false, $limit = false )
+    protected static function fetchPersistentObject( $class, $filters = false, $orderby = false, $limit = false )
     {
         $session = self::getPersistentSessionInstance();
         $q = $session->createFindQuery( $class );
 
-        if ( $filters && is_array($filters) )
-        {
-        	foreach( $filters as $filter )
-        	{
-        		if ( is_array($filter) && count($filter) == 3 )
-        		{
-        			$attribut = $filter[0];
-        			$type = 'bindValue';
-        			$value = $filter[2];
-                    $q->where( $q->expr->eq( $attribut, $q->$type( $value ) ) );
-        		}
-        		else
-                    trigger_error('$filters parameter must be an array()', E_USER_WARNING);
-        	}
-        }
-
-        if ( $orderby )
-        {
-            if ( is_array($orderby) )
-            {
-            	trigger_error('$orderby is an array: not implemented yet !', E_USER_WARNING);
-            }
-            else
-            {
-                $q->orderBy( $orderby );
-            }
-        }
+        self::fetchFilterPersistentObject( $q, $filters );
+        self::fetchOrderByPersistentObject( $q, $orderby );
 
         if ( $limit )
         {
@@ -139,12 +130,31 @@ abstract class GauffrPersistentObject
      * @param string $class The PersistentObject class
      * @param array $filter
      */
-    protected static function fetchCountPersistantObject( $tablename, $filters = false )
+    protected static function fetchCountPersistentObject( $tablename, $filters = false )
     {
         $db = ezcDbInstance::get(Gauffr::GAUFFR_DB_INSTANCE);
         $q = $db->createSelectQuery();
-        $q->select( 'count(*) AS count' )->from( 'gauffr_log' );
+        $q->select( 'count(*) AS count' )->from( $tablename );
 
+        self::fetchFilterPersistentObject( $q, $filters );
+
+        $stmt = $q->prepare();
+        $stmt->execute();
+        $rows = $stmt->fetchAll();
+
+        return $rows[0]['count'];
+    }
+
+
+
+    /**
+     * Filter for fetch function
+     *
+     * @param ezcQuerySelect &$q
+     * @param array $filter
+     */
+    private static function fetchFilterPersistentObject( &$q, $filters )
+    {
         if ( $filters && is_array($filters) )
         {
             foreach( $filters as $filter )
@@ -160,12 +170,41 @@ abstract class GauffrPersistentObject
                     trigger_error('$filters parameter must be an array()', E_USER_WARNING);
             }
         }
+    }
 
-        $stmt = $q->prepare(); // $stmt is a normal PDOStatement
-        $stmt->execute();
-        $rows = $stmt->fetchAll();
 
-        return $rows[0]['count'];
+
+    /**
+     * Order by for fetch function.
+     * Order by can be:
+     *  - a string: 'TIME'
+     *  - an array: array('TIME, 'DESC')
+     *  - an array of array: array( array( 'Severity' ), array( 'TIME, 'DESC') )
+     *
+     * @param ezcQuerySelect &$q
+     * @param mixed $orderby
+     */
+    private static function fetchOrderByPersistentObject( &$q, $orderby )
+    {
+    	if ( $orderby === false )
+    	   return;
+
+        if ( is_array($orderby) )
+        {
+            if ( is_array($orderby[0]) )
+                self::fetchOrderByPersistentObject( $q, $orderby );
+            else
+            {
+            	if ( isset($orderby[1]) )
+            	   $q->orderBy( $orderby[0], $orderby[1] );
+                else
+                   $q->orderBy( $orderby[0] );
+            }
+        }
+        else
+        {
+        	$q->orderBy( $orderby);
+        }
     }
 
 

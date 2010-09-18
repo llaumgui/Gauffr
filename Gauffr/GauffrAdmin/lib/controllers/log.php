@@ -24,10 +24,17 @@ class logController extends ezcMvcController
 	 */
 	public function doLog()
     {
-        $ret = new ezcMvcResult;
 
+        $cfg = ezcConfigurationManager::getInstance();
+        $limit = $cfg->getSetting( 'gauffr_admin', 'GauffrAdminLimit', 'Log' );
+        ( isset($_GET['offset']) ) ? $offset = $_GET['offset'] : $offset = 0;
+
+        $ret = new ezcMvcResult;
         $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/log', 'Log' );
-        $ret->variables['gauffrLog'] = self::doLogGetLog(15);
+        $ret->variables['gauffrLog'] = self::doLogGetLog( $limit, $offset );
+        $ret->variables['gauffrLogCount'] = self::doLogGetLogCount();
+        $ret->variables['limit'] = $limit;
+        $ret->variables['offset'] = $offset;
 
         return $ret;
     }
@@ -35,19 +42,29 @@ class logController extends ezcMvcController
 
 
     /**
-     * Get $limit log
+     * Get log
      *
+     * @param int $offset
      * @param int $limit
      * @return array
      */
-    private static function doLogGetLog( $limit )
+    private static function doLogGetLog( $limit, $offset )
     {
-    	$persistentSession = GauffrLog::getPersistentSessionInstance();
-        $q = $persistentSession->createFindQuery('GauffrLog' )
-            ->orderBy( 'Time', ezcQuerySelect::DESC )
-            ->limit($limit, 0);
+        return GauffrLog::fetch( false, array( 'ID', 'DESC'), array( $limit, $offset ) );
+    }
 
-        return $persistentSession->find( $q, 'GauffrLog' );
+
+
+    /**
+     * Get log count
+     *
+     * @return int
+     *
+     * @TODO Best way for count
+     */
+    private static function doLogGetLogCount()
+    {
+        return GauffrLog::fetchCount();
     }
 
 }

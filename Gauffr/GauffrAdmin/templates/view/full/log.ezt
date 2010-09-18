@@ -1,9 +1,18 @@
-{use $gauffrLog}
+{use $gauffrLogCount, $gauffrLog, $installRoot, $limit, $offset}
 {tr_context "view/full/log.ezt"}
 
 <div class="block">
     <h2>{tr "Log"}</h2>
+    <p class="info">{tr "Display %limit logs of %count."
+        vars 'limit' => $limit,
+             'count' => $gauffrLogCount
+    }</p>
     {include "view/list/gauffrlog.ezt"
         send $gauffrLog as $gauffrLog}
 
+    {include "parts/navigator.ezt"
+        send $gauffrLogCount as $count,
+             $limit as $limit,
+             $offset as $offset,
+             $installRoot.'/log' as $url}
 </div>

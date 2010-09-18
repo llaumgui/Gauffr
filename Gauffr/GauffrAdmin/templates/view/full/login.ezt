@@ -11,7 +11,7 @@
         <input type="password" size="25" id="password" name="password" />
     </p>
     <p>
-        <input type="_hidden" name="redirectOnLogin" value="{$installRoot}{$redirectOnLogin}" />
+        <input type="hidden" name="redirectOnLogin" value="{$installRoot}{$redirectOnLogin}" />
         <input class="submit" type="submit" name="submit" value="{tr "Login"}" />
     </p>
 </form>

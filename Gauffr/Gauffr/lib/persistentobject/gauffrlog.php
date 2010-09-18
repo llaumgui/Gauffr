@@ -67,7 +67,7 @@ class GauffrLog extends GauffrPersistentObject
      */
     public static function fetch( $filter =false, $orderby = false, $limit = false )
     {
-        return self::fetchPersistantObject( 'GauffrLog', $filter, $orderby, $limit );
+        return self::fetchPersistentObject( 'GauffrLog', $filter, $orderby, $limit );
     }
 
 
@@ -81,7 +81,7 @@ class GauffrLog extends GauffrPersistentObject
      */
     public static function fetchCount( $filter =false )
     {
-        return self::fetchCountPersistantObject( 'gauffr_log', $filter );
+        return self::fetchCountPersistentObject( 'gauffr_log', $filter );
     }
 
 }

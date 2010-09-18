@@ -89,6 +89,10 @@
             <source>Log</source>
             <translation>Log</translation>
         </message>
+        <message>
+            <source>Display %limit logs of %count.</source>
+            <translation>Affichage de %limit logs sur %count.</translation>
+        </message>
     </context>
 
     <context>
@@ -198,6 +202,10 @@
         <message>
             <source>Log</source>
             <translation>Log</translation>
+        </message>
+        <message>
+            <source>Display %limit logs of %count.</source>
+            <translation>Affichage de %limit logs sur %count.</translation>
         </message>
     </context>
 

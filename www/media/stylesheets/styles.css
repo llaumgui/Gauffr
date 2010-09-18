@@ -74,10 +74,46 @@ ul#menu li.first a {
 
 .layout_login #content {
     clear: both;
-    margin: 73px auto 20px auto;
+    margin: 113px auto 60px auto;
     padding: 20px 0 20px 20px;
     width: 290px;
 }
+
+#content p {
+
+}
+
+#content p.info {
+	font-weight: bold;
+	font-style: italic;
+}
+
+
+/* ________________________________________________________________ Navigator */
+#content ul.navigator {
+	margin: 10px 0;
+	text-align: right;
+}
+
+#content ul.navigator li {
+    display: inline;
+    margin-left: 5px;
+}
+
+#content ul.navigator li a,
+#content ul.navigator li.current {
+    border: 1px solid #98CA2E;
+    padding: 2px;
+    color: #98CA2E;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#content ul.navigator li.current {
+    background-color: #98CA2E;
+    color: #ffffff;
+}
+
 
 /* ___________________________________________________________________ Footer */
 #footer {
