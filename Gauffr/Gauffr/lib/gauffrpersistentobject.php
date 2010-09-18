@@ -96,22 +96,17 @@ abstract class GauffrPersistentObject
     protected static function fetchPersistentObject( $class, $parameters = array() )
     {
     	isset($parameters['filter']) ? $filters = $parameters['filter']: $filters = false;
-    	isset($parameters['orderby']) ? $orderby = $parameters['orderby']: $orderby= false;
+    	isset($parameters['orderby']) ? $orderBy = $parameters['orderby']: $orderBy= false;
     	isset($parameters['limit']) ? $limit = $parameters['limit']: $limit = false;
+    	isset($parameters['groupby']) ? $groupBy = $parameters['groupby']: $groupBy = false;
 
         $session = self::getPersistentSessionInstance();
         $q = $session->createFindQuery( $class );
 
         self::fetchFilterPersistentObject( $q, $filters );
-        self::fetchOrderByPersistentObject( $q, $orderby );
-
-        if ( $limit )
-        {
-            if ( is_array($limit) )
-                $q->limit( $limit[0], $limit[1] );
-            else
-            	$q->limit( $limit );
-        }
+        self::fetchOrderByPersistentObject( $q, $orderBy );
+        self::fetchGroupByPersistentObject( $q, $groupBy );
+        self::fetchLimitPersistentObject( $q, $limit );
 
         return $session->find( $q, $class );
     }
@@ -142,6 +137,10 @@ abstract class GauffrPersistentObject
     }
 
 
+
+
+
+/* ____________________________________________________ Function use by fetch */
 
     /**
      * Filter for fetch function
@@ -182,8 +181,8 @@ abstract class GauffrPersistentObject
      */
     private static function fetchOrderByPersistentObject( &$q, $orderby )
     {
-    	if ( $orderby === false )
-    	   return;
+        if ( $orderby === false )
+           return;
 
         if ( is_array($orderby) )
         {
@@ -191,16 +190,51 @@ abstract class GauffrPersistentObject
                 self::fetchOrderByPersistentObject( $q, $orderby );
             else
             {
-            	if ( isset($orderby[1]) )
-            	   $q->orderBy( $orderby[0], $orderby[1] );
+                if ( isset($orderby[1]) )
+                   $q->orderBy( $orderby[0], $orderby[1] );
                 else
                    $q->orderBy( $orderby[0] );
             }
         }
         else
         {
-        	$q->orderBy( $orderby);
+            $q->orderBy( $orderby);
         }
+    }
+
+
+
+    /**
+     * Group by for fetch function.
+     *
+     * @param ezcQuerySelect &$q
+     * @param string $groupby
+     */
+    private static function fetchGroupByPersistentObject( &$q, $groupby )
+    {
+        if ( $groupby === false )
+           return;
+
+        $q->groupBy( $groupby );
+    }
+
+
+
+    /**
+     * Limit for fetch function.
+     *
+     * @param ezcQuerySelect &$q
+     * @param mixed $groupby
+     */
+    private static function fetchLimitPersistentObject( &$q, $limit )
+    {
+        if ( $limit === false )
+            return;
+
+        if ( is_array($limit) )
+            $q->limit( $limit[0], $limit[1] );
+        else
+            $q->limit( $limit );
     }
 
 
