@@ -59,29 +59,39 @@ class GauffrLog extends GauffrPersistentObject
     /**
      * Fetch GauffrLog
      *
-     * @param array $filter
-     * @param mixed $orderby
-     * @param mixed $limit
-     *
+     * @param array $parameters
      * @return array of GauffrSlave
+     *
+     * <code>
+     * $logs = GauffrLog::fetch( array(
+     *      'orderby' => array( 'Time', 'DESC'),
+     *      'limit' => array( 10, 20 ),
+     *      'filter' => array( array( Category, '=' 'tutorial' ) )
+     * ));
+     * </code>
      */
-    public static function fetch( $filter =false, $orderby = false, $limit = false )
+    public static function fetch( $parameters = array() )
     {
-        return self::fetchPersistentObject( 'GauffrLog', $filter, $orderby, $limit );
+        return self::fetchPersistentObject( 'GauffrLog', $parameters );
     }
 
 
 
     /**
-     * Fetch log
+     * Count log
      *
-     * @param array $filter
+     * @param array $parameters
+     * @return integer
      *
-     * @return GauffrSlave
+     * <code>
+     * $logs = GauffrLog::fetchCount( array(
+     *      'filter' => array( array( Category, '=' 'tutorial' ) )
+     * ));
+     * </code>
      */
-    public static function fetchCount( $filter =false )
+    public static function fetchCount( $parameters = array() )
     {
-        return self::fetchCountPersistentObject( 'gauffr_log', $filter );
+        return self::fetchCountPersistentObject( 'gauffr_log', $parameters );
     }
 
 }

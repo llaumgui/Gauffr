@@ -75,7 +75,14 @@ abstract class GauffrPersistentObject
     protected static function fetchPersistantObjectByAttribute( $class, $attribut, $value, $orderby = 'ID')
     {
         trigger_error("Deprecated function GauffrPersistentObject::fetchPersistantObjectByAttribute, use GauffrPersistentObject::fetch()", E_USER_WARNING);
-        return self::fetchPersistentObject($class, array( array( $attribut, '=', $value ) ), $orderby );
+
+        return self::fetchPersistentObject(
+            $class,
+            array(
+                'filter' => array( $attribut, '=', $value ) ,
+                'orderby' => $orderby
+            )
+        );
     }
 
 
@@ -84,27 +91,14 @@ abstract class GauffrPersistentObject
      * Fetch PersistantObject by attribut
      *
      * @param string $class The PersistentObject class
-     * @param array $filter
-     * @param mixed $orderby
-     * @param mixed $limit
-     *
-     * <code>
-     * $objects = GauffrPersistentObjectLog::fetch(
-     *      'GauffrLog',
-     *      array( array( Category, '=' 'tutorial' ) ),
-     *      array( 'Time', 'DESC' ),
-     *      array( 10, 0 )
-     * );
-     * $objects = GauffrPersistentObjectLog::fetch(
-     *      'GauffrLog',
-     *      array( array( Category, '=' 'tutorial' ) ),
-     *      'Time',
-     *      10
-     * );
-     * </code>
+     * @param array $parameters
      */
-    protected static function fetchPersistentObject( $class, $filters = false, $orderby = false, $limit = false )
+    protected static function fetchPersistentObject( $class, $parameters = array() )
     {
+    	isset($parameters['filter']) ? $filters = $parameters['filter']: $filters = false;
+    	isset($parameters['orderby']) ? $orderby = $parameters['orderby']: $orderby= false;
+    	isset($parameters['limit']) ? $limit = $parameters['limit']: $limit = false;
+
         $session = self::getPersistentSessionInstance();
         $q = $session->createFindQuery( $class );
 
@@ -128,10 +122,12 @@ abstract class GauffrPersistentObject
      * Fetch count PersistantObject by attribut
      *
      * @param string $class The PersistentObject class
-     * @param array $filter
+     * @param array $parameters
      */
-    protected static function fetchCountPersistentObject( $tablename, $filters = false )
+    protected static function fetchCountPersistentObject( $tablename, $parameters = array() )
     {
+    	isset($parameters['filter']) ? $filters = $parameters['filter']: $filters = false;
+
         $db = ezcDbInstance::get(Gauffr::GAUFFR_DB_INSTANCE);
         $q = $db->createSelectQuery();
         $q->select( 'count(*) AS count' )->from( $tablename );

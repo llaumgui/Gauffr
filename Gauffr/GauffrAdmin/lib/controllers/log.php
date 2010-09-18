@@ -50,7 +50,10 @@ class logController extends ezcMvcController
      */
     private static function doLogGetLog( $limit, $offset )
     {
-        return GauffrLog::fetch( false, array( 'ID', 'DESC'), array( $limit, $offset ) );
+        return GauffrLog::fetch( array(
+            'orderby' => array( 'Time', 'DESC'),
+            'limit' => array( $limit, $offset )
+        ));
     }
 
 
