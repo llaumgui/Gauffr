@@ -54,7 +54,7 @@ class loginController extends ezcMvcController
 	        {
 	        	$ret = new ezcMvcResult;
 
-	            Gauffr::log("Authentification failled for user \"$login\" Login)", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
+	            Gauffr::log("Authentification failled for user \"$login\"", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
 	            $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/login', 'Login' );
 	            $ret->variables['redirectOnLogin'] = $redirectOnLogin;
 

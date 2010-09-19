@@ -31,6 +31,8 @@ class GauffrAdminLazyTemplateConfiguration implements ezcBaseConfigurationInitia
         $cfg->translation = ezcTemplateTranslationConfiguration::getInstance();
         $cfg->translation->manager = $manager;
         $cfg->translation->locale = $locale;
+        $cfg->addExtension( "GauffrAdminTemplateExtension" );
+
     }
 
 }

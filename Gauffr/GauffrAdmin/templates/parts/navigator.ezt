@@ -9,7 +9,7 @@
         {if $pageCurrent == $i}
     <li class="current">{$i}</li>
         {else}
-    <li><a href="{$url}?offset={$limit * ($i-1)}">{$i}</a></li>
+    <li><a href="{$url}offset={$limit * ($i-1)}">{$i}</a></li>
         {/if}
         {$i++}
     {/while}

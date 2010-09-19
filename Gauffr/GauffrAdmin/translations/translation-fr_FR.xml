@@ -93,6 +93,18 @@
             <source>Display %limit logs of %count.</source>
             <translation>Affichage de %limit logs sur %count.</translation>
         </message>
+        <message>
+            <source>Filter by severity</source>
+            <translation>Filtrer par sévérité</translation>
+        </message>
+        <message>
+            <source>Filter by category</source>
+            <translation>Filtrer par catégorie</translation>
+        </message>
+        <message>
+            <source>Filter by source</source>
+            <translation>Filtrer par source</translation>
+        </message>
     </context>
 
     <context>
@@ -143,8 +155,8 @@
             <translation>Fichier</translation>
         </message>
         <message>
-            <source>Line</source>
-            <translation>Ligne</translation>
+            <source>line</source>
+            <translation>ligne</translation>
         </message>
         <message>
             <source>Time</source>

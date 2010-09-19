@@ -13,6 +13,7 @@ return array(
     'GauffrAdminI18n' => 'GauffrAdmin/lib/gauffradmini18n.php',
     'GauffrAdminMvcConfiguration' => 'GauffrAdmin/lib/gauffradminmvcconfiguration.php',
     'GauffrAdminRouter' => 'GauffrAdmin/lib/gauffradminrouter.php',
+    'GauffrAdminTemplateExtension' => 'GauffrAdmin/lib/gauffradmintemplateextension.php',
 
     /* lazyconfiguration */
     'GauffrAdminLazyTemplateConfiguration' => 'GauffrAdmin/lib/lazyconfiguration/gauffradminlazytemplateconfiguration.php',

@@ -20,6 +20,12 @@ body {
     width: 940px;
 }
 
+.clear {
+	font-size: 0px;
+	height: 0px;
+	clear: both;
+}
+
 
 /* ___________________________________________________________________ Header */
 h1#header {
@@ -88,6 +94,11 @@ ul#menu li.first a {
 	font-style: italic;
 }
 
+#content .moreInfoToolTip {
+    cursor: help;
+    border-bottom: 1px dotted;
+}
+
 
 /* ________________________________________________________________ Navigator */
 #content ul.navigator {
@@ -114,6 +125,12 @@ ul#menu li.first a {
     color: #ffffff;
 }
 
+
+/* __________________________________________________________________ Filters */
+#content .filters {
+    margin: 0px 0 7px 0px;
+    float: right;
+}
 
 /* ___________________________________________________________________ Footer */
 #footer {
@@ -221,3 +238,15 @@ form input.submit:hover {
 form.login input {
     width: 150px;
 }
+
+
+/* __________________________________________________________________ tooltip */
+#tooltip {
+    position: absolute;
+    z-index: 3000;
+    border: 1px solid #333333;
+    background-color: #eee;
+    padding: 5px;
+}
+#tooltip h3, #tooltip div { margin: 0; }
+

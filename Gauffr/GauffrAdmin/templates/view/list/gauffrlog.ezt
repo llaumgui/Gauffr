@@ -7,7 +7,6 @@
         <th>{tr "Severity"}</th>
         <th>{tr "Source"}</th>
         <th>{tr "File"}</th>
-        <th>{tr "Line"}</th>
         <th>{tr "Time"}</th>
     </tr></thead>
     <tbody>
@@ -17,8 +16,7 @@
         <td>{$log->Category}</td>
         <td>{$log->Severity}</td>
         <td>{$log->Source}</td>
-        <td>{$log->File}</td>
-        <td>{$log->Line}</td>
+        <td><span class="moreInfoToolTip" title="{$log->File}, {tr "line"} {$log->Line}">{ga_basename($log->File)}:{$log->Line}</span></td>
         <td>{$log->Time}</td>
     </tr>
 {/foreach}
