@@ -84,9 +84,9 @@ ln -s %{_sysconfdir}/%{name}/%{name}_admin.ini %{buildroot}%{_datadir}/php/Gauff
 %{__install} -p -m 0644  %{SOURCE2} %{buildroot}%{_sysconfdir}/httpd/conf.d/%{name}admin.conf
 
 # Langs
-for file in %{buildroot}%{_datadir}/php/Gauffr/GauffrAdmin/translations/translation-*.xml; do
-    lang=$(echo $(basename  $file) | sed "s|translation-\(.*\).xml$|\1|g");
-    echo "%lang(${lang}) %{_datadir}/php/Gauffr/GauffrAdmin/translations/translation-${lang}.xml"
+for file in %{buildroot}%{_datadir}/php/Gauffr/GauffrAdmin/translations/translation-*.ts; do
+    lang=$(echo $(basename  $file) | sed "s|translation-\(.*\).ts$|\1|g");
+    echo "%lang(${lang}) %{_datadir}/php/Gauffr/GauffrAdmin/translations/translation-${lang}.ts"
 done > %{name}.lang
 
 
