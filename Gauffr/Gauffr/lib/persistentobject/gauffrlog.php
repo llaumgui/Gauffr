@@ -66,7 +66,8 @@ class GauffrLog extends GauffrPersistentObject
      * $logs = GauffrLog::fetch( array(
      *      'orderby' => array( 'Time', 'DESC'),
      *      'limit' => array( 10, 20 ),
-     *      'filter' => array( array( Category, '=' 'tutorial' ) )
+     *      'filter' => array( array( 'Category', '=', 'tutorial' ) ),
+     *      'groupby' => 'Source'
      * ));
      * </code>
      */
@@ -84,14 +85,15 @@ class GauffrLog extends GauffrPersistentObject
      * @return integer
      *
      * <code>
-     * $logs = GauffrLog::fetchCount( array(
+     * $count = GauffrLog::fetchCount( array(
      *      'filter' => array( array( Category, '=' 'tutorial' ) )
      * ));
      * </code>
      */
     public static function fetchCount( $parameters = array() )
     {
-        return self::fetchCountPersistentObject( 'gauffr_log', $parameters );
+        $gauffr = Gauffr::getInstance();
+        return self::fetchCountPersistentObject( $gauffr->gauffrTables['GauffrLog'], $parameters );
     }
 
 }

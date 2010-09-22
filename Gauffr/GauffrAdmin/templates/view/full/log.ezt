@@ -45,7 +45,7 @@ $installRoot}
              'count' => $gauffrLogCount
     }</p>
 
-    {include "view/list/gauffrlog.ezt"
+    {include "view/list/log.ezt"
         send $gauffrLog as $gauffrLog}
 
     {include "parts/navigator.ezt"

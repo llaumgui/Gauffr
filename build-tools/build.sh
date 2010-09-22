@@ -7,7 +7,7 @@
 
 # Variables
 API_PATH=doc/api
-GAUFFR_VERSION=0.5-dev
+GAUFFR_VERSION=0.5
 GAUFFR_PATH=../
 BUILD_PATH=../../gauffr-${GAUFFR_VERSION}
 ECHO="echo -e"

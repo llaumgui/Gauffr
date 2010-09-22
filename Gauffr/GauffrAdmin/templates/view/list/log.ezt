@@ -1,5 +1,5 @@
 {use $gauffrLog}
-{tr_context "view/list/gauffrlog.ezt"}
+{tr_context "view/list/log.ezt"}
 <table class="list" summary="{tr "Last logs"}">
     <thead><tr>
         <th>{tr "Message"}</th>

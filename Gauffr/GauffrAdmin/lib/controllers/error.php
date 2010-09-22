@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the errorController class.
+ * File containing the GauffrAdminErrorController class.
  *
  * @version //autogentag//
  * @package GauffrAdmin
@@ -9,14 +9,14 @@
  */
 
 /**
- * The errorController classes.
+ * The GauffrAdminErrorController classes.
  *
  * Error management in GauffrAdmin
  *
  * @package GauffrAdmin
  * @version //autogentag//
  */
-class errorController extends ezcMvcController
+class GauffrAdminErrorController extends ezcMvcController
 {
 	/**
 	 * Do error
@@ -32,7 +32,7 @@ class errorController extends ezcMvcController
         $router = false;
 
         $cfg = ezcConfigurationManager::getInstance();
-        if ( $cfg->getSetting( 'gauffr_admin', 'GauffrAdminSettings', 'Debug' ) )
+        if ( $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminSettings', 'Debug' ) )
         {
             $action = $this->action;
             $request = $this->request;

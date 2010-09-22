@@ -18,10 +18,11 @@
  */
 class GauffrSlave extends GauffrPersistentObject
 {
-    protected $ID;
+    public $ID;
     public $Identifier;
     public $Name;
     public $Location;
+    public $HasCredential;
 
 
     /**
@@ -35,7 +36,8 @@ class GauffrSlave extends GauffrPersistentObject
             'ID' => $this->ID,
             'Identifier' => $this->Identifier,
             'Name' => $this->Name,
-            'Location' => $this->Location
+            'Location' => $this->Location,
+            'HasCredential' => $this->HasCredential
         );
     }
 
@@ -60,7 +62,29 @@ class GauffrSlave extends GauffrPersistentObject
      */
     public static function fetchSlaveByIdentifier($identifier)
     {
-        return self::fetchPersistantObjectByAttribute( 'GauffrSlave', 'Identifier', $identifier );
+        return self::fetch( array(
+            'filter' => array( array( 'Identifier', '=', $identifier ) )
+        ) );
+    }
+
+
+
+    /**
+     * Fetch GauffrSlave
+     *
+     * @param array $parameters
+     * @return array of GauffrSlave
+     *
+     * <code>
+     * $slave = GauffrSlave::fetch( array(
+     *      'orderby' => array( 'ID', 'DESC'),
+     *      'limit' => array( 10, 20 )
+     * ));
+     * </code>
+     */
+    public static function fetch( $parameters = array() )
+    {
+        return self::fetchPersistentObject( 'GauffrSlave', $parameters );
     }
 
 }

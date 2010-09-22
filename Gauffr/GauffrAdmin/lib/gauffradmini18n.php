@@ -43,10 +43,10 @@ class GauffrAdminI18n
     private function __construct ()
     {
         $cfg = ezcConfigurationManager::getInstance();
-        $this->currentLanguage = $cfg->getSetting( 'gauffr_admin', 'GauffrAdminSettings', 'Locale' );
+        $this->currentLanguage = $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminSettings', 'Locale' );
 
     	$this->backend = new ezcTranslationTsBackend( dirname( __FILE__ ). '/../translations' );
-        $this->backend->setOptions( array( 'format' => 'translation-[LOCALE].xml' ) );
+        $this->backend->setOptions( array( 'format' => 'translation-[LOCALE].ts' ) );
 
         $this->manager = new ezcTranslationManager( $this->backend );
         $this->manager->addFilter( ezcTranslationComplementEmptyFilter::getInstance() );

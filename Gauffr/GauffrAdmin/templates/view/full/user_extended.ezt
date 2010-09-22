@@ -1,0 +1,10 @@
+{use $gauffrUsers, $installRoot}
+{tr_context "view/full/user_extended.ezt"}
+
+<div class="block">
+    <h2>{tr "User extended informations"}</h2>
+
+    {include "view/list/user_extended.ezt"
+        send $gauffrUsers as $gauffrUsers,
+             $installRoot as $installRoot}
+</div>

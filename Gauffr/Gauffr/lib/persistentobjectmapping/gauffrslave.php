@@ -34,6 +34,12 @@ $def->properties['Location']->columnName = 'location';
 $def->properties['Location']->propertyName = 'Location';
 $def->properties['Location']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_STRING;
 
+
+$def->properties['HasCredential'] = new ezcPersistentObjectProperty;
+$def->properties['HasCredential']->columnName = 'has_credential';
+$def->properties['HasCredential']->propertyName = 'HasCredential';
+$def->properties['HasCredential']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
 return $def;
 
 ?>

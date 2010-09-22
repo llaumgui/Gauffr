@@ -131,7 +131,9 @@ class GauffrUser extends GauffrPersistentObject
      */
     public static function fetchUserByLogin($login)
     {
-        return self::fetchPersistantObjectByAttribute( 'GauffrUser', 'Login', $login );
+        return self::fetchPersistentObject( 'GauffrUser', array(
+            'filter' => array( array( 'Login', '=', $login ) )
+        ) );
     }
 
 
@@ -148,7 +150,10 @@ class GauffrUser extends GauffrPersistentObject
      */
     public static function fetchUserByAltLogin($alt_login)
     {
-        $extended = GauffrUserExtended::unique( self::fetchPersistantObjectByAttribute( 'GauffrUserExtended', 'AltLogin', $alt_login ) );
+        $extended = self::unique( self::fetchPersistentObject( 'GauffrUserExtended', array(
+            'filter' => array( array( 'AltLogin', '=', $alt_login ) )
+        ) ) );
+
         if ( !$extended )
             return false;
 
@@ -173,7 +178,75 @@ class GauffrUser extends GauffrPersistentObject
      */
     public static function fetchUserByMail($mail)
     {
-        return self::fetchPersistantObjectByAttribute( 'GauffrUser', 'Mail', $mail );
+        return self::GauffrUserExtended( 'GauffrUser', array(
+            'filter' => array( array( 'Mail', '=', $mail ) )
+        ) );
+    }
+
+
+
+    /**
+     * Get all GauffrUser with credential relation
+
+     * @param string $orderby
+     * @return array of GauffrUserID
+     */
+    public static function fetchAllUserIDWithCredential( $orderby = false )
+    {
+    	$gauffr = Gauffr::getInstance();
+    	$db = ezcDbInstance::get(Gauffr::GAUFFR_DB_INSTANCE);
+        $q = $db->createSelectQuery();
+
+        if ( !$orderby )
+            $orderby = $gauffr->gauffrUserTable['Login'];
+
+        $q->select( 'u.' . $gauffr->gauffrUserTable['ID'] )
+            ->from( $gauffr->gauffrUserTable['TableName'] . ' AS u' )
+            ->rightJoin(
+                $gauffr->gauffrTables['GauffrCredential'] . ' AS c',
+                $q->expr->eq( 'u.' . $gauffr->gauffrUserTable['ID'], 'c.gauffruser_id' )
+            )
+            ->orderBy( 'u.' . $orderby )
+            ->groupBy( 'u.' . $gauffr->gauffrUserTable['ID'] );
+
+        $stmt = $q->prepare();
+        $stmt->execute();
+        $rows = $stmt->fetchAll();
+
+        return $rows;
+    }
+
+
+
+    /**
+     * Get all GauffrUser with extended relation
+
+     * @param string $orderby
+     * @return array of GauffrUserID
+     */
+    public static function fetchAllUserIDWithExtended( $orderby = false )
+    {
+        $gauffr = Gauffr::getInstance();
+        $db = ezcDbInstance::get(Gauffr::GAUFFR_DB_INSTANCE);
+        $q = $db->createSelectQuery();
+
+        if ( !$orderby )
+            $orderby = $gauffr->gauffrUserTable['Login'];
+
+        $q->select( 'u.' . $gauffr->gauffrUserTable['ID'] )
+            ->from( $gauffr->gauffrUserTable['TableName'] . ' AS u' )
+            ->rightJoin(
+                $gauffr->gauffrTables['GauffrUserExtended'] . ' AS e',
+                $q->expr->eq( 'u.' . $gauffr->gauffrUserTable['ID'], 'e.gauffruser_id' )
+            )
+            ->orderBy( 'u.' . $orderby )
+            ->groupBy( 'u.' . $gauffr->gauffrUserTable['ID'] );
+
+        $stmt = $q->prepare();
+        $stmt->execute();
+        $rows = $stmt->fetchAll();
+
+        return $rows;
     }
 
 
@@ -213,7 +286,12 @@ class GauffrUser extends GauffrPersistentObject
     public function hasCredentialByID( $id )
     {
         $credential = $this->getCredential();
-        if ( isset($credential[$id]) && $credential[$id]->Can )
+        $credentialArray = array();
+
+        foreach ( $credential as $cred )
+            $credentialArray[$cred->GauffrSlaveID] = $cred;
+
+        if ( isset($credentialArray[$id]) && $credentialArray[$id]->Can )
             return true;
         else
             return false;
@@ -240,11 +318,7 @@ class GauffrUser extends GauffrPersistentObject
             return false;
 
         $id = $gauffrslave->getID();
-
-        if ( isset($credential[$id]) && $credential[$id]->Can )
-            return true;
-        else
-            return false;
+        return $this->hasCredentialByID($id);
     }
 
 

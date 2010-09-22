@@ -67,6 +67,14 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
                 return new GauffrAdminRootView( $request, $result );
             case '/log':
                 return new GauffrAdminLogView( $request, $result );
+            case '/user_credential':
+                return new GauffrAdminUserCredentialView( $request, $result );
+            case '/user_extended':
+                return new GauffrAdminUserExtendedView( $request, $result );
+            case '/gauffrslave':
+                return new GauffrAdminGauffrSlaveView( $request, $result );
+
+            // System
             case '/login':
                 return new GauffrAdminLoginView( $request, $result );
             case '/ERROR':
@@ -181,11 +189,11 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
         // Inject configuration in $result
         $cfg = ezcConfigurationManager::getInstance();
 
-        list( $lang ) =  $cfg->getSettingsAsList( 'gauffr_admin', 'GauffrAdminSettings',
+        list( $lang ) =  $cfg->getSettingsAsList( GauffrAdmin::CONF_FILE, 'GauffrAdminSettings',
             array( 'Language' ) );
         $result->variables['lang'] = $lang;
 
-        list( $charset, $stylesheetsList, $javascriptsList ) =  $cfg->getSettingsAsList( 'gauffr_admin', 'GauffrAdminTemplatesSettings',
+        list( $charset, $stylesheetsList, $javascriptsList ) =  $cfg->getSettingsAsList( GauffrAdmin::CONF_FILE, 'GauffrAdminTemplatesSettings',
             array( 'Charset',  'StylesheetsList', 'JavascriptsList' ) );
         $result->variables['charset'] = $charset;
         $result->variables['stylesheetsList'] = $stylesheetsList;

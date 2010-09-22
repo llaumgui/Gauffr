@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the loginController class.
+ * File containing the GauffrAdminLoginController class.
  *
  * @version //autogentag//
  * @package GauffrAdmin
@@ -9,14 +9,14 @@
  */
 
 /**
- * The loginController classes.
+ * The GauffrAdminLoginController classes.
  *
  * Login to the GauffrAdmin
  *
  * @package GauffrAdmin
  * @version //autogentag//
  */
-class loginController extends ezcMvcController
+class GauffrAdminLoginController extends ezcMvcController
 {
 
 	/**
@@ -62,9 +62,24 @@ class loginController extends ezcMvcController
 	        }
 	        else
 	        {
-                $redirUrl = $_POST['redirectOnLogin'];
+                $user = GauffrUser::unique( GauffrUser::fetchUserByLogin($login) );
 
-	        	return $authFilter->returnLoginRedirect( $authentication, $this->request, $redirUrl );
+                // Don't have access
+                if ( !$user->hasCredentialByIdentifier( GauffrAdmin::SLAVE_IDENTIFIER ) )
+	        	{
+	        		$ret = new ezcMvcResult;
+
+                    Gauffr::log("User \"$login\" don't have access to slave \"" . GauffrAdmin::SLAVE_IDENTIFIER . "\"", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
+                    $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/login', 'Login' );
+                    $ret->variables['redirectOnLogin'] = $redirectOnLogin;
+
+                    return $ret;
+	        	}
+	        	else
+	        	{
+	        		$redirUrl = $_POST['redirectOnLogin'];
+	        		return $authFilter->returnLoginRedirect( $authentication, $this->request, $redirUrl );
+	        	}
 	        }
         }
     }

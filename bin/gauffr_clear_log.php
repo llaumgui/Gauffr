@@ -1,7 +1,10 @@
 #!/usr/bin/env php
 <?php
 /**
- * File containing the script for prune old log.
+ * File containing the php script for prune old Gauffr log.
+ * Use gauffr_clear_log.php --help for mor informations.
+ *
+ * You can run this script with cron.daily for example.
  *
  * @version //autogentag//
  * @package Gauffr
@@ -9,16 +12,14 @@
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0
  */
 
+
 /*
- * Load gauffr
+ * Load and configure
  */
+
+// Load Gauffr
 include 'Gauffr/gauffr.php';
 
-
-/*
- * Load eZC ezcConsoleOutput
- * Configure console output and script option
- */
 // Setup output
 $output = new ezcConsoleOutput();
 $output->formats->info->color = 'blue';
@@ -34,7 +35,7 @@ $ttlOption = $input->registerOption( new ezcConsoleOption(
     't', 'ttl',
     ezcConsoleInput::TYPE_INT
 ) );
-$ttlOption->shorthelp = 'Time to life for log, in day';
+$ttlOption->shorthelp = 'Time to life for log (in day)';
 
 try {
     $input->process();

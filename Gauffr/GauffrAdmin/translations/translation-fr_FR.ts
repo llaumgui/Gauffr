@@ -37,8 +37,19 @@
             <translation>Logs</translation>
         </message>
         <message>
+            <source>User extended</source>
+            <translation>Utilisateur info étendues</translation>
+        </message>
+        <message>
+            <source>User credential</source>
+            <translation>Droits utilisateur</translation>
+        </message>
+        <message>
+            <source>GauffrSlave</source>
+            <translation>GauffrSlave</translation>
+        </message>
+        <message>
             <source>Logout</source>
-            <translation>Déconnection</translation>
         </message>
     </context>
 
@@ -58,7 +69,7 @@
         </message>
         <message>
             <source>Logout</source>
-            <translation>Déconnection</translation>
+            <translation>Déconnexion</translation>
         </message>
     </context>
 
@@ -123,13 +134,37 @@
         </message>
     </context>
 
+    <context>
+        <name>view/full/user_credential.ezt</name>
+        <message>
+            <source>Users</source>
+            <translation>Utilisateurs</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>view/full/user_extended.ezt</name>
+        <message>
+            <source>User extended informations</source>
+            <translation>Informations étendues sur les utilisateurs</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>view/full/gauffrslave.ezt</name>
+        <message>
+            <source>GauffrSlave</source>
+            <translation>GauffrSlave</translation>
+        </message>
+    </context>
+
 
 
 <!-- ___________________________________________________________________________
                                                          templates / view / list
 -->
     <context>
-        <name>view/list/gauffrlog.ezt</name>
+        <name>view/list/log.ezt</name>
         <message>
             <source>Last logs</source>
             <translation>Derniers logs</translation>
@@ -164,6 +199,102 @@
         </message>
     </context>
 
+    <context>
+        <name>view/list/user_credential.ezt</name>
+        <message>
+            <source>Users</source>
+            <translation>Utilisateurs</translation>
+        </message>
+        <message>
+            <source>Login</source>
+            <translation>Login</translation>
+        </message>
+        <message>
+            <source>Yes</source>
+            <translation>Oui</translation>
+        </message>
+        <message>
+            <source>No</source>
+            <translation>Non</translation>
+        </message>
+        <message>
+            <source>Edit</source>
+            <translation>Editer</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>view/list/user_extended.ezt</name>
+        <message>
+            <source>Users</source>
+            <translation>Utilisateurs</translation>
+        </message>
+        <message>
+            <source>Login</source>
+            <translation>Login</translation>
+        </message>
+        <message>
+            <source>AltLogin</source>
+            <translation>AltLogin</translation>
+        </message>
+        <message>
+            <source>Mail</source>
+            <translation>eMail</translation>
+        </message>
+        <message>
+            <source>Edit</source>
+            <translation>Editer</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>view/list/gauffrslave.ezt</name>
+        <message>
+            <source>GauffrSlave</source>
+            <translation>GauffrSlave</translation>
+        </message>
+        <message>
+            <source>Name</source>
+            <translation>Name</translation>
+        </message>
+        <message>
+            <source>Identifier</source>
+            <translation>Identifiant</translation>
+        </message>
+        <message>
+            <source>Has credential</source>
+            <translation>Droits</translation>
+        </message>
+        <message>
+            <source>URL</source>
+            <translation>URL</translation>
+        </message>
+        <message>
+            <source>Go to URL</source>
+            <translation>Aller à l'URL</translation>
+        </message>
+        <message>
+            <source>Yes</source>
+            <translation>Oui</translation>
+        </message>
+        <message>
+            <source>No</source>
+            <translation>Non</translation>
+        </message>
+        <message>
+            <source>Edit</source>
+            <translation>Editer</translation>
+        </message>
+        <message>
+            <source>Delete</source>
+            <translation>Supprimer</translation>
+        </message>
+        <message>
+            <source>user(s)</source>
+            <translation>utilisateurs</translation>
+        </message>
+    </context>
+
 
 
 <!-- ___________________________________________________________________________
@@ -183,9 +314,6 @@
             <source>Debug output:</source>
             <translation type="unfinished"></translation>
         </message>
-
-
-
     </context>
 
 
@@ -228,4 +356,29 @@
             <translation>Identification</translation>
         </message>
     </context>
+
+    <context>
+        <name>view/user_credential</name>
+        <message>
+            <source>User credential</source>
+            <translation>Droits utilisateur</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>view/user_extended</name>
+        <message>
+            <source>User extended informations</source>
+            <translation>Informations étendues sur les utilisateurs</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>view/gauffrslave</name>
+        <message>
+            <source>GauffrSlave</source>
+            <translation>GauffrSlave</translation>
+        </message>
+    </context>
+
 </TS>

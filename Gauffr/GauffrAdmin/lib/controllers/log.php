@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the logController class.
+ * File containing the GauffrAdminLogController class.
  *
  * @version //autogentag//
  * @package GauffrAdmin
@@ -9,14 +9,14 @@
  */
 
 /**
- * The logController classes.
+ * The GauffrAdminLogController classes.
  *
  * Gauffr log management
  *
  * @package GauffrAdmin
  * @version //autogentag//
  */
-class logController extends ezcMvcController
+class GauffrAdminLogController extends ezcMvcController
 {
 
 	/**
@@ -26,7 +26,7 @@ class logController extends ezcMvcController
     {
 
         $cfg = ezcConfigurationManager::getInstance();
-        $limit = $cfg->getSetting( 'gauffr_admin', 'GauffrAdminLimit', 'Log' );
+        $limit = $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminLimit', 'Log' );
         ( isset($_GET['offset']) ) ? $offset = $_GET['offset'] : $offset = 0;
         ( isset($_GET['category']) ) ? $category = $_GET['category'] : $category = "";
         ( isset($_GET['severity']) ) ? $severity = $_GET['severity'] : $severity = "";

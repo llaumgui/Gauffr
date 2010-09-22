@@ -32,11 +32,35 @@ class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
                 $def = new ezcTemplateCustomFunctionDefinition();
                 $def->class = "GauffrAdminTemplateExtension";
                 $def->method = "basename";
+                return $def;
 
+            case "ga_has_credential":
+                $def = new ezcTemplateCustomFunctionDefinition();
+                $def->class = "GauffrAdminTemplateExtension";
+                $def->method = "hasCredential";
+                return $def;
+
+            case "ga_count_credential":
+                $def = new ezcTemplateCustomFunctionDefinition();
+                $def->class = "GauffrAdminTemplateExtension";
+                $def->method = "countCredential";
                 return $def;
         }
 
         return false;
+    }
+
+
+
+    /**
+     * Check in template if a GauffrUser have credential
+     *
+     * @param GauffrUser $user
+     * @param integer $id SlaveId
+     */
+    public static function hasCredential( $user, $slave_id )
+    {
+    	return $user->hasCredentialByID($slave_id);
     }
 
 
@@ -48,9 +72,25 @@ class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
      */
     public static function basename( $path )
     {
-        // Implementation.
-
         return basename( $path );
+    }
+
+
+    /**
+     * Call GauffrSlave::fetchCount() for count credential where Can = 1 for
+     * the slave $slave_id
+     *
+     * @param integer $slave_id
+     */
+    public static function countCredential( $slave_id )
+    {
+        return GauffrCredential::fetchCount( array(
+            'filter' => array(
+                array( 'gauffrslave_id', '=', $slave_id ),
+                array( 'can', '=', 1 )
+            ),
+            'groupby' => 'gauffruser_id'
+        ) );
     }
 }
 ?>

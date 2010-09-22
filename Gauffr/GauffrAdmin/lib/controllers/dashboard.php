@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the dashboardController class.
+ * File containing the GauffrAdminDashboardController class.
  *
  * @version //autogentag//
  * @package GauffrAdmin
@@ -9,14 +9,14 @@
  */
 
 /**
- * The dashboardController classes.
+ * The GauffrAdminDashboardController classes.
  *
  * Dashboard of GauffrAdmin
  *
  * @package GauffrAdmin
  * @version //autogentag//
  */
-class dashboardController extends ezcMvcController
+class GauffrAdminDashboardController extends ezcMvcController
 {
 
 	/**

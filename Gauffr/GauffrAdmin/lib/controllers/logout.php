@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the logoutController class.
+ * File containing the GauffrAdminLogoutController class.
  *
  * @version //autogentag//
  * @package GauffrAdmin
@@ -9,14 +9,14 @@
  */
 
 /**
- * The loginoutController classes.
+ * The GauffrAdminLogoutController classes.
  *
  * Logout from the GauffrAdmin
  *
  * @package GauffrAdmin
  * @version //autogentag//
  */
-class logoutController extends ezcMvcController
+class GauffrAdminLogoutController extends ezcMvcController
 {
 
 	/**

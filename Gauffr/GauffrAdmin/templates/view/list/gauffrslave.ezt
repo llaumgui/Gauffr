@@ -1,0 +1,29 @@
+{use $gauffrSlave, $installRoot}
+{tr_context "view/list/gauffrslave.ezt"}
+
+<table class="list" summary="{tr "GauffrSlave"}">
+    <thead><tr>
+        <th>{tr "Name"}</th>
+        <th>{tr "Identifier"}</th>
+        <th>{tr "Has credential"}</th>
+        <th>{tr "URL"}</th>
+        <th></th>
+    </tr></thead>
+    <tbody>
+{foreach $gauffrSlave as $slave}
+    <tr>
+        <td>{$slave->Name}</td>
+        <td>{$slave->Identifier}</td>
+        <td class="picto">{if $slave->HasCredential}
+            <img src="{$installRoot}/media/images/yes.png" alt="{tr "Yes"}" /> ({ga_count_credential($slave->ID)} {tr "user(s)"})
+        {else}
+            <img src="{$installRoot}/media/images/no.png" alt="{tr "No"}" />
+        {/if}</td>
+        <td class="picto"><a href="{$slave->Location}"><img src="{$installRoot}/media/images/link.png" alt="{tr "Go to URL"}" /></a></td>
+        <td class="picto picto_edit">
+            <img src="{$installRoot}/media/images/edit.png" alt="{tr "Edit"}" />&nbsp;&nbsp;
+            <img src="{$installRoot}/media/images/delete.png" alt="{tr "Delete"}" />
+        </td>
+    </tr>
+{/foreach}
+</tbody></table>

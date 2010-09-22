@@ -79,7 +79,7 @@ abstract class GauffrPersistentObject
         return self::fetchPersistentObject(
             $class,
             array(
-                'filter' => array( $attribut, '=', $value ) ,
+                'filter' => array( array( $attribut, '=', $value ) ),
                 'orderby' => $orderby
             )
         );

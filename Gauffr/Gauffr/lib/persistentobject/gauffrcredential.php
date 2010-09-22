@@ -41,6 +41,30 @@ class GauffrCredential extends GauffrPersistentObject
         );
     }
 
+
+
+    /**
+     * Count credential
+     *
+     * @param array $parameters
+     * @return integer
+     *
+     * <code>
+     * $count = GauffrCredential::fetchCount( array(
+     *     'filter' => array(
+     *         array( 'gauffrslave_id', '=', $slave_id ),
+     *         array( 'can', '=', 1 )
+     *     ),
+     *     'groupby' => 'gauffruser_id'
+     * ) );
+     * </code>
+     */
+    public static function fetchCount( $parameters = array() )
+    {
+    	$gauffr = Gauffr::getInstance();
+        return self::fetchCountPersistentObject( $gauffr->gauffrTables['GauffrCredential'], $parameters );
+    }
+
 }
 
 ?>
