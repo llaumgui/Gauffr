@@ -1,7 +1,7 @@
 /**
  * GauffrAdmin JS functions
  *
- * @copyright Copyright (c) 2009-2010 Guillaume Kulakowski and contributors
+ * @copyright Copyright (c) 2009-2011 Guillaume Kulakowski and contributors
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0
  */
 $(document).ready
@@ -55,10 +55,16 @@ $.fn.gauffrGoOnChange = function () {
  */
 function getUrlVars() {
     var vars = {}, hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++) {
-        hash = hashes[i].split('=');
-        vars[hash[0]] = hash[1];
+    if ( window.location.href.indexOf('?') > 0 )
+    {
+    	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    	for(var i = 0; i < hashes.length; i++) {
+    		if( hashes[i].indexOf('=') > 0 )
+			{
+    			hash = hashes[i].split('=');
+    			vars[hash[0]] = hash[1];
+			}
+    	}
     }
     return vars;
 }
