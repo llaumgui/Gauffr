@@ -24,7 +24,7 @@ class GauffrAdminUserCredentialView extends ezcMvcView
 
         $zones = array();
         $zones[] = new ezcMvcTemplateViewHandler( 'menu', 'parts/menu.ezt' );
-        $zones[] = new ezcMvcTemplateViewHandler( 'content', 'view/full/user_credential.ezt' );
+        $zones[] = new ezcMvcTemplateViewHandler( 'content', 'view/full/user/credential.ezt' );
         $zones[] = new ezcMvcTemplateViewHandler( 'page_layout', 'layout.ezt' );
 
         return $zones;

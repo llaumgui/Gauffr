@@ -39,7 +39,7 @@ class GauffrAdminUserExtendedController extends ezcMvcController
         }
 
         $ret = new ezcMvcResult;
-        $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/user_extended', 'User extended informations' );
+        $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/user/extended', 'User extended informations' );
         $ret->variables['gauffrUsers'] = $gauffrUsers;
 
         return $ret;

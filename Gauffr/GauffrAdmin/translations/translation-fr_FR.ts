@@ -135,7 +135,7 @@
     </context>
 
     <context>
-        <name>view/full/user_credential.ezt</name>
+        <name>view/full/user/credential.ezt</name>
         <message>
             <source>Users</source>
             <translation>Utilisateurs</translation>
@@ -143,7 +143,7 @@
     </context>
 
     <context>
-        <name>view/full/user_extended.ezt</name>
+        <name>view/full/user/extended.ezt</name>
         <message>
             <source>User extended informations</source>
             <translation>Informations étendues sur les utilisateurs</translation>
@@ -200,7 +200,7 @@
     </context>
 
     <context>
-        <name>view/list/user_credential.ezt</name>
+        <name>view/list/user/credential.ezt</name>
         <message>
             <source>Users</source>
             <translation>Utilisateurs</translation>
@@ -224,7 +224,7 @@
     </context>
 
     <context>
-        <name>view/list/user_extended.ezt</name>
+        <name>view/list/user/extended.ezt</name>
         <message>
             <source>Users</source>
             <translation>Utilisateurs</translation>
@@ -358,7 +358,7 @@
     </context>
 
     <context>
-        <name>view/user_credential</name>
+        <name>view/user/credential</name>
         <message>
             <source>User credential</source>
             <translation>Droits utilisateur</translation>
@@ -366,7 +366,7 @@
     </context>
 
     <context>
-        <name>view/user_extended</name>
+        <name>view/user/extended</name>
         <message>
             <source>User extended informations</source>
             <translation>Informations étendues sur les utilisateurs</translation>

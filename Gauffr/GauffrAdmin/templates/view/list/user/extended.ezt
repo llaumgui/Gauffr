@@ -1,0 +1,22 @@
+{use $gauffrUsers, $installRoot}
+{tr_context "view/list/user/extended.ezt"}
+
+<table class="list" summary="{tr "Users"}">
+    <thead><tr>
+        <th>{tr "Login"}</th>
+        <th>{tr "Mail"}</th>
+        <th>{tr "AltLogin"}</th>
+        <th>{tr "Edit"}</th>
+    </tr></thead>
+    <tbody>
+{foreach $gauffrUsers as $user}
+    <tr>
+        <td>{$user->Login}</td>
+        <td>{if $user->Extended}{$user->Extended->AltLogin}{/if}</td>
+        <td>{$user->Mail}</td>
+        <td class="picto picto_edit">
+            <img src="{$installRoot}/media/images/edit.png" alt="{tr "Edit"}" />&nbsp;&nbsp;
+        </td>
+    </tr>
+{/foreach}
+</tbody></table>

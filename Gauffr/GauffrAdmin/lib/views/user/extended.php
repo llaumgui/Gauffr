@@ -24,7 +24,7 @@ class GauffrAdminUserExtendedView extends ezcMvcView
 
         $zones = array();
         $zones[] = new ezcMvcTemplateViewHandler( 'menu', 'parts/menu.ezt' );
-        $zones[] = new ezcMvcTemplateViewHandler( 'content', 'view/full/user_extended.ezt' );
+        $zones[] = new ezcMvcTemplateViewHandler( 'content', 'view/full/user/extended.ezt' );
         $zones[] = new ezcMvcTemplateViewHandler( 'page_layout', 'layout.ezt' );
 
         return $zones;
