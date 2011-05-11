@@ -1,0 +1,22 @@
+Gauffr use some third party scripts:
+
+jQuery:
+======
+ * Version: 1.6
+ * URL: http://jquery.com
+ * Copyright 2011, John Resig
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+
+jQuery Tooltip:
+==============
+ * Version: 1.3
+ * URL: http://bassistance.de/jquery-plugins/jquery-plugin-tooltip/
+ * Copyright (c) 2006 - 2008 Jörn Zaefferer
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+
+jQuery URL:
+==========
+ * Version: 1.0
+ * URL: http://ajaxcssblog.com/jquery/url-read-get-variables/jquery/url-read-request-variables
+ * Copyright (c) 2009 Matthias Jäggli
+ * Dual licensed under the MIT or GPL Version 2 licenses.
