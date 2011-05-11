@@ -12,8 +12,8 @@
 {foreach $gauffrUsers as $user}
     <tr>
         <td>{$user->Login}</td>
-        <td>{if $user->Extended}{$user->Extended->AltLogin}{/if}</td>
         <td>{$user->Mail}</td>
+        <td>{if $user->Extended}{$user->Extended->AltLogin}{/if}</td>
         <td class="picto picto_edit">
             <img src="{$installRoot}/media/images/edit.png" alt="{tr "Edit"}" />&nbsp;&nbsp;
         </td>
