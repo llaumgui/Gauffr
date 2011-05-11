@@ -29,6 +29,7 @@ class GauffrAdminRouter extends ezcMvcRouter
             // User
             new ezcMvcRailsRoute( '/user', 'GauffrAdminUserCredentialController', 'userCredential' ),
             new ezcMvcRailsRoute( '/user/credential', 'GauffrAdminUserCredentialController', 'userCredential' ),
+            new ezcMvcRailsRoute( '/user/edit', 'GauffrAdminUserEditController', 'userEdit' ),
             new ezcMvcRailsRoute( '/user/extended', 'GauffrAdminUserExtendedController', 'userExtended' ),
             
             // System

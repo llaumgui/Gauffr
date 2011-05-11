@@ -15,7 +15,7 @@
         <td>{$user->Mail}</td>
         <td>{if $user->Extended}{$user->Extended->AltLogin}{/if}</td>
         <td class="picto picto_edit">
-            <img src="{$installRoot}/media/images/edit.png" alt="{tr "Edit"}" />&nbsp;&nbsp;
+            <a href="{$installRoot}/user/edit?userID={$user->ID}"><img src="{$installRoot}/media/images/edit.png" alt="{tr "Edit"}" /></a>&nbsp;&nbsp;
         </td>
     </tr>
 {/foreach}

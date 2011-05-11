@@ -75,6 +75,8 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
                 return new GauffrAdminUserCredentialView( $request, $result );
             case '/user/credential':
                 return new GauffrAdminUserCredentialView( $request, $result );
+            case '/user/edit':
+                return new GauffrAdminUserEditView( $request, $result );
             case '/user/extended':
                 return new GauffrAdminUserExtendedView( $request, $result );
 
@@ -121,9 +123,18 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
      */
     function createFatalRedirectRequest( ezcMvcRequest $request, ezcMvcResult $result, Exception $response )
     {
-        var_dump( $request );
-        $req = clone $request;
-        $req->uri = '/ERROR';
+        $cfg = ezcConfigurationManager::getInstance();
+        if ( $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminLimit', 'Log' ) == true )
+        {
+            var_dump( $request );
+            var_dump( $result );
+            var_dump( $response );
+        }
+        else
+        {
+            $req = clone $request;
+            $req->uri = '/ERROR';
+        }
 
         return $req;
     }

@@ -19,7 +19,7 @@
 class GauffrUser extends GauffrPersistentObject
 {
     // Mapping
-    protected $ID;
+    public $ID;
     public $GroupID;
     public $Login;
     public $Mail;

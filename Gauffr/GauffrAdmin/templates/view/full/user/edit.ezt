@@ -1,0 +1,5 @@
+{*use $gauffrUsers, $gauffrSlave, $installRoot}
+{tr_context "view/full/user/edit.ezt"*}
+
+<div class="block">
+</div>
