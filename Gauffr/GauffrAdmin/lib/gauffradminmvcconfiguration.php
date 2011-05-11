@@ -67,12 +67,16 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
                 return new GauffrAdminRootView( $request, $result );
             case '/log':
                 return new GauffrAdminLogView( $request, $result );
-            case '/user_credential':
-                return new GauffrAdminUserCredentialView( $request, $result );
-            case '/user_extended':
-                return new GauffrAdminUserExtendedView( $request, $result );
             case '/gauffrslave':
                 return new GauffrAdminGauffrSlaveView( $request, $result );
+
+            // User
+            case '/user':
+                return new GauffrAdminUserCredentialView( $request, $result );
+            case '/user/credential':
+                return new GauffrAdminUserCredentialView( $request, $result );
+            case '/user/extended':
+                return new GauffrAdminUserExtendedView( $request, $result );
 
             // System
             case '/login':

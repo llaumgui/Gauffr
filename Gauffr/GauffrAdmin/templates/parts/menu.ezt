@@ -3,8 +3,8 @@
 <ul id="menu">
     <li class="first"><a href="{$installRoot}/">{tr "Dashboard"}</a></li>
     <li><a href="{$installRoot}/log">{tr "Logs"}</a></li>
-    <li><a href="{$installRoot}/user_extended">{tr "User extended"}</a></li>
-    <li><a href="{$installRoot}/user_credential">{tr "User credential"}</a></li>
+    <li><a href="{$installRoot}/user/extended">{tr "User extended"}</a></li>
+    <li><a href="{$installRoot}/user/credential">{tr "User credential"}</a></li>
     <li><a href="{$installRoot}/gauffrslave">{tr "GauffrSlave"}</a></li>
     <li><a href="{$installRoot}/logout">{tr "Logout"}</a></li>
 </ul>
