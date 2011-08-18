@@ -197,25 +197,26 @@ class Gauffr
      */
     public static function gauffrInitialization()
     {
+
         // Load eZ Components
-        if ( !defined( 'EZCBASE_ENABLED' ) )
+        if ( !defined( 'EZCBASE_LOADED' ) OR !EZCBASE_LOADED )
         {
             $baseEnabled = @include 'ezc/Base/base.php';
             if ( !$baseEnabled )
             {
                 $baseEnabled = include 'Base/src/base.php';
             }
-            define( 'EZCBASE_ENABLED', $baseEnabled );
+            define( 'EZCBASE_LOADED', $baseEnabled );
         }
 
         // Load Gauffr
-        if ( !defined('GAUFFR_ENABLED') )
+        if ( !defined('GAUFFR_LOADED') OR !GAUFFR_LOADED )
         {
             // autoload
-            spl_autoload_register( array( 'ezcBase', 'autoload' ) );
+            spl_autoload_register( array( 'ezcBase', 'autoload' ));
 
             ezcBase::addClassRepository( dirname( __FILE__ ) );
-            define( 'GAUFFR_ENABLED', true );
+            define( 'GAUFFR_LOADED', true );
         }
 
         // Launch first instance of Gauffr
@@ -552,7 +553,7 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
 /*
  * Gauffr Initialization on include
  */
-if ( !defined('GAUFFR_ENABLED') )
+if ( !defined('GAUFFR_LOADED') OR !GAUFFR_LOADED )
     Gauffr::gauffrInitialization();
 
 ?>

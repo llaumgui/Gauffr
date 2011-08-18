@@ -6,6 +6,7 @@
  */
 set_include_path(get_include_path() . PATH_SEPARATOR . "/my/ezc/path/" . PATH_SEPARATOR . "/my/gauffr/path/");
 
-include ('Gauffr/gauffr.php' );
+if ( !defined('GAUFFR_LOADED') OR !GAUFFR_LOADED )
+    require ('Gauffr/gauffr.php' );
 
 ?>
