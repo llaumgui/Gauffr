@@ -19,6 +19,7 @@ Requires:       php-pear(components.ez.no/Configuration)
 Requires:       php-pear(components.ez.no/ConsoleTools)
 Requires:       php-pear(components.ez.no/EventLogDatabaseTiein)
 Requires:       php-pear(components.ez.no/PersistentObject)
+Requires:       php-pear(components.ez.no/UserInput)
 
 
 %description
