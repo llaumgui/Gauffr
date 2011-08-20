@@ -4,5 +4,5 @@
     {tr "Login as %username" vars 'username' => $username} | <a href="{$installRoot}/logout">{tr "Logout"}</a>
 </p>{/if}
 <p>
-    {tr "Powered by"} <a href="http://projects.llaumgui.com/index.php/p/gauffr/">Gauffr</a>, <a href="http://ezcomponents.org">eZ Components</a> {tr "and"} <a href="http://www.famfamfam.com/lab/icons/silk/">Famfamfam</a>.
+    {tr "Powered by"} <a href="https://projects.llaumgui.com/p/gauffr/">Gauffr</a>, <a href="http://ezcomponents.org">eZ Components</a> {tr "and"} <a href="http://www.famfamfam.com/lab/icons/silk/">Famfamfam</a>.
 </p>
