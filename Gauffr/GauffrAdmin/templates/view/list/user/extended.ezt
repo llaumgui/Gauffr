@@ -1,9 +1,9 @@
 {use $gauffrUsers, $installRoot}
 {tr_context "view/list/user/extended.ezt"}
 
-<table class="list" summary="{tr "Users"}">
+<table class="sortable list" summary="{tr "Users"}">
     <thead><tr>
-        <th>{tr "Login"}</th>
+        <th class="first">{tr "Login"}</th>
         <th>{tr "Mail"}</th>
         <th>{tr "AltLogin"}</th>
         <th>{tr "Edit"}</th>

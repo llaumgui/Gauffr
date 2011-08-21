@@ -27,6 +27,7 @@ body.layout_login {
 .clear { font-size: 0px; height: 0px; clear: both; }
 .clear_left { font-size: 0px; height: 0px; clear: left; }
 .clear_right { font-size: 0px; height: 0px; clear: right; }
+.hidden { font-size: 0px; height: 0px; display: none; }
 
 
 
