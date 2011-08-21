@@ -8,7 +8,7 @@
     {foreach $gauffrUserExtendedDisplayed as $attribut}
         <th>{$attribut}</th>
     {/foreach}
-        <th>{tr "Edit"}</th>
+        <th class="{literal}{sorter:false}{/literal}">{tr "Edit"}</th>
     </tr></thead>
     <tbody>
 {foreach $gauffrUsers as $user}

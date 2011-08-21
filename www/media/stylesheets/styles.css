@@ -208,6 +208,16 @@ ul#menu li.first a {
     color: #ffffff;
 }
 
+#jspager {
+    margin: 15px 0 15px 0;
+    text-align: right;
+}
+
+#jspager form input {
+    width: auto;
+}
+
+
 
 /* __________________________________________________________________ Filters */
 #content .filters {
@@ -251,7 +261,7 @@ table.sortable tr.odd {
 	background-color: #F0F0F6;
 }
 
-table.sortable thead tr th {
+table.sortable thead tr th.header {
     background: #145070 url(../images/table_sortable.gif) center right no-repeat;
     cursor: pointer;
 }

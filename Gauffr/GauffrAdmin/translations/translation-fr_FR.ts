@@ -27,6 +27,26 @@
     </context>
 
     <context>
+        <name>parts/navigator.ezt</name>
+        <message>
+            <source>Go to first page</source>
+            <translation>Aller à la première page</translation>
+        </message>
+        <message>
+            <source>Go to last page</source>
+            <translation>Aller à la dernière page</translation>
+        </message>
+        <message>
+            <source>Go to previous page</source>
+            <translation>Aller à la page précédente</translation>
+        </message>
+        <message>
+            <source>Go to next page</source>
+            <translation>Aller à la page suivante</translation>
+        </message>
+    </context>
+
+    <context>
         <name>parts/menu.ezt</name>
         <message>
             <source>Dashboard</source>

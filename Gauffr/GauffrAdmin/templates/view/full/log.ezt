@@ -48,7 +48,9 @@ $installRoot}
     send $gauffrLog as $gauffrLog}
 
 {include "parts/navigator.ezt"
-    send $gauffrLogCount as $count,
+    send true as $useJSPager,
+         $gauffrLogCount as $count,
          $limit as $limit,
          $offset as $offset,
+         $installRoot as $installRoot,
          $installRoot.'/log' . $urlPrefix as $url}

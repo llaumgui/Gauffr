@@ -20,7 +20,18 @@ $(document).ready
 
 	// TableSorter
     $.tablesorter.defaults.widgets = ['zebra'];
-	$('.sortable').tablesorter();
+	if ( $("#jspager").length ) {
+		$('.sortable')
+			.tablesorter()
+			.tablesorterPager({
+				container: $("#jspager"),
+				positionFixed: false,
+				size: 25,
+			});
+	}
+	else {
+		$('.sortable').tablesorter();
+	}
 });
 
 

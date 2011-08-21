@@ -6,8 +6,8 @@
         <th class="first">{tr "Name"}</th>
         <th>{tr "Identifier"}</th>
         <th>{tr "Has credential"}</th>
-        <th>{tr "URL"}</th>
-        <th></th>
+        <th class="{literal}{sorter:false}{/literal}">{tr "URL"}</th>
+        <th class="{literal}{sorter:false}{/literal}"></th>
     </tr></thead>
     <tbody>
 {foreach $gauffrSlave as $slave}
