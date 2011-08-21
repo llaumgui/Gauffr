@@ -58,7 +58,7 @@ ul#menu li {
 
 ul#menu li a {
 	border-left: 1px solid #ffffff;
-    color: #FFFFFF;
+    color: #fff;
     display: block;
     float: left;
     font-size: 1.5em;
@@ -69,6 +69,10 @@ ul#menu li a {
     padding: 0 20px 0 20px;
     text-align:center;
     text-decoration:none;
+}
+
+ul#menu li.selected a {
+    color: #238EC6;
 }
 
 ul#menu li.first a {
@@ -128,10 +132,6 @@ ul#menu li.first a {
 #login-box form input {
     width: 150px;
 }
-
-
-
-
 
 
 

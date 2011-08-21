@@ -1,10 +1,10 @@
-{use $installRoot}
+{use $installRoot, $matchedRoute}
 {tr_context "parts/menu.ezt"}
 <ul id="menu" class="wrapper">
-    <li class="first"><a href="{$installRoot}/">{tr "Dashboard"}</a></li>
-    <li><a href="{$installRoot}/log">{tr "Logs"}</a></li>
-    <li><a href="{$installRoot}/user/extended">{tr "User extended"}</a></li>
-    <li><a href="{$installRoot}/user/credential">{tr "User credential"}</a></li>
-    <li><a href="{$installRoot}/gauffrslave">{tr "GauffrSlave"}</a></li>
-    <li><a href="{$installRoot}/logout">{tr "Logout"}</a></li>
+    <li class="{if $matchedRoute == "/"}selected {/if}first"><a href="{$installRoot}/">{tr "Dashboard"}</a></li>
+    <li class="{if $matchedRoute == "/log"}selected{/if}"><a href="{$installRoot}/log">{tr "Logs"}</a></li>
+    <li class="{if $matchedRoute == "/user/extende"}selected{/if}"><a href="{$installRoot}/user/extended">{tr "User extended"}</a></li>
+    <li class="{if $matchedRoute == "/user/credential"}selected{/if}"><a href="{$installRoot}/user/credential">{tr "User credential"}</a></li>
+    <li class="{if $matchedRoute == "/gauffrslave"}selected{/if}"><a href="{$installRoot}/gauffrslave">{tr "GauffrSlave"}</a></li>
+    <li class="{if $matchedRoute == "/logout"}selected{/if}"><a href="{$installRoot}/logout">{tr "Logout"}</a></li>
 </ul>

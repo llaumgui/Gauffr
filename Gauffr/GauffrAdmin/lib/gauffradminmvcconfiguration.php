@@ -216,6 +216,7 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
 
         // Inject informations in $result
         //$result->variables['appVersion'] = Gauffr::APP_VERSION;
+        $result->variables['matchedRoute'] = $routeInfo->matchedRoute;
 
         // Inject session informations in $result
         $options = new ezcAuthenticationSessionOptions();
