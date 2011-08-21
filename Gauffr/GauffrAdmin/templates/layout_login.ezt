@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{$lang}" lang="{$lang}">
 <head>
-    <title>{$pageName} ({tr "GauffrAdmin"})</title>
+    <title>{$pageName}</title>
     {foreach $stylesheetsList as $stylesheet}
     <link rel="stylesheet" type="text/css" href="{$installRoot}/media/{$stylesheet}" media="screen" />
     {/foreach}
@@ -16,21 +16,9 @@
     <script type="text/javascript" src="{$installRoot}/media/{$js}"><!-- --></script>
     {/foreach}
 </head>
-<body>
-<div id="wrapper" class="layout_login">
-    {include "parts/header.ezt"
-        send false as $appVersion,
-             $installRoot as $installRoot}
-
-    <div id="content">
-        {raw $content}
-    </div>
-</div>
-
-<div id="footer">
-    {include "parts/footer.ezt"
-        send false as $username,
-             $installRoot as $installRoot}
+<body class="layout_login">
+<div id="login-box" class="wrapper">
+    {raw $content}
 </div>
 </body>
 </html>

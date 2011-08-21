@@ -14,17 +14,20 @@ body {
     padding: 0;
 }
 
+body.layout_login {
+    background: #B9B99D;
+}
+
 .wrapper {
     font: 1em/1.5 sans-serif;
     margin: 0 auto;
     width: 940px;
 }
 
-.clear {
-	font-size: 0px;
-	height: 0px;
-	clear: both;
-}
+.clear { font-size: 0px; height: 0px; clear: both; }
+.clear_left { font-size: 0px; height: 0px; clear: left; }
+.clear_right { font-size: 0px; height: 0px; clear: right; }
+
 
 
 /* ___________________________________________________________________ Header */
@@ -40,6 +43,7 @@ h1#header a {
     color: #fff;
     text-decoration: none;
 }
+
 
 
 /* _____________________________________________________________________ Menu */
@@ -74,6 +78,49 @@ ul#menu li.first a {
 }
 
 
+
+/* ___________________________________________________________________ Footer */
+#footer {
+    background: #323232 url(../images/bg_footer.jpg) 0 0 repeat-x;
+    height:70px;
+    margin:0 auto;
+    padding:0;
+    width:100%;
+}
+
+#footer p {
+    color: #C7DAE5;
+    font-size: 1em;
+    margin: 0;
+    padding: 15px 0 0;
+    text-align: center;
+}
+
+#footer a {
+    color: #C7DAE5;
+}
+
+
+
+/* ____________________________________________________________________ Login */
+#login-box {
+    clear: both;
+    margin: 113px auto 60px auto;
+    padding: 20px 0 20px 20px;
+    width: 290px;
+    background-color: #fff;
+}
+
+form.login input {
+    width: 150px;
+}
+
+
+
+
+
+
+
 /* __________________________________________________________________ Content */
 #content {
     clear: both;
@@ -83,12 +130,6 @@ ul#menu li.first a {
     background-color: #fff;
 }
 
-.layout_login #content {
-    clear: both;
-    margin: 113px auto 60px auto;
-    padding: 20px 0 20px 20px;
-    width: 290px;
-}
 
 #content p {
 
@@ -99,10 +140,19 @@ ul#menu li.first a {
 	font-style: italic;
 }
 
-#content .moreInfoToolTip {
-    cursor: help;
-    border-bottom: 1px dotted;
+#content h2 {
+    color: #238EC6;
+    font-size: 1.5em;
+    letter-spacing: -1px;
+    font-weight: normal;
+    border-bottom: 1px dotted #238EC6;
+    margin: 25px 0 10px 0;
 }
+
+#content p {
+    margin-bottom: 7px;
+}
+
 
 
 /* ________________________________________________________________ Navigator */
@@ -137,41 +187,6 @@ ul#menu li.first a {
     float: right;
 }
 
-/* ___________________________________________________________________ Footer */
-#footer {
-    background: #323232 url(../images/bg_footer.jpg) 0 0 repeat-x;
-    height:70px;
-    margin:0 auto;
-    padding:0;
-    width:100%;
-}
-
-#footer p {
-    color: #C7DAE5;
-    font-size: 1em;
-    margin: 0;
-    padding: 15px 0 0;
-    text-align: center;
-}
-
-#footer a {
-    color: #C7DAE5;
-}
-
-
-/* _____________________________________________________________ HTML element */
-h2 {
-    color: #238EC6;
-    font-size: 1.5em;
-    letter-spacing: -1px;
-    font-weight: normal;
-    border-bottom: 1px dotted #238EC6;
-    margin: 25px 0 10px 0;
-}
-
-p {
-    margin-bottom: 7px;
-}
 
 
 /* ____________________________________________________________________ Table */
@@ -200,11 +215,6 @@ td.picto {
     text-align: center;
 }
 
-
-/* ____________________________________________________________________ Block */
-.half {
-
-}
 
 
 /* _____________________________________________________________________ Form */
@@ -243,13 +253,13 @@ form input.submit:hover {
 }
 
 
-/* _______________________________________________________________ Form login */
-form.login input {
-    width: 150px;
-}
-
 
 /* __________________________________________________________________ tooltip */
+.moreInfoToolTip {
+    cursor: help;
+    border-bottom: 1px dotted;
+}
+
 #tooltip {
     position: absolute;
     z-index: 3000;
@@ -257,5 +267,7 @@ form.login input {
     background-color: #eee;
     padding: 5px;
 }
-#tooltip h3, #tooltip div { margin: 0; }
 
+#tooltip h3, #tooltip div {
+    margin: 0;
+}
