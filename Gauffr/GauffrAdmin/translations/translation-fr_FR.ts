@@ -234,10 +234,6 @@
             <translation>Login</translation>
         </message>
         <message>
-            <source>AltLogin</source>
-            <translation>AltLogin</translation>
-        </message>
-        <message>
             <source>Mail</source>
             <translation>eMail</translation>
         </message>

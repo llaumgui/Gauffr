@@ -39,6 +39,7 @@ class GauffrAdminUserExtendedController extends ezcMvcController
         }
 
         $ret = new ezcMvcResult;
+        $ret->variables['gauffrUserExtendedDisplayed'] = $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrUserExtended', 'DisplayedInTable' );
         $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/user/extended', 'User extended informations' );
         $ret->variables['gauffrUsers'] = $gauffrUsers;
 

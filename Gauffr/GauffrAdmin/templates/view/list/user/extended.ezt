@@ -1,11 +1,13 @@
-{use $gauffrUsers, $installRoot}
+{use $gauffrUsers, $gauffrUserExtendedDisplayed, $installRoot}
 {tr_context "view/list/user/extended.ezt"}
 
 <table class="sortable list" summary="{tr "Users"}">
     <thead><tr>
         <th class="first">{tr "Login"}</th>
         <th>{tr "Mail"}</th>
-        <th>{tr "AltLogin"}</th>
+    {foreach $gauffrUserExtendedDisplayed as $attribut}
+        <th>{$attribut}</th>
+    {/foreach}
         <th>{tr "Edit"}</th>
     </tr></thead>
     <tbody>
@@ -13,7 +15,9 @@
     <tr>
         <td>{$user->Login}</td>
         <td>{$user->Mail}</td>
-        <td>{if $user->Extended}{$user->Extended->AltLogin}{/if}</td>
+    {foreach $gauffrUserExtendedDisplayed as $attribut}
+        <td>{if $user->Extended && $user->Extended->$attribut}{$user->Extended->$attribut}{/if}</td>
+    {/foreach}
         <td class="picto picto_edit">
             <a href="{$installRoot}/user/edit?userID={$user->ID}"><img src="{$installRoot}/media/images/edit.png" alt="{tr "Edit"}" /></a>&nbsp;&nbsp;
         </td>
