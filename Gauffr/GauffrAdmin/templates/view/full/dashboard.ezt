@@ -1,23 +1,17 @@
 {use $gauffrInfo, $gauffrLog}
 {tr_context "view/full/dashboard.ezt"}
 
-<div class="block">
-    <h2>{tr "Last logs"}</h2>
-    {include "view/list/log.ezt"
-        send $gauffrLog as $gauffrLog}
+<h2>{tr "Last logs"}</h2>
+{include "view/list/log.ezt"
+    send $gauffrLog as $gauffrLog}
 
-</div>
 
-<div class="block">
-    <h2>{tr "Variables"}</h2>
-    {include "view/list/info.ezt"
-        send 'Variables' as $title,
-             $gauffrInfo['info']['Variables'] as $infos}
-</div>
+<h2>{tr "Variables"}</h2>
+{include "view/list/info.ezt"
+    send 'Variables' as $title,
+         $gauffrInfo['info']['Variables'] as $infos}
 
-<div class="block">
-    <h2>{tr "Database info"}</h2>
-    {include "view/list/info.ezt"
-        send 'Database info' as $title,
-             $gauffrInfo['info']['Database info'] as $infos}
-</div>
+<h2>{tr "Database info"}</h2>
+{include "view/list/info.ezt"
+    send 'Database info' as $title,
+         $gauffrInfo['info']['Database info'] as $infos}

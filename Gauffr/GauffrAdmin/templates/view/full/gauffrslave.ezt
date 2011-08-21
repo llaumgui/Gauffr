@@ -1,10 +1,8 @@
 {use $gauffrSlave, $installRoot}
 {tr_context "view/full/gauffrslave.ezt"}
 
-<div class="block">
-    <h2>{tr "GauffrSlave"}</h2>
+<h2>{tr "GauffrSlave"}</h2>
 
-    {include "view/list/gauffrslave.ezt"
-        send $gauffrSlave as $gauffrSlave,
-             $installRoot as $installRoot}
-</div>
+{include "view/list/gauffrslave.ezt"
+    send $gauffrSlave as $gauffrSlave,
+         $installRoot as $installRoot}

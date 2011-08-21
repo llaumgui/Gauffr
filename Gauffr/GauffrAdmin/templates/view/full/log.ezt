@@ -12,45 +12,43 @@ $installRoot}
 {if $getSeverity}{$urlPrefix .= 'severity=' . $getSeverity . '&'}{/if}
 {if $getSource}{$urlPrefix .= 'source=' . $getSource . '&'}{/if}
 
-<div class="block">
-    <h2>{tr "Log"}</h2>
+<h2>{tr "Log"}</h2>
 
-    <div class="filters">
-        <select class="goOnChange" name="severity">
-            <option value="">-- {tr "Filter by severity"} --</option>
-    {foreach $gauffrLogSeverity as $severity}
-            <option value="{$severity->Severity}"{if $getSeverity == $severity->Severity} selected="selected"{/if}>{$severity->Severity}</option>
-    {/foreach}
-        </select>
+<div class="filters">
+    <select class="goOnChange" name="severity">
+        <option value="">-- {tr "Filter by severity"} --</option>
+{foreach $gauffrLogSeverity as $severity}
+        <option value="{$severity->Severity}"{if $getSeverity == $severity->Severity} selected="selected"{/if}>{$severity->Severity}</option>
+{/foreach}
+    </select>
 
-        <select class="goOnChange" name="category">
-            <option value="">-- {tr "Filter by category"} --</option>
-    {foreach $gauffrLogCategory as $category}
-            <option value="{$category->Category}"{if $getCategory == $category->Category} selected="selected"{/if}>{$category->Category}</option>
-    {/foreach}
-        </select>
+    <select class="goOnChange" name="category">
+        <option value="">-- {tr "Filter by category"} --</option>
+{foreach $gauffrLogCategory as $category}
+        <option value="{$category->Category}"{if $getCategory == $category->Category} selected="selected"{/if}>{$category->Category}</option>
+{/foreach}
+    </select>
 
-        <select class="goOnChange" name="source">
-            <option value="">-- {tr "Filter by source"} --</option>
-    {foreach $gauffrLogSource as $source}
-            <option value="{$source->Source}"{if $getSource == $source->Source} selected="selected"{/if}>{$source->Source}</option>
-    {/foreach}
-        </select>
-    </div>
-
-    {var $limitDiplayed = $limit}
-    {if $gauffrLogCount <= $limit}{$limitDiplayed = $gauffrLogCount}{/if}
-    <p class="info">{tr "Display %limit logs of %count."
-        vars 'limit' => $limitDiplayed,
-             'count' => $gauffrLogCount
-    }</p>
-
-    {include "view/list/log.ezt"
-        send $gauffrLog as $gauffrLog}
-
-    {include "parts/navigator.ezt"
-        send $gauffrLogCount as $count,
-             $limit as $limit,
-             $offset as $offset,
-             $installRoot.'/log' . $urlPrefix as $url}
+    <select class="goOnChange" name="source">
+        <option value="">-- {tr "Filter by source"} --</option>
+{foreach $gauffrLogSource as $source}
+        <option value="{$source->Source}"{if $getSource == $source->Source} selected="selected"{/if}>{$source->Source}</option>
+{/foreach}
+    </select>
 </div>
+
+{var $limitDiplayed = $limit}
+{if $gauffrLogCount <= $limit}{$limitDiplayed = $gauffrLogCount}{/if}
+<p class="info">{tr "Display %limit logs of %count."
+    vars 'limit' => $limitDiplayed,
+         'count' => $gauffrLogCount
+}</p>
+
+{include "view/list/log.ezt"
+    send $gauffrLog as $gauffrLog}
+
+{include "parts/navigator.ezt"
+    send $gauffrLogCount as $count,
+         $limit as $limit,
+         $offset as $offset,
+         $installRoot.'/log' . $urlPrefix as $url}
