@@ -1,10 +1,10 @@
-{use $appVersion, $charset, $content, $installRoot, $javascriptsList, $lang, $menu, $pageName, $stylesheetsList, $username}
+{use $charset, $content, $installRoot, $javascriptsList, $lang, $menu, $pageName, $stylesheetsList, $username}
 {tr_context "layout.ezt"}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{$lang}" lang="{$lang}">
 <head>
-    <title>{$pageName} ({tr "GauffrAdmin"} v{$appVersion})</title>
+    <title>{$pageName} ~ {tr "GauffrAdmin"}</title>
     {foreach $stylesheetsList as $stylesheet}
     <link rel="stylesheet" type="text/css" href="{$installRoot}/media/{$stylesheet}" media="screen" />
     {/foreach}
@@ -17,22 +17,18 @@
     {/foreach}
 </head>
 <body>
-<div id="wrapper">
-    {include "parts/header.ezt"
-        send $appVersion as $appVersion,
-             $installRoot as $installRoot}
+{include "parts/header.ezt"
+    send $installRoot as $installRoot}
 
-    {raw $menu}
+{raw $menu}
 
-    <div id="content">
-        {raw $content}
-    </div>
+<div id="content" class="wrapper">
+    {raw $content}
 </div>
 
-<div id="footer">
-    {include "parts/footer.ezt"
-        send $installRoot as $installRoot,
-             $username as $username}
-</div>
+{include "parts/footer.ezt"
+    send $installRoot as $installRoot,
+         $username as $username}
+
 </body>
 </html>

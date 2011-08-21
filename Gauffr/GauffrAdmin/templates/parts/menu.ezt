@@ -1,6 +1,6 @@
 {use $installRoot}
 {tr_context "parts/menu.ezt"}
-<ul id="menu">
+<ul id="menu" class="wrapper">
     <li class="first"><a href="{$installRoot}/">{tr "Dashboard"}</a></li>
     <li><a href="{$installRoot}/log">{tr "Logs"}</a></li>
     <li><a href="{$installRoot}/user/extended">{tr "User extended"}</a></li>
