@@ -10,12 +10,17 @@ $(document).ready
     // Go to on change
 	$('select.goOnChange').gauffrGoOnChange();
 
+	// ToolTip
 	$('.moreInfoToolTip').tooltip({
 	    track: true,
 	    delay: 0,
 	    showURL: false,
 	    showBody: " - ",
 	});
+
+	// TableSorter
+    $.tablesorter.defaults.widgets = ['zebra'];
+	$('.sortable').tablesorter();
 });
 
 

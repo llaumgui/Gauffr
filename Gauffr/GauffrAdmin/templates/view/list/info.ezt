@@ -1,9 +1,10 @@
 {use $infos, $title}
-<table summary="{$title}">
+{var $isFirst = true}
+<table class="sortable" summary="{$title}">
     <thead><tr>
     {foreach $infos as $info}
         {foreach $info as $key => $value}
-        <th><label>{$key}</label></th>
+        <th{if $isFirst} class="first"{$isFirst = false}{/if}>{$key}</th>
         {/foreach}
         {break}
     {/foreach}

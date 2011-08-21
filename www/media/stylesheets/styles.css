@@ -104,14 +104,28 @@ ul#menu li.first a {
 
 /* ____________________________________________________________________ Login */
 #login-box {
-    clear: both;
-    margin: 113px auto 60px auto;
-    padding: 20px 0 20px 20px;
+    margin: 250px auto 60px auto;
+    padding: 30px;
     width: 290px;
     background-color: #fff;
+    clear: both;
+    -webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-webkit-box-shadow: #666 0px 2px 3px;
+	-moz-box-shadow: #666 0px 2px 3px;
+	box-shadow: #666 0px 2px 3px;
 }
 
-form.login input {
+#login-box p {
+    padding: 7px 0;
+}
+
+#login-box input.submit {
+    margin-left: 110px;
+}
+
+#login-box form input {
     width: 150px;
 }
 
@@ -142,9 +156,9 @@ form.login input {
 
 #content h2 {
     color: #238EC6;
-    font-size: 1.5em;
+    font-size: 2em;
     letter-spacing: -1px;
-    font-weight: normal;
+    font-weight: bold;
     border-bottom: 1px dotted #238EC6;
     margin: 25px 0 10px 0;
 }
@@ -191,7 +205,7 @@ form.login input {
 
 /* ____________________________________________________________________ Table */
 table {
-    border: 1px solid #c1c1c1;
+    border: 1px solid #145070;
 }
 
 table {
@@ -199,20 +213,41 @@ table {
 }
 
 th {
-    border: 1px solid #fff;
-    background-color: #c1c1c1;
+    border-left: 1px solid #fff;
     color: #fff;
     text-align: center;
     padding: 5px 5px;
+    background: #145070;
+}
+
+th.first {
+    border-left: 0px;
 }
 
 td {
-    border: 1px solid #c1c1c1;
+    border: 1px solid #145070;
     padding: 5px 5px;
 }
 
 td.picto {
     text-align: center;
+}
+
+table.sortable tr.odd {
+	background-color: #F0F0F6;
+}
+
+table.sortable thead tr th {
+    background: #145070 url(../images/table_sortable.gif) center right no-repeat;
+    cursor: pointer;
+}
+
+table.sortable thead tr th.headerSortUp {
+    background-image: url(../images/table_sortable_asc.gif);
+}
+
+table.sortable thead tr th.headerSortDown {
+    background-image: url(../images/table_sortable_desc.gif);
 }
 
 
@@ -234,6 +269,9 @@ form input  {
     background: #EFEFDF;
     color: #323232;
     border: 1px solid #c9c9bb;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
 }
 
 form input.submit {
@@ -245,11 +283,17 @@ form input.submit {
     width: auto !important;
     border: 1px solid #323232;
     border-color: #c9c9bb #323232 #323232 #c9c9bb;
+    -webkit-box-shadow: #666 0px 2px 3px;
+    -moz-box-shadow: #666 0px 2px 3px;
+    box-shadow: #666 0px 2px 3px;
 }
 
 form input.submit:hover {
     border-color: #323232 #c9c9bb #c9c9bb #323232;
     cursor: pointer;
+    -webkit-box-shadow: #666 0px -2px 3px;
+    -moz-box-shadow: #666 0px -2px 3px;
+    box-shadow: #666 0px -2px 3px;
 }
 
 

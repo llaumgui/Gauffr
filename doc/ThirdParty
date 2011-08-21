@@ -1,5 +1,12 @@
 Gauffr use some third party scripts:
 
+GauffrAdmin design:
+==================
+ * Based on "Conjunction" by Free CSS Templates (http://www.freecsstemplates.org)
+ * URL: http://www.freecsstemplates.org/preview/conjuction/
+ * Copyright (c) Free CSS Templates
+ * License Creative Commons Attribution 3.0 Unported
+
 jQuery:
 ======
  * Version: 1.6
@@ -21,9 +28,9 @@ jQuery URL:
  * Copyright (c) 2009 Matthias Jäggli
  * Dual licensed under the MIT or GPL Version 2 licenses.
 
-GauffrAdmin design:
-==================
- * Based on "Conjunction" by Free CSS Templates (http://www.freecsstemplates.org)
- * URL: http://www.freecsstemplates.org/preview/conjuction/
- * Copyright (c) Free CSS Templates
- * License Creative Commons Attribution 3.0 Unported
+TableSorter 2.0:
+===============
+ * Version: 2.0.5b
+ * URL: http://tablesorter.com
+ * Copyright (c) 2007 Christian Bach
+ * Dual licensed under the MIT or GPL Version 2 licenses.

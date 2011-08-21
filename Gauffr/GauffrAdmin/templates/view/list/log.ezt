@@ -1,8 +1,8 @@
 {use $gauffrLog}
 {tr_context "view/list/log.ezt"}
-<table class="list" summary="{tr "Last logs"}">
+<table class="sortable list" summary="{tr "Last logs"}">
     <thead><tr>
-        <th>{tr "Message"}</th>
+        <th class="first">{tr "Message"}</th>
         <th>{tr "Category"}</th>
         <th>{tr "Severity"}</th>
         <th>{tr "Source"}</th>
