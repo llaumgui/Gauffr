@@ -29,6 +29,10 @@ body.layout_login {
 .clear_right { font-size: 0px; height: 0px; clear: right; }
 .hidden { font-size: 0px; height: 0px; display: none; }
 
+#debug {
+    background: #fff;
+}
+
 
 
 /* ___________________________________________________________________ Header */
@@ -166,6 +170,15 @@ ul#menu li.first a {
 
 #content p {
     margin-bottom: 7px;
+}
+
+#content ul,
+#content ol {
+	margin: 7px 40px
+}
+
+#content ul li {
+    list-style: disc;
 }
 
 

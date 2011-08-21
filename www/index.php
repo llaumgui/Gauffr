@@ -18,4 +18,11 @@ $config = new GauffrAdminMvcConfiguration();
 $dispatcher = new ezcMvcConfigurableDispatcher( $config );
 $dispatcher->run();
 
+if ( isset( $GLOBALS['DEBUG_DUMP'] ) )
+{
+    echo '<div id="debug">';
+    var_dump( $GLOBALS['DEBUG_DUMP']);
+    echo '</div>';
+}
+
 ?>

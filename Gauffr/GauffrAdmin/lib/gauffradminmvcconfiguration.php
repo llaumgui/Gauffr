@@ -123,19 +123,22 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
      */
     function createFatalRedirectRequest( ezcMvcRequest $request, ezcMvcResult $result, Exception $response )
     {
+        $req = clone $request;
+
         $cfg = ezcConfigurationManager::getInstance();
-        if ( $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminLimit', 'Log' ) == true )
+        if ( $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminSettings', 'Debug' ) == true )
         {
-            var_dump( $request );
-            var_dump( $result );
-            var_dump( $response );
-        }
-        else
-        {
-            $req = clone $request;
-            $req->uri = '/ERROR';
+            $GLOBALS['DEBUG_DUMP'] = array(
+                'request' => $request,
+            	'result' => $result,
+            	'response' => $response
+            );
+            $GLOBALS['DEBUG_ERROR_MESSAGES'] = array();
+            if ( isset( $response->errorMessage ) )
+                $GLOBALS['DEBUG_ERROR_MESSAGES'][] = $response->errorMessage;
         }
 
+        $req->uri = '/ERROR';
         return $req;
     }
 
