@@ -23,7 +23,7 @@ class GauffrAdmin
     /**
      * Application name.
      */
-    const APP_NAME = "GauffrAdmin";
+    const APP_NAME = 'GauffrAdmin';
     /**
      * GauffrAdmin global configuration file.
      */

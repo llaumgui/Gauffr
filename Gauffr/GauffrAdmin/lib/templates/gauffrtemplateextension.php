@@ -31,13 +31,13 @@ class GauffrTemplateExtension implements ezcTemplateCustomFunction
 
         switch ($name)
         {
-            case "ga_has_credential":
-                $def->class = "GauffrTemplateExtension";
-                $def->method = "hasCredential";
+            case 'ga_has_credential':
+                $def->class = 'GauffrTemplateExtension';
+                $def->method = 'hasCredential';
 
             case "ga_count_credential":
-                $def->class = "GauffrTemplateExtension";
-                $def->method = "countCredential";
+                $def->class = 'GauffrTemplateExtension';
+                $def->method = 'countCredential';
 
             default:
                 return false;

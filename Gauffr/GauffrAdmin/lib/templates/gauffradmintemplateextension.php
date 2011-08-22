@@ -30,14 +30,14 @@ class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
 
         switch ($name)
         {
-            case "build_javascript":
-                $def->class = "GauffrAdminTemplateExtension";
-                $def->method = "buildJavascript";
+            case 'build_javascript':
+                $def->class = 'GauffrAdminTemplateExtension';
+                $def->method = 'buildJavascript';
                 break;
 
-            case "ga_basename":
-                $def->class = "GauffrAdminTemplateExtension";
-                $def->method = "basename";
+            case 'ga_basename':
+                $def->class = 'GauffrAdminTemplateExtension';
+                $def->method = 'basename';
                 break;
 
             default:
