@@ -24,8 +24,6 @@ class GauffrAdminLoginController extends ezcMvcController
 	 */
 	public function doLogin()
     {
-    	$prefix = preg_replace( '@/index\.php$@', '', $_SERVER['SCRIPT_NAME'] );
-
     	if ( array_key_exists( 'gauffrAuth_redirUrl',$this->request->variables ) )
             $redirectOnLogin = $this->request->variables['gauffrAuth_redirUrl'];
         else

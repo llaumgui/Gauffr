@@ -24,9 +24,8 @@ class GauffrAdminLogoutController extends ezcMvcController
 	 */
 	public function doLogout()
     {
-    	$prefix = preg_replace( '@/index\.php$@', '', $_SERVER['SCRIPT_NAME'] );
     	$options = new GauffrMvcAuthenticationFilterOptions();
-        $options->logoutUri = $prefix . '/';
+        $options->logoutUri = GauffrAdmin::getInstallRoot();
         $authFilter = new GauffrMvcAuthenticationFilter( $options );
         $authFilter->logout($this->request);
 
