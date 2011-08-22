@@ -1,5 +1,13 @@
-{*use $gauffrUsers, $gauffrSlave, $installRoot}
-{tr_context "view/full/user/edit.ezt"*}
-
-<div class="block">
-</div>
+{use $gauffrUsers}
+{tr_context "view/full/user/edit.ezt"}
+<h2>Edit user</h2>
+<form>
+    <p>
+        <span class="label">Login</span>
+        <span class="input">{$gauffrUsers->Login}</span>
+    </p>
+    <p>
+        <span class="label">Email</span>
+        <span class="input">{$gauffrUsers->Mail}</span>
+    </p>
+</form>

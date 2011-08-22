@@ -24,9 +24,11 @@ class GauffrAdminUserEditController extends ezcMvcController
 	 */
 	public function doUserEdit()
     {
+        $gauffrUsers = GauffrUser::fetchUserByID( (int)$_GET['userID'] );
+
         $ret = new ezcMvcResult;
         $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/user/credential', 'User credential' );
-        //$ret->variables['gauffrUsers'] = $gauffrUsers;
+        $ret->variables['gauffrUsers'] = $gauffrUsers;
         //$ret->variables['gauffrSlave'] = GauffrSlave::fetch( array( 'filter' => array( array( 'HasCredential', '=', 1 )) ));
 
         return $ret;

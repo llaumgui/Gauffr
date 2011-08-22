@@ -30,9 +30,14 @@ class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
 
         switch ($name)
         {
-            case 'build_javascript':
+            case 'build_css_list':
                 $def->class = 'GauffrAdminTemplateExtension';
-                $def->method = 'buildJavascript';
+                $def->method = 'buildStylesheetsList';
+                break;
+
+            case 'build_js_list':
+                $def->class = 'GauffrAdminTemplateExtension';
+                $def->method = 'buildJavascriptsList';
                 break;
 
             case 'ga_basename':
@@ -61,12 +66,44 @@ class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
 
 
 
-    /*public static function buildJavascript()
+    /**
+     * Build stylesheets URL list using minify
+     *
+	 * @return array
+     */
+    public static function buildStylesheetsList()
     {
         $cfg = ezcConfigurationManager::getInstance();
+        $stylesheetsList = $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminTemplatesSettings', 'StylesheetsList' );
 
+        $stylesheetsListArray = array();
+        foreach ( $stylesheetsList as $css)
+        {
+            $stylesheetsListArray[] = GauffrAdmin::getInstallRoot() . 'media/' . $css;
+        }
+        return $stylesheetsListArray;
+    }
+
+
+
+    /**
+     * Build Javascript URL list using minify
+     *
+	 * @return array
+     */
+    public static function buildJavascriptsList()
+    {
+        $cfg = ezcConfigurationManager::getInstance();
         $javascriptsList = $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminTemplatesSettings', 'JavascriptsList' );
-        return '<script type="text/javascript" src="' . GauffrAdmin::getInstallRoot() . '"media/min/f=' . implode( $javascriptsList, ',') . '"><!-- --></script>';
-    }*/
+
+        $javascriptsListArray = array();
+        foreach ( $javascriptsList as $js)
+        {
+            $javascriptsListArray[] = GauffrAdmin::getInstallRoot() . 'media/' . $js;
+        }
+        return $javascriptsListArray;
+
+        //return '<script type="text/javascript" src="' . GauffrAdmin::getInstallRoot() . '"media/min/f=' . implode( $javascriptsList, ',') . '"><!-- --></script>';
+    }
 }
 ?>

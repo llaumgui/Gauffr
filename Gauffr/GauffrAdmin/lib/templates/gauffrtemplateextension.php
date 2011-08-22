@@ -34,10 +34,12 @@ class GauffrTemplateExtension implements ezcTemplateCustomFunction
             case 'ga_has_credential':
                 $def->class = 'GauffrTemplateExtension';
                 $def->method = 'hasCredential';
+                break;
 
             case "ga_count_credential":
                 $def->class = 'GauffrTemplateExtension';
                 $def->method = 'countCredential';
+                break;
 
             default:
                 return false;

@@ -202,7 +202,7 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
      */
     function runResultFilters( ezcMvcRoutingInformation $routeInfo, ezcMvcRequest $request, ezcMvcResult $result )
     {
-        $result->variables['installRoot'] = preg_replace( '@/index\.php$@', '', $_SERVER['SCRIPT_NAME'] );
+        $result->variables['installRoot'] = GauffrAdmin::getInstallRoot();
 
         // Inject configuration in $result
         $cfg = ezcConfigurationManager::getInstance();
@@ -214,8 +214,6 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
         list( $charset, $stylesheetsList, $javascriptsList ) =  $cfg->getSettingsAsList( GauffrAdmin::CONF_FILE, 'GauffrAdminTemplatesSettings',
             array( 'Charset',  'StylesheetsList', 'JavascriptsList' ) );
         $result->variables['charset'] = $charset;
-        $result->variables['stylesheetsList'] = $stylesheetsList;
-        $result->variables['javascriptsList'] = $javascriptsList;
 
         // Inject informations in $result
         //$result->variables['appVersion'] = Gauffr::APP_VERSION;

@@ -78,7 +78,7 @@ class GauffrAdmin
      */
     public static function getInstallRoot()
     {
-        return self::getInstance()->installRoot;
+        return self::getInstance()->installRoot . '/';
     }
 
 }
