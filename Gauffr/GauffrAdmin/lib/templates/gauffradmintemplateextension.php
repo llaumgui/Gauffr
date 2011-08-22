@@ -76,12 +76,21 @@ class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
         $cfg = ezcConfigurationManager::getInstance();
         $stylesheetsList = $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminTemplatesSettings', 'StylesheetsList' );
 
-        $stylesheetsListArray = array();
-        foreach ( $stylesheetsList as $css)
+        // Use minify
+        if ( $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminTemplatesSettings', 'MinifyStylesheets' ) === true )
         {
-            $stylesheetsListArray[] = GauffrAdmin::getInstallRoot() . 'media/' . $css;
+            return array( GauffrAdmin::getInstallRoot() . 'media/min/f=' . implode( $stylesheetsList, ',') );
         }
-        return $stylesheetsListArray;
+        // Don't use minify
+        else
+        {
+            $stylesheetsListArray = array();
+            foreach ( $stylesheetsList as $css)
+            {
+                $stylesheetsListArray[] = GauffrAdmin::getInstallRoot() . 'media/' . $css;
+            }
+            return $stylesheetsListArray;
+        }
     }
 
 
@@ -96,14 +105,22 @@ class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
         $cfg = ezcConfigurationManager::getInstance();
         $javascriptsList = $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminTemplatesSettings', 'JavascriptsList' );
 
-        $javascriptsListArray = array();
-        foreach ( $javascriptsList as $js)
+        // Use minify
+        if ( $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminTemplatesSettings', 'MinifyStylesheets' ) === true )
         {
-            $javascriptsListArray[] = GauffrAdmin::getInstallRoot() . 'media/' . $js;
+            return array( GauffrAdmin::getInstallRoot() . 'media/min/f=' . implode( $javascriptsList, ',') );
         }
-        return $javascriptsListArray;
-
-        //return '<script type="text/javascript" src="' . GauffrAdmin::getInstallRoot() . '"media/min/f=' . implode( $javascriptsList, ',') . '"><!-- --></script>';
+        // Don't use minify
+        else
+        {
+            $javascriptsListArray = array();
+            foreach ( $javascriptsList as $js)
+            {
+                $javascriptsListArray[] = GauffrAdmin::getInstallRoot() . 'media/' . $js;
+            }
+            return $javascriptsListArray;
+        }
     }
 }
+
 ?>
