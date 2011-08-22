@@ -277,7 +277,8 @@ table.sortable thead tr th.headerSortDown {
 
 
 /* _____________________________________________________________________ Form */
-form label {
+form label,
+form span.label {
     font-weight: bold;
     margin-right: 10px;
     width: 100px;
@@ -285,13 +286,16 @@ form label {
     float: left;
 }
 
-form input  {
+form input,
+form span.input  {
     width: 250px;
     height: 18px;
     padding: 3px 0 0 5px;
-    border: none;
-    background: #EFEFDF;
     color: #323232;
+}
+
+form input {
+    background: #EFEFDF;
     border: 1px solid #c9c9bb;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -302,7 +306,6 @@ form input.submit {
     height: auto;
     padding: 2px 5px;
     background: #98CA2E;
-    border: none;
     color: #FFFFFF;
     width: auto !important;
     border: 1px solid #323232;

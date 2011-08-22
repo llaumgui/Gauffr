@@ -35,6 +35,14 @@ jQuery URL:
  * Copyright (c) 2009 Matthias Jäggli
  * Dual licensed under the MIT or GPL Version 2 licenses.
 
+Minify:
+======
+ * Version: 2.1.3
+ * URL: http://code.google.com/p/minify
+ * Copyright (c) 2008 Ryan Grove <ryan@wonko.com>
+   Copyright (c) 2008 Steve Clay <steve@mrclay.org>
+ * GPLv2
+
 TableSorter 2.0& TableSorter Pager:
 ==================================
  * Version: 2.0.5b
