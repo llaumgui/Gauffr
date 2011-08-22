@@ -1,8 +1,7 @@
 {use $gauffrLogCount,  $gauffrLog,
 $gauffrLogCategory, $gauffrLogSource, $gauffrLogSeverity,
 $getCategory, $getSeverity, $getSource,
-$limit, $offset,
-$installRoot}
+$limit, $offset}
 
 {tr_context "view/full/log.ezt"}
 
@@ -52,5 +51,4 @@ $installRoot}
          $gauffrLogCount as $count,
          $limit as $limit,
          $offset as $offset,
-         $installRoot as $installRoot,
-         $installRoot.'/log' . $urlPrefix as $url}
+         build_url('log' . $urlPrefix) as $url}

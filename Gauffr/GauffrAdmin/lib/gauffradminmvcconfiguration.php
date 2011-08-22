@@ -136,6 +136,8 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
             $GLOBALS['DEBUG_ERROR_MESSAGES'] = array();
             if ( isset( $response->errorMessage ) )
                 $GLOBALS['DEBUG_ERROR_MESSAGES'][] = $response->errorMessage;
+            if ( isset( $response->originalMessage ) )
+                $GLOBALS['DEBUG_ERROR_MESSAGES'][] = $response->originalMessage;
         }
 
         $req->uri = '/ERROR';
@@ -202,8 +204,6 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
      */
     function runResultFilters( ezcMvcRoutingInformation $routeInfo, ezcMvcRequest $request, ezcMvcResult $result )
     {
-        $result->variables['installRoot'] = GauffrAdmin::getInstallRoot();
-
         // Inject configuration in $result
         $cfg = ezcConfigurationManager::getInstance();
 
@@ -211,12 +211,11 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
             array( 'Language' ) );
         $result->variables['lang'] = $lang;
 
-        list( $charset, $stylesheetsList, $javascriptsList ) =  $cfg->getSettingsAsList( GauffrAdmin::CONF_FILE, 'GauffrAdminTemplatesSettings',
-            array( 'Charset',  'StylesheetsList', 'JavascriptsList' ) );
+        list( $charset ) =  $cfg->getSettingsAsList( GauffrAdmin::CONF_FILE, 'GauffrAdminTemplatesSettings',
+            array( 'Charset' ) );
         $result->variables['charset'] = $charset;
 
         // Inject informations in $result
-        //$result->variables['appVersion'] = Gauffr::APP_VERSION;
         $result->variables['matchedRoute'] = $routeInfo->matchedRoute;
 
         // Inject session informations in $result

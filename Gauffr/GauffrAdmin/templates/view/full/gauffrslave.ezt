@@ -1,8 +1,7 @@
-{use $gauffrSlave, $installRoot}
+{use $gauffrSlave}
 {tr_context "view/full/gauffrslave.ezt"}
 
 <h2>{tr "GauffrSlave"}</h2>
 
 {include "view/list/gauffrslave.ezt"
-    send $gauffrSlave as $gauffrSlave,
-         $installRoot as $installRoot}
+    send $gauffrSlave as $gauffrSlave}

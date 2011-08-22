@@ -1,4 +1,4 @@
-{use $count, $installRoot, $limit, $offset, $url, $useJSPager}
+{use $count, $limit, $offset, $url, $useJSPager}
 {tr_context "parts/navigator.ezt"}
 {var $pageCount = math_ceil( $count / $limit ),
      $pageCurrent = math_ceil( $offset / $limit ) + 1,
@@ -18,11 +18,11 @@
 {elseif $pageCount == 1 && $useJSPager}
 <div class="pager" id="jspager">
     <form>
-        <img class="first" src="{$installRoot}/media/images/first.png" alt="{tr "Go to first page"}" />
-        <img class="prev" src="{$installRoot}/media/images/prev.png" alt="{tr "Go to previous page"}" />
+        <img class="first" src="{build_url('media/images/first.png')}" alt="{tr "Go to first page"}" />
+        <img class="prev" src="{build_url('media/images/prev.png')}" alt="{tr "Go to previous page"}" />
         <input type="text" class="pagedisplay">
-        <img class="next" src="{$installRoot}/media/images/next.png" alt="{tr "Go to next page"}" />
-        <img class="last" src="{$installRoot}/media/images/last.png" alt="{tr "Go to last page"}" />
+        <img class="next" src="{build_url('media/images/next.png')}" alt="{tr "Go to next page"}" />
+        <img class="last" src="{build_url('media/images/last.png')}" alt="{tr "Go to last page"}" />
         <select class="pagesize">
             <option value="25" selected="selected">25</option>
             <option value="50">50</option>

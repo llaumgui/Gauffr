@@ -1,8 +1,8 @@
-{use $installRoot, $username}
+{use $username}
 {tr_context "parts/footer.ezt"}
 <div id="footer">
     {if $username}<p>
-        {tr "Login as %username" vars 'username' => $username} | <a href="{$installRoot}/logout">{tr "Logout"}</a>
+        {tr "Login as %username" vars 'username' => $username} | <a href="{build_url('/logout')}">{tr "Logout"}</a>
     </p>{/if}
     <p>
         {tr "Powered by"} <a href="https://projects.llaumgui.com/p/gauffr/">Gauffr</a>, <a href="http://ezcomponents.org">eZ Components</a> {tr "and"} <a href="http://www.famfamfam.com/lab/icons/silk/">Famfamfam</a>.

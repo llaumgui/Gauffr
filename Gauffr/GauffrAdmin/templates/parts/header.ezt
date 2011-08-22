@@ -1,5 +1,4 @@
-{use $installRoot}
 {tr_context "parts/header.ezt"}
 <h1 id="header" class="wrapper">
-    <a href="{$installRoot}">{tr "GauffrAdmin"}</a>
+    <a href="{build_url()}">{tr "GauffrAdmin"}</a>
 </h1>

@@ -1,4 +1,4 @@
-{use $gauffrUsers, $gauffrUserExtendedDisplayed, $installRoot}
+{use $gauffrUsers, $gauffrUserExtendedDisplayed}
 {tr_context "view/full/user/extended.ezt"}
 
 <div class="block">
@@ -6,6 +6,5 @@
 
     {include "view/list/user/extended.ezt"
         send $gauffrUsers as $gauffrUsers,
-             $gauffrUserExtendedDisplayed as $gauffrUserExtendedDisplayed,
-             $installRoot as $installRoot}
+             $gauffrUserExtendedDisplayed as $gauffrUserExtendedDisplayed}
 </div>

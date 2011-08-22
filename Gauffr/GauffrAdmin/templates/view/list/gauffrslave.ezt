@@ -1,4 +1,4 @@
-{use $gauffrSlave, $installRoot}
+{use $gauffrSlave}
 {tr_context "view/list/gauffrslave.ezt"}
 
 <table class="sortable list" summary="{tr "GauffrSlave"}">
@@ -15,14 +15,14 @@
         <td>{$slave->Name}</td>
         <td>{$slave->Identifier}</td>
         <td class="picto">{if $slave->HasCredential}
-            <img src="{$installRoot}/media/images/yes.png" alt="{tr "Yes"}" /> ({ga_count_credential($slave->ID)} {tr "user(s)"})
+            <img src="{build_url('media/images/yes.png')}" alt="{tr "Yes"}" /> ({ga_count_credential($slave->ID)} {tr "user(s)"})
         {else}
-            <img src="{$installRoot}/media/images/no.png" alt="{tr "No"}" />
+            <img src="{build_url('media/images/no.png')}" alt="{tr "No"}" />
         {/if}</td>
-        <td class="picto"><a href="{$slave->Location}"><img src="{$installRoot}/media/images/link.png" alt="{tr "Go to URL"}" /></a></td>
+        <td class="picto"><a href="{$slave->Location}"><img src="{build_url('media/images/link.png')}" alt="{tr "Go to URL"}" /></a></td>
         <td class="picto picto_edit">
-            <img src="{$installRoot}/media/images/edit.png" alt="{tr "Edit"}" />&nbsp;&nbsp;
-            <img src="{$installRoot}/media/images/delete.png" alt="{tr "Delete"}" />
+            <img src="{build_url('media/images/edit.png')}" alt="{tr "Edit"}" />&nbsp;&nbsp;
+            <img src="{build_url('media/images/delete.png')}" alt="{tr "Delete"}" />
         </td>
     </tr>
 {/foreach}

@@ -1,4 +1,4 @@
-{use $charset, $content, $installRoot, $lang, $pageName}
+{use $charset, $content, $lang, $pageName}
 {tr_context "layout.ezt"}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
     <meta name="MSSmartTagsPreventParsing" content="true" />
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="shortcut icon" href="{$installRoot}/media/favicon.ico" />
+    <link rel="shortcut icon" href="{build_url('/media/favicon.ico')}" />
     {include "parts/head_script.ezt"}
 </head>
 <body class="layout_login">
