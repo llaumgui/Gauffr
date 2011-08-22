@@ -32,6 +32,55 @@ class GauffrAdmin
      * GauffrAdmin slave identifier
      */
     const SLAVE_IDENTIFIER = 'gauffr_admin';
+
+    /**
+     * @param Gauffr Instance
+     */
+    static private $instance = null;
+
+    /**
+     * GauffrAdmin root directory
+     */
+    private $installRoot = false;
+
+
+
+    /**
+     * Private constructor to prevent non-singleton use
+     */
+    private function __construct ()
+    {
+        /* Define path */
+        $this->installRoot = preg_replace( '@/index\.php$@', '', $_SERVER['SCRIPT_NAME'] );
+    }
+
+
+
+    /**
+     * Returns an instance of the class Gauffr.
+     *
+     * @return Gauffr Instance of Gauffr
+     */
+    public static function getInstance()
+    {
+        if ( is_null( self::$instance ) )
+        {
+            self::$instance = new GauffrAdmin();
+        }
+        return self::$instance;
+    }
+
+
+    /**
+     * Return the GauffrAdmin root directory
+     *
+     * @return string GauffrAdmin root directory
+     */
+    public static function getInstallRoot()
+    {
+        return self::getInstance()->installRoot;
+    }
+
 }
 
 ?>

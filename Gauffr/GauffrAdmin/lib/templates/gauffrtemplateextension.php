@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the GauffrAdminTemplateExtension class.
+ * File containing the GauffrTemplateExtension class.
  *
  * @version //autogentag//
  * @package GauffrAdmin
@@ -9,15 +9,16 @@
  */
 
 /**
- * The GauffrAdminTemplateExtension classes.
+ * The GauffrTemplateExtension classes.
  *
- * Provide template function use by GauffrAdmin
+ * Provide template Gauffr's functions use by GauffrAdmin
  *
  * @package GauffrAdmin
  * @version //autogentag//
  */
-class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
+class GauffrTemplateExtension implements ezcTemplateCustomFunction
 {
+
     /**
      * Return a ezcTemplateCustomFunctionDefinition for the given function $name.
      *
@@ -26,28 +27,23 @@ class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
      */
     public static function getCustomFunctionDefinition( $name )
     {
-        switch ($name )
-        {
-            case "ga_basename":
-                $def = new ezcTemplateCustomFunctionDefinition();
-                $def->class = "GauffrAdminTemplateExtension";
-                $def->method = "basename";
-                return $def;
+        $def = new ezcTemplateCustomFunctionDefinition();
 
+        switch ($name)
+        {
             case "ga_has_credential":
-                $def = new ezcTemplateCustomFunctionDefinition();
-                $def->class = "GauffrAdminTemplateExtension";
+                $def->class = "GauffrTemplateExtension";
                 $def->method = "hasCredential";
-                return $def;
 
             case "ga_count_credential":
-                $def = new ezcTemplateCustomFunctionDefinition();
-                $def->class = "GauffrAdminTemplateExtension";
+                $def->class = "GauffrTemplateExtension";
                 $def->method = "countCredential";
-                return $def;
+
+            default:
+                return false;
         }
 
-        return false;
+        return $def;
     }
 
 
@@ -63,17 +59,6 @@ class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
     	return $user->hasCredentialByID($slave_id);
     }
 
-
-
-    /**
-     * Provide php basename function in eZC Template
-     *
-     * @param string $path
-     */
-    public static function basename( $path )
-    {
-        return basename( $path );
-    }
 
 
     /**
@@ -93,4 +78,5 @@ class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
         ) );
     }
 }
+
 ?>
