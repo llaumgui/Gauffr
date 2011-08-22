@@ -32,7 +32,7 @@ $min_errorLogger = false;
  * Allow use of the Minify URI Builder app. If you no longer need
  * this, set to false.
  **/
-$min_enableBuilder = true;
+$min_enableBuilder = false;
 
 
 /**
@@ -58,7 +58,7 @@ $min_enableBuilder = true;
 $min_documentRoot = substr(__FILE__, 0, strlen(__FILE__) - 15);
 //$min_documentRoot = $_SERVER['SUBDOMAIN_DOCUMENT_ROOT'];
 
-$min_cachePath = $min_documentRoot . '/cache';
+$min_cachePath = $min_documentRoot . '/../../cache';
 
 
 /**
@@ -88,7 +88,7 @@ $min_serveOptions['bubbleCssImports'] = false;
  * Note: Despite this setting, if you include a number at the end of the
  * querystring, maxAge will be set to one year. E.g. /min/f=hello.css&123456
  */
-$min_serveOptions['maxAge'] = 1800;
+$min_serveOptions['maxAge'] = 31536000;
 
 
 /**
