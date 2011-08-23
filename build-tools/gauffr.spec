@@ -48,7 +48,10 @@ GauffrAdmin est l'interface web d'administration de Gauffr.
 %prep
 %setup -q
 %{__mv} Gauffr/conf/*.ini ./
+# Configure cache
 sed -i -e "s|dirname( __FILE__ ) . '\/..\/..\/cache'|'%{_localstatedir}/lib/%{name}admin/cache'|g" Gauffr/GauffrAdmin/bootstrap.php
+sed -i -e "s|$min_cachePath = $min_documentRoot . '\/..\/..\/cache';|$min_cachePath = '%{_localstatedir}/lib/%{name}admin/cache';|g" www/media//min/config.php
+
 
 %build
 # Empty build section, most likely nothing required.
