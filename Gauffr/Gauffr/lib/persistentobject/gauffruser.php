@@ -19,7 +19,7 @@
 class GauffrUser extends GauffrPersistentObject
 {
     // Mapping
-    public $ID;
+    public $ID; /* @TODO: public for tpl access, set protected */
     public $GroupID;
     public $Login;
     public $Mail;

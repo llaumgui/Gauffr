@@ -18,7 +18,7 @@
  */
 class GauffrSlave extends GauffrPersistentObject
 {
-    public $ID;
+    public $ID; /* @TODO: public for tpl access, set protected */
     public $Identifier;
     public $Name;
     public $Location;

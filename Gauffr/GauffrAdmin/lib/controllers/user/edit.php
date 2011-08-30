@@ -24,14 +24,49 @@ class GauffrAdminUserEditController extends ezcMvcController
 	 */
 	public function doUserEdit()
     {
-        $gauffrUsers = GauffrUser::fetchUserByID( (int)$_GET['userID'] );
+        $gauffrUser = GauffrUser::fetchWithRelatedObjectsUserByID( (int)$this->gauffrUserID );
 
-        $ret = new ezcMvcResult;
-        $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/user/credential', 'User credential' );
-        $ret->variables['gauffrUsers'] = $gauffrUsers;
-        //$ret->variables['gauffrSlave'] = GauffrSlave::fetch( array( 'filter' => array( array( 'HasCredential', '=', 1 )) ));
+        // Redirect on error
+        if ( !$gauffrUser )
+        {
+            $req = new ezcMvcRequest;
+            $req->uri = '/ERROR';
+            return new ezcMvcInternalRedirect($req);
+        }
 
-        return $ret;
+        // Form
+        if ( empty($_POST) )
+        {
+            $ret = new ezcMvcResult;
+
+            $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/user/credential', 'User credential' );
+            $ret->variables['gauffrUsers'] = $gauffrUser;
+            //$ret->variables['gauffrSlave'] = GauffrSlave::fetch( array( 'filter' => array( array( 'HasCredential', '=', 1 )) ));
+
+            return $ret;
+        }
+        // Edition
+        else
+        {
+            $session = GauffrUserExtended::getPersistentSessionInstance();
+            $gauffrUserExtended = $gauffrUser->Extended;
+
+            $gauffrUserExtended->AltLogin = $_POST['GauffrUserExtended_AltLogin'];
+            $session->update($gauffrUserExtended);
+
+            Gauffr::log( 'Update GauffrUser "' . $gauffrUser->Login . '" by GauffrAdmin',
+                'GauffrAdmin', GauffrLog::SYSTEM, array( "category" => "GauffrUser", "file" => __FILE__, "line" => __LINE__ ) );
+
+            $ret = new ezcMvcResult;
+            $ret->status = new ezcMvcExternalRedirect( GauffrAdmin::buildURL('user?edit=ok') );
+            return $ret;
+        }
+
+        // Redirect on error
+        $req = new ezcMvcRequest;
+        $req->uri = '/ERROR';
+        return new ezcMvcInternalRedirect($req);
+
     }
 }
 ?>

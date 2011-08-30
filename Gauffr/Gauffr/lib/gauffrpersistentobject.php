@@ -58,34 +58,22 @@ abstract class GauffrPersistentObject
     }
 
 
-/* ____________________________________________________________________ Fetch */
 
     /**
-     * Fetch PersistantObject by attribut
+     * Get protected and read-only ID
      *
-     * @deprecated
-     *
-     * @param string $class The PersistentObject class
-     * @param string $attribut The attribute to filter
-     * @param string $value The value
-     * @param string $orderby The attribute to sort
-     *
-     * @return GauffrPersistentObject
+     * @return integer
      */
-    protected static function fetchPersistantObjectByAttribute( $class, $attribut, $value, $orderby = 'ID')
+    public function getID()
     {
-        trigger_error("Deprecated function GauffrPersistentObject::fetchPersistantObjectByAttribute, use GauffrPersistentObject::fetch()", E_USER_WARNING);
-
-        return self::fetchPersistentObject(
-            $class,
-            array(
-                'filter' => array( array( $attribut, '=', $value ) ),
-                'orderby' => $orderby
-            )
-        );
+        return $this->ID;
     }
 
 
+
+
+
+/* ____________________________________________________________________ Fetch */
 
     /**
      * Fetch PersistantObject by attribut

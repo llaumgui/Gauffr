@@ -75,7 +75,7 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
                 return new GauffrAdminUserCredentialView( $request, $result );
             case '/user/credential':
                 return new GauffrAdminUserCredentialView( $request, $result );
-            case '/user/edit':
+            case '/user/edit/:gauffrUserID':
                 return new GauffrAdminUserEditView( $request, $result );
             case '/user/extended':
                 return new GauffrAdminUserExtendedView( $request, $result );

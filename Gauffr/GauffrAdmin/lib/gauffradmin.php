@@ -81,6 +81,20 @@ class GauffrAdmin
         return self::getInstance()->installRoot . '/';
     }
 
+
+    /**
+     * Build a GauffrAdmin URL.
+     * Used by template or by system.
+     *
+     * @param string $uri
+     */
+    public static function buildURL( $uri = '' )
+    {
+        if ( strpos($uri, '/') === 0 )
+            $uri = substr($uri, 1);
+        return self::getInstallRoot() . $uri;
+    }
+
 }
 
 ?>
