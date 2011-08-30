@@ -1,0 +1,10 @@
+{use $errorMessages}
+{tr_context "error/error.ezt"}
+<h2>{tr "Error"}</h2>
+
+<p>{tr "Houston we have a problem ... An error occurred in the application GauffrAdmin."}</p>
+
+{if $errorMessages}
+<ul>{foreach $errorMessages as $message}
+    <li>{$message}</li>
+{/foreach}</ul>{/if}

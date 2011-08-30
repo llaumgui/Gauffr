@@ -178,6 +178,22 @@
         </message>
     </context>
 
+    <context>
+        <name>view/full/user/edit.ezt</name>
+        <message>
+            <source>Login</source>
+            <translation>Login</translation>
+        </message>
+        <message>
+            <source>Email</source>
+            <translation>Email</translation>
+        </message>
+        <message>
+            <source>Submit</source>
+            <translation>Valider</translation>
+        </message>
+    </context>
+
 
 
 <!-- ___________________________________________________________________________
@@ -325,10 +341,6 @@
         <message>
             <source>Houston we have a problem ... An error occurred in the application GauffrAdmin.</source>
             <translation>Houston nous avons un problème... Une erreur c'est produite dans l'application GrauffrAdmin.</translation>
-        </message>
-        <message>
-            <source>Debug output:</source>
-            <translation type="unfinished"></translation>
         </message>
     </context>
 
