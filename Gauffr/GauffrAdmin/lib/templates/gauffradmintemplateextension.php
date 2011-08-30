@@ -41,7 +41,7 @@ class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
                 break;
 
             case 'build_url':
-                $def->class = 'GauffrAdminTemplateExtension';
+                $def->class = 'GauffrAdmin';
                 $def->method = 'buildURL';
                 break;
 
@@ -67,15 +67,6 @@ class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
     public static function basename( $path )
     {
         return basename( $path );
-    }
-
-
-
-    public static function buildURL( $uri = '' )
-    {
-        if ( strpos($uri, '/') === 0 )
-            $uri = substr($uri, 1);
-        return GauffrAdmin::getInstallRoot() . $uri;
     }
 
 
