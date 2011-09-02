@@ -15,6 +15,6 @@ include 'Gauffr/gauffr.php';
 
 $db = ezcDbInstance::get(Gauffr::GAUFFR_DB_INSTANCE);
 $dbSchema = ezcDbSchema::createFromDb( $db );
-$dbSchema->writeToFile( 'xml', '../doc/database/schema.xml' );
+$dbSchema->writeToFile( 'xml', '../Gauffr/scripts/schema.xml' );
 
 ?>
