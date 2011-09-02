@@ -32,6 +32,11 @@ $(document).ready
 	else {
 		$('.sortable').tablesorter();
 	}
+
+	// fadeOut effect
+	$('.fadeout').fadeOut( 5000, function() {
+	});
+
 });
 
 

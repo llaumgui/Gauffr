@@ -312,9 +312,10 @@ form span.input  {
 form input {
     background: #EFEFDF;
     border: 1px solid #c9c9bb;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
     border-radius: 8px;
+     -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+
 }
 
 form p.buttons {
@@ -337,6 +338,26 @@ form input.submit:hover {
 }
 
 
+
+/* ___________________________________________________________________ Msgbox */
+#content .msg-box {
+    border: 1px solid #000;
+    border-radius: 5px;
+     -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+     margin: 15px 0;
+}
+
+#content .msg-box li {
+	list-style-position: inside;
+	padding: 3px 15px;
+}
+
+#content .msg-box-ok {
+    border-color: #ccebac;
+    background: #e0f2cb;
+    color: #6da827;
+}
 
 /* __________________________________________________________________ tooltip */
 .moreInfoToolTip {

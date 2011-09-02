@@ -1,0 +1,8 @@
+{use $messages}
+{if $messages['ok']}
+<ul class="fadeout msg-box msg-box-ok">
+    {foreach $messages['ok'] as $message}
+        <li>{$message}</li>
+    {/foreach}
+</ul>
+{/if}
