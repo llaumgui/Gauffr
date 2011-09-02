@@ -44,18 +44,6 @@ class GauffrSlave extends GauffrPersistentObject
 
 
     /**
-     * Get ID
-     *
-     * @return integer
-     */
-    public function getID()
-    {
-        return $this->ID;
-    }
-
-
-
-    /**
      * fetch user by Login
      *
      * @return GauffrSlave

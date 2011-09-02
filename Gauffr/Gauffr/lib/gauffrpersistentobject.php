@@ -71,6 +71,18 @@ abstract class GauffrPersistentObject
 
 
 
+    /**
+     * Get protected and read-only ID
+     *
+     * @param integer
+     */
+    public function setID( $id )
+    {
+        $this->ID = $id;
+    }
+
+
+
 
 
 /* ____________________________________________________________________ Fetch */
