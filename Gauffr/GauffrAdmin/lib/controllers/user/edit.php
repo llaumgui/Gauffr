@@ -63,7 +63,7 @@ class GauffrAdminUserEditController extends ezcMvcController
                 $session->update($gauffrUserExtended);
             }
 
-            Gauffr::log( 'Update GauffrUser "' . $gauffrUser->Login . '" by GauffrAdmin',
+            Gauffr::log( 'Update GauffrUser "' . $gauffrUser->Login . '" by ' . $_SESSION['gauffrAuth_id'],
                 'GauffrAdmin', GauffrLog::SYSTEM, array( "category" => "GauffrUser", "file" => __FILE__, "line" => __LINE__ ) );
 
             $ret = new ezcMvcResult;
