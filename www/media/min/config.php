@@ -58,6 +58,7 @@ $min_enableBuilder = false;
 $min_documentRoot = substr(__FILE__, 0, strlen(__FILE__) - 15);
 //$min_documentRoot = $_SERVER['SUBDOMAIN_DOCUMENT_ROOT'];
 
+//  Packager, change it ! (/tmp, /var/lib/GauffrAdmin, etc.)
 $min_cachePath = $min_documentRoot . '/../../cache';
 
 

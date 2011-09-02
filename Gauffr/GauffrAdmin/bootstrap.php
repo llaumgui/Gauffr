@@ -24,7 +24,7 @@ ezcBaseInit::setCallback(
 );
 
 define ('GAUFFR_ADMIN_TPL_PATH', dirname( __FILE__ ) . '/templates');
-// Packager, change it ! (/tmp, /var/lib/GauffrAdmin, etc.)
+//  Packager, change it ! (/tmp, /var/lib/GauffrAdmin, etc.)
 define ('GAUFFR_ADMIN_CACHE_PATH', dirname( __FILE__ ) . '/../../cache');
 
 // Load template
