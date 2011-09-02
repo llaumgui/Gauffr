@@ -50,7 +50,7 @@ if ( $helpOption->value !== false )
     $output->outputLine( 'Gauffr log cleaner prune old GauffrLog from your database' );
     $output->outputLine( $input->getSynopsis() );
     foreach ( $input->getOptions() as $option )
-         $output->outputLine( "\t-{$option->short}/{$option->long}: {$option->shorthelp}\n" );
+         $output->outputLine( "\t-{$option->short}/{$option->long}: {$option->shorthelp}" );
     exit(0);
 }
 
