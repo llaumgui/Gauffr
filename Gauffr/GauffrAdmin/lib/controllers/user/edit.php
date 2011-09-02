@@ -48,11 +48,20 @@ class GauffrAdminUserEditController extends ezcMvcController
         // Edition
         else
         {
+            // Save GauffrUserExtended
             $session = GauffrUserExtended::getPersistentSessionInstance();
-            $gauffrUserExtended = $gauffrUser->Extended;
-
-            $gauffrUserExtended->AltLogin = $_POST['GauffrUserExtended_AltLogin'];
-            $session->update($gauffrUserExtended);
+            if ( !($gauffrUserExtended = $gauffrUser->Extended) )
+            {
+                $gauffrUserExtended = new GauffrUserExtended();
+                $gauffrUserExtended->setID( $gauffrUser->getID() );
+                $gauffrUserExtended->AltLogin = $_POST['GauffrUserExtended_AltLogin'];
+                $session->save($gauffrUserExtended);
+            }
+            else
+            {
+                $gauffrUserExtended->AltLogin = $_POST['GauffrUserExtended_AltLogin'];
+                $session->update($gauffrUserExtended);
+            }
 
             Gauffr::log( 'Update GauffrUser "' . $gauffrUser->Login . '" by GauffrAdmin',
                 'GauffrAdmin', GauffrLog::SYSTEM, array( "category" => "GauffrUser", "file" => __FILE__, "line" => __LINE__ ) );

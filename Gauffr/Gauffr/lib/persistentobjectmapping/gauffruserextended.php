@@ -17,7 +17,7 @@ $def->class = "GauffrUserExtended";
 $def->idProperty = new ezcPersistentObjectIdProperty;
 $def->idProperty->columnName = 'gauffruser_id';
 $def->idProperty->propertyName = 'ID';
-$def->idProperty->generator = new ezcPersistentGeneratorDefinition( 'ezcPersistentNativeGenerator' );
+$def->idProperty->generator = new ezcPersistentGeneratorDefinition( 'ezcPersistentManualGenerator' );
 
 $def->properties['AltLogin'] = new ezcPersistentObjectProperty;
 $def->properties['AltLogin']->columnName = 'alt_login';
