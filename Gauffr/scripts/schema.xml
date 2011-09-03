@@ -110,6 +110,12 @@
      <name>category</name>
     </field>
    </index>
+   <index>
+    <name>severity</name>
+    <field>
+     <name>severity</name>
+    </field>
+   </index>
   </declaration>
  </table>
  <table>
