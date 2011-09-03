@@ -4,13 +4,22 @@
 # Create a new Gauffr package
 #
 
+# Help
+if [ $# != 1 ]; then
+    echo "Usage: build.sh VERSION"
+    echo "Use to build a Gauffr package"
+    echo ""
+    exit
+fi
+
 
 # Variables
 API_PATH=doc/api
-GAUFFR_VERSION=0.5
+GAUFFR_VERSION=$1
 GAUFFR_PATH=../
 BUILD_PATH=../../gauffr-${GAUFFR_VERSION}
 ECHO="echo -e"
+
 
 # motd
 ${ECHO} "\n#\n# Gauffr builder\n# build version ${GAUFFR_VERSION}\n#\n"
@@ -44,10 +53,11 @@ mv ${BUILD_PATH}/Gauffr/conf/gauffr.ini.exemple \
 ${ECHO} "# Use gauffr.ini - End\n"
 
 
-# Cleanup .svn
-${ECHO} "# Cleanup .svn - Start"
-find ${BUILD_PATH}/ -name '.svn' -type d -exec rm -rf {} \; >/dev/null 2>&1
-${ECHO} "# Cleanup .svn - End\n"
+# Cleanup GIT
+${ECHO} "# Cleanup GIT - Start"
+find ${BUILD_PATH}/ -name '.git' -type d -exec rm -rf {} \; >/dev/null 2>&1
+find ${BUILD_PATH}/ -name '..gitignore' -type d -exec rm -f {} \; >/dev/null 2>&1
+${ECHO} "# Cleanup GIT - End\n"
 
 
 # Tag version in header
