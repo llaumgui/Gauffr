@@ -1,10 +1,8 @@
 #!/usr/bin/env php
 <?php
 /**
- * File containing the php script for prune old Gauffr log.
- * Use gauffr_clear_log.php --help for mor informations.
- *
- * You can run this script with cron.daily for example.
+ * File containing the php script for update Gauffr DB tables.
+ * Use update.php --help for mor informations.
  *
  * @version //autogentag//
  * @package Gauffr
@@ -58,31 +56,44 @@ if ( $helpOption->value !== false )
 }
 
 
+
 /*
- * Clean log
+ * Update
  */
+
+// Create schema from XML
 $xmlSchema = ezcDbSchema::createFromFile( 'xml', 'schema.xml' );
 
+// Create schema from DB
 $db = ezcDbInstance::get(Gauffr::GAUFFR_DB_INSTANCE);
 $dbSchema = ezcDbSchema::createFromDb( $db );
+
+// Filter gauffr tables from gauffr.ini
+Gauffr::gauffrTablesFilter($dbSchema);
 
 // compare the schemas:
 $diffSchema = ezcDbSchemaComparator::compareSchemas( $dbSchema, $xmlSchema );
 
 // return an array containing the differences as SQL DDL to upgrade $dbSchema
 // to $xmlSchema:
-if ( $updateOption->value === false )
+if ( $sqlArray = $diffSchema->convertToDDL( $db ) )
 {
-    $sqlArray = $diffSchema->convertToDDL( $db );
+    $output->outputLine( "Queries to execute to update the base:" );
     foreach ( $sqlArray as $query )
     {
         $output->outputLine( $query );
     }
+
+    if ( $updateOption->value === true )
+    {
+        // apply the differences to the database:
+        $diffSchema->applyToDB( $db );
+        $output->outputLine( "Database is updated" );
+    }
 }
 else
 {
-    // apply the differences to the database:
-    //$diffSchema->applyToDB( $db );
+    $output->outputLine( "Database is already updated" );
 }
 
 ?>

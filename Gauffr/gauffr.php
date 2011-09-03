@@ -163,6 +163,26 @@ class Gauffr
 
 
 
+    /**
+     * Filter no Gauffr tables from a ezcDbSchema
+     *
+     * @param ezcDbSchema $dbSchema
+     */
+    public static function gauffrTablesFilter ( ezcDbSchema &$dbSchema )
+    {
+        $schema =& $dbSchema->getSchema();
+
+        $cfg = ezcConfigurationManager::getInstance();
+        $gauffr_tables = array_values( $cfg->getSettingsInGroup('gauffr', 'GauffrTables') );
+        foreach ( $schema as $table_name => $table_infos )
+        {
+            if ( !in_array($table_name, $gauffr_tables) )
+                unset( $schema[$table_name] );
+        }
+    }
+
+
+
 
 
 /* ************************************************************ eZ Components */

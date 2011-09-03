@@ -15,6 +15,10 @@ include 'Gauffr/gauffr.php';
 
 $db = ezcDbInstance::get(Gauffr::GAUFFR_DB_INSTANCE);
 $dbSchema = ezcDbSchema::createFromDb( $db );
+
+// Filter gauffr tables from gauffr.ini
+Gauffr::gauffrTablesFilter($dbSchema);
+
 $dbSchema->writeToFile( 'xml', '../Gauffr/scripts/schema.xml' );
 
 ?>
