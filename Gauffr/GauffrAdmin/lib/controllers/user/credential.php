@@ -47,7 +47,8 @@ class GauffrAdminUserCredentialController extends ezcMvcController
     		'ko' => array()
     	);
 
-    	if ( $_GET['edit'] == 'ok' )
+    	$edit = ( array_key_exists('edit', $_GET) ) ? $_GET['edit'] : false;
+    	if ( $edit == 'ok' )
     	    $messages['ok'][] = GauffrAdminI18n::getTranslation( 'view/user/credential', 'The user has been edited.' );
 
     	// Return
