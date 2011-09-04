@@ -535,7 +535,7 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
 
         if ( !$authentication->run() )
         {
-            Gauffr::log("Authentification failled for user \"$login\" (".$login_is_alt_login ? "AltLogin" : "Login" . ")", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
+            Gauffr::log('Authentification failled for user "' . $login . '" (' . ($login_is_alt_login ? 'AltLogin' : 'Login') . ')', 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
             return false;
         }
 
