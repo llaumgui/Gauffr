@@ -475,7 +475,7 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
      * @param string $password
      * @param boolean $login_is_alt_login The $login is an altLogin ?
      */
-    public function authenticationDatabaseFilter( &$authentication, &$filter, $login, $password, $login_is_alt_login = false )
+    private function authenticationDatabaseFilter( &$authentication, &$filter, $login, $password, $login_is_alt_login = false )
     {
         $db = ezcDbInstance::get(self::GAUFFR_DB_INSTANCE);
 
@@ -517,7 +517,8 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
      *      $_POST['login'],
      *      $_POST['password'],
      *      'gauffradmin'
-     *      true
+     *      true,
+     *      false
      * );
      * </code>
      *
@@ -525,8 +526,9 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
      * @param string $password
      * @param string $slave_identifier
      * @param boolean $login_is_alt_login The $login is an altLogin ?
+     * @param ezcAuthentication &$authentication
      */
-    public static function authenticationDatabase( $login, $password, $slave_identifier = false, $login_is_alt_login = false )
+    public static function authenticationDatabase( $login, $password, $slave_identifier = false, $login_is_alt_login = false, &$authentication = false )
     {
         $gauffr = self::getInstance();
         $gauffr->authenticationDatabaseFilter( $authentication, $filter, $login, $password, $login_is_alt_login );

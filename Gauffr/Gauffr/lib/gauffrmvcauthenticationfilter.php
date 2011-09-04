@@ -170,7 +170,7 @@ class GauffrMvcAuthenticationFilter
         }
 
         $gauffr = Gauffr::getInstance();
-        $gauffr->authenticationDatabaseFilter( $authentication, $filter, $login, $password );
+        $gauffr->authenticationDatabase ( $login, $password, false, false, $authentication );
         $authentication->session = $session;
 
         return $authentication;
