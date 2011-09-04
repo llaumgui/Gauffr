@@ -183,6 +183,14 @@ h1#header a {
     margin: 25px 0 10px 0;
 }
 
+#content h3 {
+    color: #238EC6;
+    font-size: 1.6em;
+    letter-spacing: -1px;
+    font-weight: bold;
+    margin: 25px 0 10px 0;
+}
+
 #content p {
     margin-bottom: 7px;
 }
@@ -243,15 +251,17 @@ h1#header a {
 
 
 /* ____________________________________________________________________ Table */
-table {
+table.list {
     border: 1px solid #145070;
-}
-
-table {
     width: 100%
 }
 
-th {
+table.notfull {
+    width: auto !important;
+    margin: 0 auto;
+}
+
+table.list th {
     border-left: 1px solid #fff;
     color: #fff;
     text-align: center;
@@ -259,16 +269,16 @@ th {
     background: #145070;
 }
 
-th.first {
+table.list th.first {
     border-left: 0px;
 }
 
-td {
+table.list td {
     border: 1px solid #145070;
     padding: 5px 5px;
 }
 
-td.picto {
+table.list td.picto {
     text-align: center;
 }
 
@@ -279,6 +289,7 @@ table.sortable tr.odd {
 table.sortable thead tr th.header {
     background: #145070 url(../images/table_sortable.gif) center right no-repeat;
     cursor: pointer;
+    padding: 5px 30px;
 }
 
 table.sortable thead tr th.headerSortUp {

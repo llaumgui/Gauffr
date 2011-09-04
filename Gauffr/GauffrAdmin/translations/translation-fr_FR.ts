@@ -185,6 +185,19 @@
             <translation>Login</translation>
         </message>
         <message>
+            <source>Edit user "%username"</source>
+            <translation>Edition de l'utilisateur "%username"</translation>
+        </message>
+        <message>
+            <source>Edit credentials</source>
+            <translation>Edition des droits</translation>
+        </message>
+        <message>
+            <source>User's credentials</source>
+            <translation>Droits de l'utilisateur</translation>
+        </message>
+
+        <message>
             <source>Email</source>
             <translation>Email</translation>
         </message>
@@ -192,6 +205,11 @@
             <source>Submit</source>
             <translation>Valider</translation>
         </message>
+        <message>
+            <source>Has access</source>
+            <translation>A accès</translation>
+        </message>
+
     </context>
 
 

@@ -1,20 +1,36 @@
-{use $gauffrUsers}
+{use $gauffrSlaves, $gauffrUser}
 {tr_context "view/full/user/edit.ezt"}
-<h2>Edit user</h2>
+<h2>{tr "Edit user \"%username\""
+        vars 'username' => $gauffrUser->Login}</h2>
 <form class="formedit" method="post" action="">
     <p>
         <span class="label">{tr "Login"}</span>
-        <span class="input">{$gauffrUsers->Login}</span>
+        <span class="input">{$gauffrUser->Login}</span>
     </p>
     <p>
         <span class="label">{tr "Email"}</span>
-        <span class="input">{$gauffrUsers->Mail}</span>
+        <span class="input">{$gauffrUser->Mail}</span>
     </p>
 
     <p>
         <label for="GauffrUserExtended_AltLogin">AltLogin</label>
-        <input type="text" name="GauffrUserExtended_AltLogin" id="GauffrUserExtended_AltLogin" value="{if is_set($gauffrUsers->Extended->AltLogin)}{$gauffrUsers->Extended->AltLogin}{/if}" />
+        <input type="text" name="GauffrUserExtended_AltLogin" id="GauffrUserExtended_AltLogin" value="{if is_set($gauffrUser->Extended->AltLogin)}{$gauffrUser->Extended->AltLogin}{/if}" />
     </p>
+
+    <h3>{tr "Edit credentials"}</h3>
+    <table class="sortable list notfull" summary="{tr "User's credentials"}">
+    <thead><tr>
+        <th class="first">GauffrSlave</th>
+        <th class="{literal}{sorter:false}{/literal}">{tr "Has access"}</th>
+    </tr></thead>
+    <tbody>
+{foreach $gauffrSlaves as $slave}
+    <tr>
+        <td>{$slave->Name}</td>
+        <td class="picto"><input type="checkbox" {if ga_has_credential($gauffrUser, $slave->ID)}checked="checked"{/if} name="GauffrCredential_{$slave->ID}" value="1" /></td>
+    <tr>
+{/foreach}
+</tbody></table>
 
     <p class="buttons">
         <input type="submit" class="submit" value="{tr "Submit"}" />

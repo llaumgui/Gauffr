@@ -40,8 +40,8 @@ class GauffrAdminUserEditController extends ezcMvcController
             $ret = new ezcMvcResult;
 
             $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/user/credential', 'User credential' );
-            $ret->variables['gauffrUsers'] = $gauffrUser;
-            //$ret->variables['gauffrSlave'] = GauffrSlave::fetch( array( 'filter' => array( array( 'HasCredential', '=', 1 )) ));
+            $ret->variables['gauffrUser'] = $gauffrUser;
+            $ret->variables['gauffrSlaves'] = GauffrSlave::fetch( array( 'filter' => array( array( 'HasCredential', '=', 1 )) ));
 
             return $ret;
         }
