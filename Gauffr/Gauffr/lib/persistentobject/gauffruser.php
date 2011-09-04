@@ -278,6 +278,53 @@ class GauffrUser extends GauffrPersistentObject
 
 
     /**
+     * Update GauffrCredential for a GauffrUser
+     *
+     * @param array $credential Array like array( 'slave_id1' => 'can1' , 'slave_id2' => 'can2' )
+     */
+    public function updateCredential( $credential )
+    {
+        $session = self::getPersistentSessionInstance();
+        $gauffrCredentials = $this->getCredential();
+
+        // Fix id
+        $oldGauffrCredentials = $gauffrCredentials;
+        $gauffrCredentials = array();
+        foreach ( $oldGauffrCredentials as $gauffrCredential )
+        {
+            $gauffrCredentials[$gauffrCredential->GauffrSlaveID] = $gauffrCredential;
+        }
+
+        // Set all credential to 0
+        foreach ( $gauffrCredentials as $gauffrCredential)
+        {
+            $gauffrCredential->Can = 0;
+            $session->update($gauffrCredential);
+        }
+
+        // Set credential from $credential
+        foreach ( $credential as $slave_id => $can )
+        {
+            echo $slave_id;
+            if ( array_key_exists($slave_id, $gauffrCredentials) )
+            {
+                $gauffrCredentials[$slave_id]->Can = $can;
+                $session->update($gauffrCredentials[$slave_id]);
+            }
+            else
+            {
+                $gauffrCredential = new GauffrCredential();
+                $gauffrCredential->GauffrUserID = $this->ID;
+                $gauffrCredential->GauffrSlaveID = $slave_id;
+                $gauffrCredential->Can = $can;
+                $session->save($gauffrCredential);
+            }
+        }
+    }
+
+
+
+    /**
      * The GauffrUser has access to GauffrSlave by GauffrSlave's identifier ?
      *
      * @param $id

@@ -27,7 +27,7 @@
 {foreach $gauffrSlaves as $slave}
     <tr>
         <td>{$slave->Name}</td>
-        <td class="picto"><input type="checkbox" {if ga_has_credential($gauffrUser, $slave->ID)}checked="checked"{/if} name="GauffrCredential_{$slave->ID}" value="1" /></td>
+        <td class="picto"><input type="checkbox" {if ga_has_credential($gauffrUser, $slave->ID)}checked="checked"{/if} name="GauffrCredential[{$slave->ID}]" value="1" /></td>
     <tr>
 {/foreach}
 </tbody></table>
