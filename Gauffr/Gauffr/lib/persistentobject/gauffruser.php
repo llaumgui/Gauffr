@@ -178,7 +178,7 @@ class GauffrUser extends GauffrPersistentObject
      */
     public static function fetchUserByMail($mail)
     {
-        return self::GauffrUserExtended( 'GauffrUser', array(
+        return self::fetchPersistentObject( 'GauffrUser', array(
             'filter' => array( array( 'Mail', '=', $mail ) )
         ) );
     }
