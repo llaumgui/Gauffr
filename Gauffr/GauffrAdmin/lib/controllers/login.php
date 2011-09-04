@@ -45,14 +45,13 @@ class GauffrAdminLoginController extends ezcMvcController
 
         	$authFilter = new GauffrMvcAuthenticationFilter();
             $authFilterOptions = $authFilter->getOptions();
+            $authFilterOptions->varSlaveIdentifier = 'gauffr_admin';
             $authentication = $authFilter->login( $this->request, $login, $password );
 
             // Bad login
-	        if ( !$authentication->run() )
+	        if ( $authentication === false OR !$authentication->run() )
 	        {
 	        	$ret = new ezcMvcResult;
-
-	            Gauffr::log("Authentification failled for user \"$login\"", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
 	            $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/login', 'Login' );
 	            $ret->variables['redirectOnLogin'] = $redirectOnLogin;
 
@@ -60,24 +59,8 @@ class GauffrAdminLoginController extends ezcMvcController
 	        }
 	        else
 	        {
-                $user = GauffrUser::unique( GauffrUser::fetchUserByLogin($login) );
-
-                // Don't have access
-                if ( !$user->hasCredentialByIdentifier( GauffrAdmin::SLAVE_IDENTIFIER ) )
-	        	{
-	        		$ret = new ezcMvcResult;
-
-                    Gauffr::log("User \"$login\" don't have access to slave \"" . GauffrAdmin::SLAVE_IDENTIFIER . "\"", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
-                    $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/login', 'Login' );
-                    $ret->variables['redirectOnLogin'] = $redirectOnLogin;
-
-                    return $ret;
-	        	}
-	        	else
-	        	{
-	        		$redirUrl = $_POST['redirectOnLogin'];
-	        		return $authFilter->returnLoginRedirect( $authentication, $this->request, $redirUrl );
-	        	}
+        		$redirUrl = $_POST['redirectOnLogin'];
+        		return $authFilter->returnLoginRedirect( $authentication, $this->request, $redirUrl );
 	        }
         }
     }

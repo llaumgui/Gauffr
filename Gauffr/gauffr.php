@@ -557,6 +557,7 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
         }
         else
         {
+
             if ( $user->hasCredentialByIdentifier($slave_identifier) )
             {
                 Gauffr::log("Authentification successful on \"$slave_identifier\" for user \"$login\"", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
@@ -565,6 +566,8 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
             else
             {
                 Gauffr::log("User \"$login\" don't have access to \"$slave_identifier\"", 'gauffr', GauffrLog::SYSTEM, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
+                $authentication = false;
+
                 return false;
             }
         }
