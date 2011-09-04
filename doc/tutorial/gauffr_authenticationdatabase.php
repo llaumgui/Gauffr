@@ -43,7 +43,7 @@ else
 <form method="POST" action="">
     <p>login : <input type="text" name="login_c" value="" /></p>
     <p>password : <input type="password" name="password_c" /></p>
-<input type="submit" value="Login with 'gauffradmin' credential" />
+<input type="submit" value="Login with 'gauffr_admin' credential" />
 </form>
 
 <hr />
