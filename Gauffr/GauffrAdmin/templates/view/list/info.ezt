@@ -1,6 +1,6 @@
 {use $infos, $title}
 {var $isFirst = true}
-<table class="sortable" summary="{$title}">
+<table class="sortable list" summary="{$title}">
     <thead><tr>
     {foreach $infos as $info}
         {foreach $info as $key => $value}
