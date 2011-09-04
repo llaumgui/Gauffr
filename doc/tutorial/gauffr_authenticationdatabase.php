@@ -16,7 +16,7 @@ elseif ( isset($_POST['login_c']) && !empty($_POST['login_c']) && isset($_POST['
     /*
      * Authentication of user "test" with password "test"
      */
-    $user = Gauffr::authenticationDatabase($_POST['login_c'], $_POST['password_c'], "gauffradmin", false );
+    $user = Gauffr::authenticationDatabase($_POST['login_c'], $_POST['password_c'], "gauffr_admin", false );
 
     var_dump( $user );
 }
