@@ -1,8 +1,11 @@
-{use $gauffrUsers, $gauffrUserExtendedDisplayed}
+{use $gauffrUsers, $gauffrUserExtendedDisplayed, $messages}
 {tr_context "view/full/user/extended.ezt"}
 
 <div class="block">
     <h2>{tr "User extended informations"}</h2>
+
+    {include "parts/msgbox.ezt"
+        send $messages as $messages}
 
     {include "view/list/user/extended.ezt"
         send $gauffrUsers as $gauffrUsers,

@@ -1,4 +1,4 @@
-{use $gauffrSlaves, $gauffrUser}
+{use $gauffrSlaves, $gauffrUser, $redirectAfterEdit}
 {tr_context "view/full/user/edit.ezt"}
 <h2>{tr "Edit user \"%username\""
         vars 'username' => $gauffrUser->Login}</h2>
@@ -33,6 +33,7 @@
 </tbody></table>
 
     <p class="buttons">
+        <input type="hidden" name="redirect_after_edit" value="{$redirectAfterEdit}" />
         <input type="submit" class="submit" value="{tr "Submit"}" />
     </>
 </form>

@@ -24,10 +24,14 @@ class GauffrAdminUserEditController extends ezcMvcController
 	 */
 	public function doUserEdit()
     {
-        $gauffrUser = GauffrUser::fetchWithRelatedObjectsUserByID( (int)$this->gauffrUserID );
+        // Get redirection URI
+        $redirect = isset($_GET['redirect']) ? 'user/'.$_GET['redirect'] : 'user';
+        $redirect = isset($_POST['redirect_after_edit']) ? $_POST['redirect_after_edit'] : $redirect;
+        if ( $redirect != 'user/credential' && $redirect != 'user/extended' )
+            $redirect = 'user';
 
         // Redirect on error
-        if ( !$gauffrUser )
+        if ( !($gauffrUser = GauffrUser::fetchWithRelatedObjectsUserByID( (int)$this->gauffrUserID )) )
         {
             $req = new ezcMvcRequest;
             $req->uri = '/ERROR';
@@ -42,6 +46,7 @@ class GauffrAdminUserEditController extends ezcMvcController
             $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/user/credential', 'User credential' );
             $ret->variables['gauffrUser'] = $gauffrUser;
             $ret->variables['gauffrSlaves'] = GauffrSlave::fetch( array( 'filter' => array( array( 'HasCredential', '=', 1 )) ));
+            $ret->variables['redirectAfterEdit'] = $redirect;
 
             return $ret;
         }
@@ -71,7 +76,7 @@ class GauffrAdminUserEditController extends ezcMvcController
                 'GauffrAdmin', GauffrLog::SYSTEM, array( "category" => "GauffrUser", "file" => __FILE__, "line" => __LINE__ ) );
 
             $ret = new ezcMvcResult;
-            $ret->status = new ezcMvcExternalRedirect( GauffrAdmin::buildURL('user?edit=ok') );
+            $ret->status = new ezcMvcExternalRedirect( GauffrAdmin::buildURL($redirect.'?edit=ok') );
             return $ret;
         }
 

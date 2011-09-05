@@ -421,6 +421,10 @@
             <source>User extended informations</source>
             <translation>Informations étendues sur les utilisateurs</translation>
         </message>
+        <message>
+            <source>The user has been edited.</source>
+            <translation>L'utilisateur a bien été édité.</translation>
+        </message>
     </context>
 
     <context>
