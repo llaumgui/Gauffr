@@ -1,8 +1,8 @@
 #!/usr/bin/env php
 <?php
 /**
- * File containing the php script for update Gauffr DB tables.
- * Use update.php --help for mor informations.
+ * File containing the php script for upgrade Gauffr DB tables.
+ * Use upgrade.php --help for mor informations.
  *
  * @version //autogentag//
  * @package Gauffr
@@ -18,10 +18,17 @@
 // Load Gauffr
 include 'Gauffr/gauffr.php';
 
+
 // Setup output
 $output = new ezcConsoleOutput();
 $output->formats->info->color = 'blue';
-$output->outputLine( 'Gauffr updater script.' . "\n", 'info' );
+$output->formats->success->color = 'green';
+$output->formats->important->color = 'red';
+
+
+// MOTD
+$output->outputLine( 'Gauffr upgrade script.' . "\n", 'info' );
+
 
 // Setup input and options
 $input = new ezcConsoleInput();
@@ -29,8 +36,8 @@ $input = new ezcConsoleInput();
 $helpOption = $input->registerOption( new ezcConsoleOption( 'h', 'help' ) );
 $helpOption->shorthelp = 'Show help';
 
-$updateOption = $input->registerOption( new ezcConsoleOption( '', 'update' ) );
-$updateOption->shorthelp = 'Do the update';
+$upgradeOption = $input->registerOption( new ezcConsoleOption( '', 'upgrade' ) );
+$upgradeOption->shorthelp = 'Do the upgrade';
 
 try {
     $input->process();
@@ -39,10 +46,11 @@ catch ( ezcConsoleOptionException $e ) {
     die( $e->getMessage() );
 }
 
+
 // Print help
 if ( $helpOption->value !== false )
 {
-    $output->outputLine( 'Gauffr update your database schema' );
+    $output->outputLine( 'Upgrade your Gauffr database schema' );
     $output->outputLine( $input->getSynopsis() );
     foreach ( $input->getOptions() as $option )
     {
@@ -51,14 +59,13 @@ if ( $helpOption->value !== false )
         else
             $output->outputLine( "\t{$option->long}: {$option->shorthelp}" );
     }
-
     exit(0);
 }
 
 
 
 /*
- * Update
+ * upgrade
  */
 
 // Create schema from XML
@@ -69,7 +76,7 @@ $db = ezcDbInstance::get(Gauffr::GAUFFR_DB_INSTANCE);
 $dbSchema = ezcDbSchema::createFromDb( $db );
 
 // Filter gauffr tables from gauffr.ini
-Gauffr::gauffrTablesFilter($dbSchema);
+//Gauffr::gauffrTablesFilter($dbSchema);
 
 // compare the schemas:
 $diffSchema = ezcDbSchemaComparator::compareSchemas( $dbSchema, $xmlSchema );
@@ -78,22 +85,26 @@ $diffSchema = ezcDbSchemaComparator::compareSchemas( $dbSchema, $xmlSchema );
 // to $xmlSchema:
 if ( $sqlArray = $diffSchema->convertToDDL( $db ) )
 {
-    $output->outputLine( "Queries to execute to update the base:" );
+    $output->outputLine( 'Queries to execute to upgrade the base:' );
     foreach ( $sqlArray as $query )
     {
-        $output->outputLine( $query );
+        $output->outputLine( "\t" . $query );
     }
 
-    if ( $updateOption->value === true )
+    if ( $upgradeOption->value === true )
     {
         // apply the differences to the database:
         $diffSchema->applyToDB( $db );
-        $output->outputLine( "Database is updated" );
+        $output->outputLine( "\n" . 'Database is upgraded' . "\n", 'success' );
+    }
+    else
+    {
+        $output->outputLine( "\n" . 'Need to launch upgrade.php with --upgrade option to upgrade database' . "\n", 'important' );
     }
 }
 else
 {
-    $output->outputLine( "Database is already updated" );
+    $output->outputLine( 'Database is already upgraded' . "\n", 'success' );
 }
 
 ?>
