@@ -167,9 +167,6 @@ class GauffrMvcAuthenticationFilter
         {
             $login = $session->load();
             $password = null;
-
-            $credentials = new ezcAuthenticationPasswordCredentials( $login, $password );
-            return new ezcAuthentication( $credentials );
         }
 
         $gauffr = Gauffr::getInstance();

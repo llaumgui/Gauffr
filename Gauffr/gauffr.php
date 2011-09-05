@@ -530,12 +530,13 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
      */
     public static function authenticationDatabase( $login, $password, $slave_identifier = false, $login_is_alt_login = false, &$authentication = false )
     {
+        $doLog = ($authentication === false ? true : false );
         $gauffr = self::getInstance();
         $gauffr->authenticationDatabaseFilter( $authentication, $filter, $login, $password, $login_is_alt_login );
 
         if ( !$authentication->run() )
         {
-            Gauffr::log('Authentification failled for user "' . $login . '" (' . ($login_is_alt_login ? 'AltLogin' : 'Login') . ')', 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
+            ($doLog ? Gauffr::log('Authentification failled for user "' . $login . '" (' . ($login_is_alt_login ? 'AltLogin' : 'Login') . ')', 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) ) : false);
             return false;
         }
 
@@ -552,7 +553,7 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
         // No slave_identifier control
         if ( !$slave_identifier )
         {
-            Gauffr::log("Authentification successful for user \"$login\"", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
+            ($doLog ? Gauffr::log("Authentification successful for user \"$login\"", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) ) : false);
             return $user;
         }
         else
@@ -560,12 +561,12 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
 
             if ( $user->hasCredentialByIdentifier($slave_identifier) )
             {
-                Gauffr::log("Authentification successful on \"$slave_identifier\" for user \"$login\"", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
+                ($doLog ? Gauffr::log("Authentification successful on \"$slave_identifier\" for user \"$login\"", 'gauffr', GauffrLog::DEBUG, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) ) : false);
                 return $user;
             }
             else
             {
-                Gauffr::log("User \"$login\" don't have access to \"$slave_identifier\"", 'gauffr', GauffrLog::SYSTEM, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) );
+                ($doLog ? Gauffr::log("User \"$login\" don't have access to \"$slave_identifier\"", 'gauffr', GauffrLog::SYSTEM, array( "category" => "AuthenticationDatabase", "file" => __FILE__, "line" => __LINE__ ) ) : false);
                 $authentication = false;
 
                 return false;
