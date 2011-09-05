@@ -1,8 +1,12 @@
-Gauffr 0.4
+Gauffr 0.5
 ----------
-The first version usable in production !
+ - Add GauffrAdmin
 
- - New database schema defined by .sql and .XML
+Gauffr 0.4 (2010-08-25)
+-----------------------
+''The first version usable in production !''
+
+ - New database schema defined by .XML
  - Fetch GauffrUser and GauffrUserExtended, GauffrCredential, informations (issues 80 & issues 81)
  - News tutorials
  - New organisation of code
@@ -23,5 +27,7 @@ Gauffr 0.3
  - API documentation
 
 Gauffr 0.1
-----------
- - Proof of Concept
+-----------------------
+''Proof of Concept''
+
+ - First release
