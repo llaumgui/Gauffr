@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the GauffrAdminUsersView class.
+ * File containing the GauffrAdminUserCredentialView class.
  *
  * @version //autogentag//
  * @package GauffrAdmin
@@ -9,7 +9,7 @@
  */
 
 /**
- * The GauffrAdminUsersView classes.
+ * The GauffrAdminUserCredentialView classes.
  *
  * User credential viewer
  *
