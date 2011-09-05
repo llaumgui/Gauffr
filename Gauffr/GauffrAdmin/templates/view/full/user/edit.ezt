@@ -1,7 +1,9 @@
 {use $gauffrSlaves, $gauffrUser, $redirectAfterEdit}
 {tr_context "view/full/user/edit.ezt"}
+
 <h2>{tr "Edit user \"%username\""
         vars 'username' => $gauffrUser->Login}</h2>
+
 <form class="formedit" method="post" action="">
     <p>
         <span class="label">{tr "Login"}</span>
