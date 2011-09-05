@@ -163,16 +163,18 @@ class GauffrMvcAuthenticationFilter
         $session = new ezcAuthenticationSession( $options );
         $session->start();
 
+        $doLog = true;
         if ( $login === null )
         {
             $login = $session->load();
             $password = null;
+            $doLog = false;
         }
 
         $gauffr = Gauffr::getInstance();
         $slave_identifier = empty($this->options->varSlaveIdentifier) ? false : $this->options->varSlaveIdentifier;
 
-        $gauffr->authenticationDatabase ( $login, $password, $slave_identifier, false, $authentication );
+        $gauffr->authenticationDatabase ( $login, $password, $slave_identifier, false, $authentication, $doLog );
         if ( $authentication !== false )
             $authentication->session = $session;
 

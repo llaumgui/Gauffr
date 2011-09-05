@@ -516,21 +516,19 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1
      * $user = Gauffr::authenticationDatabase(
      *      $_POST['login'],
      *      $_POST['password'],
-     *      'gauffradmin'
-     *      true,
-     *      false
+     *      'gauffr_admin'
      * );
      * </code>
      *
-     * @param string $login
-     * @param string $password
-     * @param string $slave_identifier
+     * @param string $login User login
+     * @param string $password User password
+     * @param string $slave_identifier GauffrSlave identifier for check credential
      * @param boolean $login_is_alt_login The $login is an altLogin ?
-     * @param ezcAuthentication &$authentication
+     * @param ezcAuthentication &$authentication Get ezcAuthentication ?
+     * @param boolean $doLog Log any action ?
      */
-    public static function authenticationDatabase( $login, $password, $slave_identifier = false, $login_is_alt_login = false, &$authentication = false )
+    public static function authenticationDatabase( $login, $password, $slave_identifier = false, $login_is_alt_login = false, &$authentication = false, $doLog = true)
     {
-        $doLog = ($authentication === false ? true : false );
         $gauffr = self::getInstance();
         $gauffr->authenticationDatabaseFilter( $authentication, $filter, $login, $password, $login_is_alt_login );
 
