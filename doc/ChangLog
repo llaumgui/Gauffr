@@ -1,6 +1,12 @@
-Gauffr 0.5
-----------
- - Add GauffrAdmin
+Gauffr 0.5 (2011-??-??)
+-----------------------
+ - Move to GIT.
+ - Add GauffrAdmin, the Gauffr WebUI:
+    - Can edit credentials,
+    - Can edit extended informations,
+    - Can read logs,
+ - Add an update sccript.
+ - A lot of enhancements and fixes.
 
 Gauffr 0.4 (2010-08-25)
 -----------------------
@@ -16,18 +22,17 @@ Gauffr 0.4 (2010-08-25)
 
 Gauffr 0.3.1
 ------------
- - Fix some bug in GauffrLog
+ - Fix some bug in GauffrLog.
 
 Gauffr 0.3
 ----------
- - Rename some method, table, classes
- - Log in database instead of file
- - Persistent object
- - Remove GauffrSynchro
- - API documentation
+ - Rename some methods, tables, classes...
+ - Log in database instead of file (Use eZC EventLog & EventLogDatabaseTiein).
+ - Use Persistent object (Use eZC PersistentObject).
+ - API documentation (Use phpDocumentor).
 
 Gauffr 0.1
------------------------
+----------
 ''Proof of Concept''
 
- - First release
+ - First release.
