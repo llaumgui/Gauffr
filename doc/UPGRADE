@@ -1,0 +1,23 @@
+STEP 1: Before the update
+=========================
+ - Make a backup (dump) of your database.
+ - Backup your ___gauffr_admin.ini___ and ___gauffr.ini___ files.
+
+STEP 2: Upgrade your Gauffr and GauffrAdmin applications
+========================================================
+ - Download the most recent stable version existing in the download section of the official Gauffr website.
+ - Unpack the Gauffr package you downloaded.
+ - Upload all of the new files and directories.
+
+ OR
+
+ - Use a distro package like ___RPM___ or ___deb___.
+
+STEP 3: Upgrade your database
+=============================
+ - Run the update script:
+~~~
+cd Gauffr/scripts/
+php upgrade.php
+php upgrade.php --upgrade
+~~~
