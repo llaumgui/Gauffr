@@ -57,7 +57,7 @@ class GauffrAdmin
 
 
     /**
-     * Returns an instance of the class Gauffr.
+     * Returns an instance of the class GauffrAdmin.
      *
      * @return Gauffr Instance of Gauffr
      */
@@ -76,9 +76,10 @@ class GauffrAdmin
      *
      * @return string GauffrAdmin root directory
      */
-    public static function getInstallRoot()
+    public static function getInstallRoot( $with_trailing_slash = true )
     {
-        return self::getInstance()->installRoot . '/';
+        $trailing_slash = ($with_trailing_slash ? '/' : '');
+        return self::getInstance()->installRoot . $trailing_slash;
     }
 
 
@@ -93,6 +94,20 @@ class GauffrAdmin
         if ( strpos($uri, '/') === 0 )
             $uri = substr($uri, 1);
         return self::getInstallRoot() . $uri;
+    }
+
+
+
+    /**
+     * Get a root URI from a full URL
+     *
+     * @param string $url
+     */
+    public static function getRootFromURL($url)
+    {
+        $search = array( 'https://', 'http://', $_SERVER['HTTP_HOST'], GauffrAdmin::getInstallRoot() );
+        $replace = array( '', '', '', '' );
+        return str_replace( $search, $replace, $url );
     }
 
 }

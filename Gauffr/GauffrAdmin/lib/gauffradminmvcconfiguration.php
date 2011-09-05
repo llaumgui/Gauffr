@@ -28,7 +28,7 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
     function createRequestParser()
     {
         $parser = new ezcMvcHttpRequestParser;
-        $parser->prefix = preg_replace( '@/index\.php$@', '', $_SERVER['SCRIPT_NAME'] );
+        $parser->prefix = GauffrAdmin::getInstallRoot(false);
         return $parser;
     }
 
