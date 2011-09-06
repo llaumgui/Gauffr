@@ -39,9 +39,7 @@ class GauffrAdminAjaxController extends ezcMvcController
      */
 	private function searchUser()
     {
-    	// Return
         $ret = new ezcMvcResult;
-
         $ret->variables['gauffrUsers'] = GauffrUser::findUser($_POST['q']);
 
         return $ret;

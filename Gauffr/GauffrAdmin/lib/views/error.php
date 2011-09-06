@@ -26,6 +26,7 @@ class GauffrAdminErrorView extends ezcMvcView
         $zones[] = new ezcMvcTemplateViewHandler( 'menu', 'parts/menu.ezt' );
         $zones[] = new ezcMvcTemplateViewHandler( 'content', 'error/fatal.ezt' );
         $zones[] = new ezcMvcTemplateViewHandler( 'page_layout', 'layout.ezt' );
+
         return $zones;
     }
 }

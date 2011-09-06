@@ -51,9 +51,7 @@ class GauffrAdminUserCredentialController extends ezcMvcController
     	if ( $edit == 'ok' )
     	    $messages['ok'][] = GauffrAdminI18n::getTranslation( 'view/user/credential', 'The user has been edited.' );
 
-    	// Return
         $ret = new ezcMvcResult;
-
         $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/user/credential', 'User credential' );
         $ret->variables['messages'] = $messages;
         $ret->variables['gauffrUsers'] = $gauffrUsers;

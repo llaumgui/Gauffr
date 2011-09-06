@@ -42,7 +42,6 @@ class GauffrAdminUserEditController extends ezcMvcController
         if ( empty($_POST) )
         {
             $ret = new ezcMvcResult;
-
             $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/user/credential', 'User credential' );
             $ret->variables['gauffrUser'] = $gauffrUser;
             $ret->variables['gauffrSlaves'] = GauffrSlave::fetch( array( 'filter' => array( array( 'HasCredential', '=', 1 )) ));
@@ -64,12 +63,14 @@ class GauffrAdminUserEditController extends ezcMvcController
 
             $ret = new ezcMvcResult;
             $ret->status = new ezcMvcExternalRedirect( GauffrAdmin::buildURL($redirect.'?edit=ok') );
+
             return $ret;
         }
 
         // Redirect on error
         $req = new ezcMvcRequest;
         $req->uri = '/ERROR';
+
         return new ezcMvcInternalRedirect($req);
 
     }

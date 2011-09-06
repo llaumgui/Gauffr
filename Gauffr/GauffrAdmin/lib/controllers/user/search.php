@@ -26,7 +26,6 @@ class GauffrAdminUserSearchController extends ezcMvcController
     {
     	// Return
         $ret = new ezcMvcResult;
-
         $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/user/search', 'Search user' );
 
         return $ret;

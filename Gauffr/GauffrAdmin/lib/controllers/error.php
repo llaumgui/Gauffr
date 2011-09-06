@@ -23,12 +23,11 @@ class GauffrAdminErrorController extends ezcMvcController
 	 */
 	public function doError()
     {
-        $ret = new ezcMvcResult;
-
         $errorMessages = array();
         if ( isset( $GLOBALS['DEBUG_ERROR_MESSAGES'] ) )
             $errorMessages = $GLOBALS['DEBUG_ERROR_MESSAGES'];
 
+        $ret = new ezcMvcResult;
         $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/error', 'Error' );
         $ret->variables['errorMessages'] = $errorMessages;
 

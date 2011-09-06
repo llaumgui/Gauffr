@@ -11,22 +11,20 @@
 return array (
     'Gauffr' => 'gauffr.php',
 
-    /* Classes */
+    // Classes
     'GauffrMvcAuthenticationFilter' => 'Gauffr/lib/gauffrmvcauthenticationfilter.php',
     'GauffrMvcAuthenticationFilterOptions' => 'Gauffr/lib/gauffrmvcauthenticationfilteroptions.php',
     'GauffrPersistentObject' => 'Gauffr/lib/gauffrpersistentobject.php',
     'GauffrPersistentSessionIdentity' => 'Gauffr/lib/gauffrpersistentsessionidentity.php',
 
-
-    /* PO */
+    // Persistent objects
     'GauffrCredential' => 'Gauffr/lib/persistentobject/gauffrcredential.php',
     'GauffrLog' => 'Gauffr/lib/persistentobject/gauffrlog.php',
     'GauffrUser' => 'Gauffr/lib/persistentobject/gauffruser.php',
     'GauffrUserExtended' => 'Gauffr/lib/persistentobject/gauffruserextended.php',
     'GauffrSlave' => 'Gauffr/lib/persistentobject/gauffrslave.php',
 
-
-    /* lazyconfiguration */
+    // Lazy configuration
     'GauffrLazyConfigurationConfiguration' => 'Gauffr/lib/lazyconfiguration/gauffrlazyconfigurationconfiguration.php',
     'GauffrLazyDatabaseConfiguration' => 'Gauffr/lib/lazyconfiguration/gauffrlazydatabaseconfiguration.php',
     'GauffrLazyLogConfiguration' => 'Gauffr/lib/lazyconfiguration/gauffrlazylogconfiguration.php',
