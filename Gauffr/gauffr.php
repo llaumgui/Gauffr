@@ -334,10 +334,10 @@ class Gauffr
                         'Tests' => 'eZC Database',
                         'Result' => (class_exists('ezcDbInstance')) ? 'Pass' : 'Failed'
                     ),
-                    /*array(
+                    array(
                         'Tests' => 'eZC DatabaseSchema',
                         'Result' => (class_exists('ezcDbSchema')) ? 'Pass' : 'Failed'
-                    ),*/
+                    ),
                     array(
                         'Tests' => 'eZC EventLog',
                         'Result' => (class_exists('ezcLog')) ? 'Pass' : 'Failed'
