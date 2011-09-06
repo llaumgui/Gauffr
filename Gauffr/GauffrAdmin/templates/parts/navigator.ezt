@@ -16,11 +16,11 @@
     {/while}
 </ul>
 {elseif $pageCount == 1 && $useJSPager}
-<div class="pager" id="jspager">
-    <form>
+<form action="">
+    <p class="pager" id="jspager">
         <img class="first" src="{build_url('media/images/first.png')}" alt="{tr "Go to first page"}" />
         <img class="prev" src="{build_url('media/images/prev.png')}" alt="{tr "Go to previous page"}" />
-        <input type="text" class="pagedisplay">
+        <input type="text" class="pagedisplay" />
         <img class="next" src="{build_url('media/images/next.png')}" alt="{tr "Go to next page"}" />
         <img class="last" src="{build_url('media/images/last.png')}" alt="{tr "Go to last page"}" />
         <select class="pagesize">
@@ -29,6 +29,6 @@
             <option value="75">75</option>
             <option value="100">100</option>
         </select>
-    </form>
-</div>
+    </p>
+</form>
 {/if}

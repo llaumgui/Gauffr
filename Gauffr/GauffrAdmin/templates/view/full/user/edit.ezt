@@ -15,8 +15,8 @@
     </p>
 
     <p>
-        <label for="GauffrUserExtended[AltLogin]">AltLogin</label>
-        <input type="text" name="GauffrUserExtended[AltLogin]" id="GauffrUserExtended[AltLogin]" value="{if is_set($gauffrUser->Extended->AltLogin)}{$gauffrUser->Extended->AltLogin}{/if}" />
+        <label for="GauffrUserExtended_AltLogin">AltLogin</label>
+        <input type="text" name="GauffrUserExtended[AltLogin]" id="GauffrUserExtended_AltLogin" value="{if is_set($gauffrUser->Extended->AltLogin)}{$gauffrUser->Extended->AltLogin}{/if}" />
     </p>
 
     <h3>{tr "Edit credentials"}</h3>
@@ -30,12 +30,12 @@
     <tr>
         <td>{$slave->Name}</td>
         <td class="picto"><input type="checkbox" {if ga_has_credential($gauffrUser, $slave->ID)}checked="checked"{/if} name="GauffrCredential[{$slave->ID}]" value="1" /></td>
-    <tr>
+    </tr>
 {/foreach}
 </tbody></table>
 
     <p class="buttons">
         <input type="hidden" name="redirect_after_edit" value="{$redirectAfterEdit}" />
         <input type="submit" class="submit" value="{tr "Submit"}" />
-    </>
+    </p>
 </form>
