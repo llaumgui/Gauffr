@@ -1,10 +1,10 @@
 From the sources
 ================
- * Install the dependencies ([[Requirements]]) don't forget the [eZ Components](http://ezcomponents.org/docs/install)
- * Download Gauffr
- * Install the __Gauffr__ directory in __/usr/share/php__ or equivalent (Don't forget to check [set_include_path](http://php.net/manual/function.set-include-path.php))
- * [[ConfigureGauffr]]
- * Use the install.php scripts
+ * Install the dependencies ([[Requirements]]) don't forget the [eZ Components](http://ezcomponents.org/docs/install).
+ * Download Gauffr.
+ * Install the __Gauffr__ directory in __/usr/share/php__ or equivalent (Don't forget to check [set_include_path](http://php.net/manual/function.set-include-path.php)).
+ * [[ConfigureGauffr]].
+ * Use the install.php scripts:
 ~~~
 cd Gauffr/scripts/
 php install.php
@@ -13,27 +13,31 @@ php install.php
 
 From RPM
 ========
- * Install the dependencies ([[Requirements]]) don't forget the [eZ Components](http://ezcomponents.org/docs/install)
- * Download and install the RPM of Gauffr and GauffrAdmin
- * [[ConfigureGauffr]] in __/etc/gauffr/__
- * Use the install.php scripts
+ * Install the dependencies ([[Requirements]]) don't forget the [eZ Components](http://ezcomponents.org/docs/install).
+ * Download and install the RPM of Gauffr and GauffrAdmin.
+ * [[ConfigureGauffr]] in __/etc/gauffr/__.
+ * Use the install.php scripts:
 ~~~
 cd Gauffr/scripts/
 php install.php
 ~~~
- * Include Gauffr and [[UseGauffr]]
+ * Include Gauffr and [[UseGauffr]].
 
 With YUM
 ========
- * Use [my repository](http://www.llaumgui.com/pages/depot-llaumgui)
- * Install Gauffr
+ * Use [my repository](http://www.llaumgui.com/pages/depot-llaumgui).
+ * Install Gauffr:
 ~~~
 yum --enablerepo=remi install gauffr
 ~~~
- * [[ConfigureGauffr]] in __/etc/gauffr/__
- * Use the install.php scripts
+ * [[ConfigureGauffr]] in __/etc/gauffr/__.
+ * Use the install.php scripts:
 ~~~
 cd Gauffr/scripts/
 php install.php
 ~~~
- * Include Gauffr and [[UseGauffr]]
+ * Include Gauffr and [[UseGauffr]].
+
+Video
+=====
+Gauffr installation in live: [See on YouTube](http://youtu.be/Q2xGWBF0mxk?hd=1)

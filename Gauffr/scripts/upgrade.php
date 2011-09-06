@@ -2,7 +2,7 @@
 <?php
 /**
  * File containing the php script for upgrade Gauffr DB tables.
- * Use upgrade.php --help for mor informations.
+ * Use upgrade.php --help for more informations.
  *
  * @version //autogentag//
  * @package Gauffr
@@ -51,7 +51,7 @@ catch ( ezcConsoleOptionException $e ) {
 // Print help
 if ( $helpOption->value !== false )
 {
-    $output->outputLine( 'Upgrade your Gauffr database schema' );
+    $output->outputLine( 'Upgrade your Gauffr database schema.' );
     $output->outputLine( $input->getSynopsis() );
     foreach ( $input->getOptions() as $option )
     {
