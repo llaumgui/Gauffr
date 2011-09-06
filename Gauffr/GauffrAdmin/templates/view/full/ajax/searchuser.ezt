@@ -1,13 +1,19 @@
 {use $gauffrUsers}
 {tr_context "view/full/ajax/searchuser.ezt"}
 
-{foreach $gauffrUsers as $user}
-<tr>
-    <td>{$user->ID}</td>
-    <td>{$user->Login}</td>
-    <td>{$user->Mail}</td>
-    <td class="picto picto_edit">
-        <a href="{build_url('user/edit/'.$user->ID)}"><img src="{build_url('/media/images/edit.png')}" alt="{tr "Edit"}" /></a>&nbsp;&nbsp;
-    </td>
-</tr>
-{/foreach}
+{if $gauffrUsers}
+    {foreach $gauffrUsers as $user}
+    <tr>
+        <td>{$user->ID}</td>
+        <td>{$user->Login}</td>
+        <td>{$user->Mail}</td>
+        <td class="picto picto_edit">
+            <a href="{build_url('user/edit/'.$user->ID)}"><img src="{build_url('/media/images/edit.png')}" alt="{tr "Edit"}" /></a>&nbsp;&nbsp;
+        </td>
+    </tr>
+    {/foreach}
+{else}
+    <tr>
+        <td colspan="4" class="picto">{tr "No result found !"}</td>
+    </tr>
+{/if}

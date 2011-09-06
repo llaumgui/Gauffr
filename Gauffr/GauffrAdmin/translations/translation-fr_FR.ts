@@ -165,6 +165,11 @@
             <source>Edit</source>
             <translation>Edition</translation>
         </message>
+        <message>
+            <source>No result found !</source>
+            <translation>Aucun résultat trouvé !</translation>
+        </message>
+
     </context>
 
     <context>
