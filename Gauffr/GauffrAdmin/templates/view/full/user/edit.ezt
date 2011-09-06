@@ -15,8 +15,8 @@
     </p>
 
     <p>
-        <label for="GauffrUserExtended_AltLogin">AltLogin</label>
-        <input type="text" name="GauffrUserExtended_AltLogin" id="GauffrUserExtended_AltLogin" value="{if is_set($gauffrUser->Extended->AltLogin)}{$gauffrUser->Extended->AltLogin}{/if}" />
+        <label for="GauffrUserExtended[AltLogin]">AltLogin</label>
+        <input type="text" name="GauffrUserExtended[AltLogin]" id="GauffrUserExtended[AltLogin]" value="{if is_set($gauffrUser->Extended->AltLogin)}{$gauffrUser->Extended->AltLogin}{/if}" />
     </p>
 
     <h3>{tr "Edit credentials"}</h3>

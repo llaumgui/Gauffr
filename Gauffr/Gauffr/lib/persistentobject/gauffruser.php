@@ -347,6 +347,49 @@ class GauffrUser extends GauffrPersistentObject
 
 
     /**
+     * Update GauffrUserExtended for a GauffrUser
+     *
+     * @param array $user_extended Array like array( 'AltLogin' => 'BlablaBli' )
+     */
+    public function updateUserExtended( $user_extended )
+    {
+        $session = self::getPersistentSessionInstance();
+        $empty = true;
+
+        if ( !empty($user_extended['AltLogin']) )
+        {
+            $altLogin =  $user_extended['AltLogin'];
+            $empty = false;
+        }
+
+        if ( !$empty )
+        {
+            if ( !($gauffrUserExtended = $this->Extended) )
+            {
+                $gauffrUserExtended = new GauffrUserExtended();
+                $gauffrUserExtended->setID( $gauffrUser->getID() );
+                $gauffrUserExtended->AltLogin = $altLogin;
+                $session->save($gauffrUserExtended);
+            }
+            else
+            {
+                $gauffrUserExtended->AltLogin = $altLogin;
+                $session->update($gauffrUserExtended);
+            }
+        }
+        else
+        {
+            // Remove empty GauffrUserExtended
+            if ( ($gauffrUserExtended = $this->Extended) )
+            {
+                $session->delete( $gauffrUserExtended );
+            }
+        }
+    }
+
+
+
+    /**
      * The GauffrUser has access to GauffrSlave by GauffrSlave's identifier ?
      *
      * @param $id
