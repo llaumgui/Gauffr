@@ -1,11 +1,13 @@
-Gauffr 0.5 (2011-??-??)
+Gauffr 0.9 (2011-??-??)
 -----------------------
+''Beta first stable release''
  - Move to GIT.
  - Add GauffrAdmin, the Gauffr WebUI:
     - Can edit credentials,
     - Can edit extended informations,
     - Can read logs,
- - Add an update sccript.
+ - Add an install script.
+ - Add an update script.
  - A lot of enhancements and fixes.
 
 Gauffr 0.4 (2010-08-25)
