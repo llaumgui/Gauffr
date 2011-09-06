@@ -38,8 +38,6 @@ $(document).ready
 
 	// AJAX
 	$('#searchUser').gauffrSearchUser({ q:'#q', tbody:'#ajax_result tbody' });
-
-
 });
 
 
@@ -87,6 +85,9 @@ $.fn.gauffrSearchUser = function ( $params ) {
 			$gauffrAdmin.url + 'ajax/searchUser',
 			{
 				q: input.val(),
+			},
+			function() {
+				$('.sortable').trigger("update");
 			}
 		);
 	});
