@@ -24,7 +24,7 @@ class GauffrAdminGauffrSlaveView extends ezcMvcView
 
         $zones = array();
         $zones[] = new ezcMvcTemplateViewHandler( 'menu', 'parts/menu.ezt' );
-        $zones[] = new ezcMvcTemplateViewHandler( 'content', 'view/full/gauffrslave.ezt' );
+        $zones[] = new ezcMvcTemplateViewHandler( 'content', 'view/full/slave/gauffrslave.ezt' );
         $zones[] = new ezcMvcTemplateViewHandler( 'page_layout', 'layout.ezt' );
 
         return $zones;

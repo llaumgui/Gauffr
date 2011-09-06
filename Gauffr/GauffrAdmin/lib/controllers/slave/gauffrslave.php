@@ -28,7 +28,6 @@ class GauffrAdminGauffrSlaveController extends ezcMvcController
         $limit = $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminLimit', 'GauffrSlave' );
         ( isset($_GET['offset']) ) ? $offset = $_GET['offset'] : $offset = 0;
 
-
         $ret = new ezcMvcResult;
         $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/gauffrslave', 'GauffrSlave' );
         $ret->variables['gauffrSlave'] = GauffrSlave::fetch( );
