@@ -21,14 +21,15 @@ include 'Gauffr/gauffr.php';
 
 // Setup output
 $output = new ezcConsoleOutput();
-$output->formats->info->color = 'blue';
+$output->formats->motd->color = 'cyan';
+$output->formats->motd->style = array( 'bold' );
 $output->formats->success->color = 'green';
 $output->formats->important->color = 'red';
 
 
 // MOTD
-$output->outputLine( 'Gauffr upgrade script.' . "\n", 'info' );
-
+$output->outputLine( 'Gauffr upgrade script', 'motd' );
+$output->outputLine( '=====================' . "\n", 'motd' );
 
 // Setup input and options
 $input = new ezcConsoleInput();
@@ -76,7 +77,7 @@ $db = ezcDbInstance::get(Gauffr::GAUFFR_DB_INSTANCE);
 $dbSchema = ezcDbSchema::createFromDb( $db );
 
 // Filter gauffr tables from gauffr.ini
-//Gauffr::gauffrTablesFilter($dbSchema);
+Gauffr::gauffrTablesFilter($dbSchema);
 
 // compare the schemas:
 $diffSchema = ezcDbSchemaComparator::compareSchemas( $dbSchema, $xmlSchema );
@@ -95,16 +96,16 @@ if ( $sqlArray = $diffSchema->convertToDDL( $db ) )
     {
         // apply the differences to the database:
         $diffSchema->applyToDB( $db );
-        $output->outputLine( "\n" . 'Database is upgraded' . "\n", 'success' );
+        $output->outputLine( "\n" . 'Database is upgraded.' . "\n", 'success' );
     }
     else
     {
-        $output->outputLine( "\n" . 'Need to launch upgrade.php with --upgrade option to upgrade database' . "\n", 'important' );
+        $output->outputLine( "\n" . 'Need to launch upgrade.php with --upgrade option to upgrade database.' . "\n", 'important' );
     }
 }
 else
 {
-    $output->outputLine( 'Database is already upgraded' . "\n", 'success' );
+    $output->outputLine( 'Database is already upgraded.' . "\n", 'success' );
 }
 
 ?>
