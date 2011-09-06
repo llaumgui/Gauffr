@@ -3,23 +3,23 @@ From the sources
  * Install the dependencies ([[Requirements]]) don't forget the [eZ Components](http://ezcomponents.org/docs/install)
  * Download Gauffr
  * Install the __Gauffr__ directory in __/usr/share/php__ or equivalent (Don't forget to check [set_include_path](http://php.net/manual/function.set-include-path.php))
- * Use the install.php scripts (TODO)
  * [[ConfigureGauffr]]
- * Check if Gauffr is operational
+ * Use the install.php scripts
 ~~~
-Gauffr::info()
+cd Gauffr/scripts/
+php install.php
 ~~~
  * Include Gauffr and [[UseGauffr]]
 
 From RPM
 ========
  * Install the dependencies ([[Requirements]]) don't forget the [eZ Components](http://ezcomponents.org/docs/install)
- * Download RPM of Gauffr
- * Use the install.php scripts (TODO)
+ * Download and install the RPM of Gauffr and GauffrAdmin
  * [[ConfigureGauffr]] in __/etc/gauffr/__
- * Check if Gauffr is operational
+ * Use the install.php scripts
 ~~~
-Gauffr::info()
+cd Gauffr/scripts/
+php install.php
 ~~~
  * Include Gauffr and [[UseGauffr]]
 
@@ -30,10 +30,10 @@ With YUM
 ~~~
 yum --enablerepo=remi install gauffr
 ~~~
- * Use the install.php scripts (TODO)
  * [[ConfigureGauffr]] in __/etc/gauffr/__
- * Check if Gauffr is operational
+ * Use the install.php scripts
 ~~~
-Gauffr::info()
+cd Gauffr/scripts/
+php install.php
 ~~~
  * Include Gauffr and [[UseGauffr]]
