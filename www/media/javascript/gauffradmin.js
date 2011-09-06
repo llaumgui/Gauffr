@@ -34,8 +34,11 @@ $(document).ready
 	}
 
 	// fadeOut effect
-	$('.fadeout').fadeOut( 5000, function() {
-	});
+	$('.fadeout').fadeOut( 5000, function() {});
+
+	// AJAX
+	$('#searchUser').gauffrSearchUser({ q:'#q', tbody:'#ajax_result tbody' });
+
 
 });
 
@@ -47,6 +50,10 @@ $(document).ready
 
 /**
  * Go to on change
+ *
+ * <code>
+ * $('select.goOnChange').gauffrGoOnChange();
+ * </code>
  */
 $.fn.gauffrGoOnChange = function () {
 	var urlParams = $.url.paramAll();
@@ -63,5 +70,24 @@ $.fn.gauffrGoOnChange = function () {
 			});
 			window.location = window.location.pathname + urlParamsString;
 		});
+	});
+};
+
+
+
+/**
+ * AJAX search a GauffrUSer
+ */
+$.fn.gauffrSearchUser = function ( $params ) {
+	var input = $($params.q);
+	var tbody = $($params.tbody);
+
+    input.keydown(function() {
+    	tbody.load(
+			$gauffrAdmin.url + 'ajax/searchUser',
+			{
+				q: input.val(),
+			}
+		);
 	});
 };

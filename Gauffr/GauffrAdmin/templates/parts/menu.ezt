@@ -6,6 +6,7 @@
         <li class="{if $matchedRoute == "/log"}selected{/if}"><a href="{build_url('log')}">{tr "Logs"}</a><span class="separator"></span></li>
         <li class="{if $matchedRoute == "/user/extended"}selected{/if}"><a href="{build_url('user/extended')}">{tr "User extended"}</a><span class="separator"></span></li>
         <li class="{if $matchedRoute == "/user/credential"}selected{/if}"><a href="{build_url('user/credential')}">{tr "User credential"}</a><span class="separator"></span></li>
+        <li class="{if $matchedRoute == "/user/search"}selected{/if}"><a href="{build_url('user/search')}">{tr "Search user"}</a><span class="separator"></span></li>
         <li class="{if $matchedRoute == "/gauffrslave"}selected{/if}"><a href="{build_url('gauffrslave')}">{tr "GauffrSlave"}</a><span class="separator"></span></li>
         <li class="{if $matchedRoute == "/logout"}selected{/if}"><a href="{build_url('logout')}">{tr "Logout"}</a></li>
     </ul>

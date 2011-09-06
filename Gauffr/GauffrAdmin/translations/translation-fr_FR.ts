@@ -69,7 +69,12 @@
             <translation>GauffrSlave</translation>
         </message>
         <message>
+            <source>Search user</source>
+            <translation>Recherche d'utilisateur</translation>
+        </message>
+        <message>
             <source>Logout</source>
+            <translation>Déconnexion</translation>
         </message>
     </context>
 
@@ -155,10 +160,54 @@
     </context>
 
     <context>
+        <name>view/full/ajax/searchuser.ezt</name>
+        <message>
+            <source>Edit</source>
+            <translation>Edition</translation>
+        </message>
+    </context>
+
+    <context>
         <name>view/full/user/credential.ezt</name>
         <message>
             <source>Users</source>
             <translation>Utilisateurs</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>view/full/user/search.ezt</name>
+        <message>
+            <source>Search user</source>
+            <translation>Recherche utilisateurs</translation>
+        </message>
+        <message>
+            <source>User login or email</source>
+            <translation>Login ou email de l'utilisateur</translation>
+        </message>
+        <message>
+            <source>Users</source>
+            <translation>Utilisateur</translation>
+        </message>
+        <message>
+            <source>ID</source>
+            <translation>ID</translation>
+        </message>
+        <message>
+            <source>Login</source>
+            <translation>Login</translation>
+        </message>
+        <message>
+            <source>Mail</source>
+            <translation>Mail</translation>
+        </message>
+        <message>
+            <source>Edit</source>
+            <translation>Editer</translation>
+        </message>
+        <message>
+            <source>Waiting for result...</source>
+            <translation>En attente de résultat...</translation>
         </message>
     </context>
 
@@ -424,6 +473,14 @@
         <message>
             <source>The user has been edited.</source>
             <translation>L'utilisateur a bien été édité.</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>view/user/search</name>
+        <message>
+            <source>Search user</source>
+            <translation>Recherche utilisateurs</translation>
         </message>
     </context>
 

@@ -1,0 +1,25 @@
+{tr_context "view/full/user/search.ezt"}
+
+<h2>{tr "Search user"}</h2>
+
+<form id="searchUser" class="formedit" method="post" action="">
+    <p>
+        <label for="q">{tr "User login or email"}</label>
+        <input type="text" name="q" id="q" value="" />
+    </p>
+</form>
+
+<hr />
+
+<table class="sortable list" id="ajax_result" summary="{tr "Users"}">
+    <thead><tr>
+        <th class="first">{tr "ID"}</th>
+        <th>{tr "Login"}</th>
+        <th>{tr "Mail"}</th>
+        <th class="{literal}{sorter:false}{/literal}">{tr "Edit"}</th>
+    </tr></thead>
+    <tbody>
+    <tr>
+        <td class="picto" colspan="4">{tr "Waiting for result..."}</td>
+    </tr>
+</tbody></table>

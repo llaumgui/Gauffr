@@ -251,6 +251,28 @@ class GauffrUser extends GauffrPersistentObject
 
 
 
+    /**
+     * Find a GauffrUser by Login or Email using like
+     *
+     * @param string $search
+     * @return Return array of GauffrUser
+     */
+    public static function findUser( $search )
+    {
+        $gauffr = Gauffr::getInstance();
+        $session = self::getPersistentSessionInstance();
+        $q = $session->createFindQuery( 'GauffrUser' );
+            $q->where($q->expr->lOR(
+                $q->expr->like( 'Login', $q->bindValue( '%'.$search.'%' ) ),
+                $q->expr->like( 'Mail', $q->bindValue( '%'.$search.'%' ) )
+            ))
+            ->orderBy( 'Login' )
+            ->limit( 20 );
+        return $session->find( $q, 'GauffrUser' );
+    }
+
+
+
 
 
 /* *************************************************************** Credential */

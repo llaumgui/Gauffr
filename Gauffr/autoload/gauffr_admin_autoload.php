@@ -21,7 +21,8 @@ return array(
     'GauffrAdminLazyTemplateConfiguration' => 'GauffrAdmin/lib/lazyconfiguration/gauffradminlazytemplateconfiguration.php',
 
     /* Controller */
-    'GauffrAdminDashboardController' => 'GauffrAdmin/lib/controllers/dashboard.php',
+    'GauffrAdminAjaxController' => 'GauffrAdmin/lib/controllers/ajax.php',
+	'GauffrAdminDashboardController' => 'GauffrAdmin/lib/controllers/dashboard.php',
     'GauffrAdminErrorController' => 'GauffrAdmin/lib/controllers/error.php',
     'GauffrAdminLogController' => 'GauffrAdmin/lib/controllers/log.php',
     'GauffrAdminLoginController' => 'GauffrAdmin/lib/controllers/login.php',
@@ -29,15 +30,18 @@ return array(
     'GauffrAdminUserCredentialController' => 'GauffrAdmin/lib/controllers/user/credential.php',
     'GauffrAdminUserEditController' => 'GauffrAdmin/lib/controllers/user/edit.php',
 	'GauffrAdminUserExtendedController' => 'GauffrAdmin/lib/controllers/user/extended.php',
+	'GauffrAdminUserSearchController' => 'GauffrAdmin/lib/controllers/user/search.php',
     'GauffrAdminGauffrSlaveController' => 'GauffrAdmin/lib/controllers/gauffrslave.php',
 
     /* View */
-    'GauffrAdminErrorView' => 'GauffrAdmin/lib/views/error.php',
+    'GauffrAdminAjaxView' => 'GauffrAdmin/lib/views/ajax.php',
+	'GauffrAdminErrorView' => 'GauffrAdmin/lib/views/error.php',
     'GauffrAdminLogView' => 'GauffrAdmin/lib/views/log.php',
     'GauffrAdminLoginView' => 'GauffrAdmin/lib/views/login.php',
     'GauffrAdminUserCredentialView' => 'GauffrAdmin/lib/views/user/credential.php',
     'GauffrAdminUserEditView' => 'GauffrAdmin/lib/views/user/edit.php',
 	'GauffrAdminUserExtendedView' => 'GauffrAdmin/lib/views/user/extended.php',
+	'GauffrAdminUserSearchView' => 'GauffrAdmin/lib/views/user/search.php',
     'GauffrAdminGauffrSlaveView' => 'GauffrAdmin/lib/views/gauffrslave.php',
     'GauffrAdminRootView' => 'GauffrAdmin/lib/views/root.php',
 

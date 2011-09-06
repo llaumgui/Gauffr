@@ -65,6 +65,8 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
         {
             case '/':
                 return new GauffrAdminRootView( $request, $result );
+            case '/ajax/:function':
+                return new GauffrAdminAjaxView( $request, $result );
             case '/log':
                 return new GauffrAdminLogView( $request, $result );
             case '/gauffrslave':
@@ -79,6 +81,8 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
                 return new GauffrAdminUserEditView( $request, $result );
             case '/user/extended':
                 return new GauffrAdminUserExtendedView( $request, $result );
+            case '/user/search':
+                return new GauffrAdminUserSearchView( $request, $result );
 
             // System
             case '/login':
