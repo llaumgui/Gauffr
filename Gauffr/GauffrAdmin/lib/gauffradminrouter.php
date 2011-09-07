@@ -21,11 +21,14 @@ class GauffrAdminRouter extends ezcMvcRouter
     public function createRoutes()
     {
         return array(
-
+            // Misc
             new ezcMvcRailsRoute( '/', 'GauffrAdminDashboardController', 'dashboard' ),
             new ezcMvcRailsRoute( '/ajax/:function', 'GauffrAdminAjaxController', 'ajax' ),
             new ezcMvcRailsRoute( '/log', 'GauffrAdminLogController', 'log' ),
+
+            // GauffrSlave
             new ezcMvcRailsRoute( '/gauffrslave', 'GauffrAdminGauffrSlaveController', 'gauffrSlave' ),
+            new ezcMvcRailsRoute( '/gauffrslave/edit/:gauffrSlaveID', 'GauffrAdminGauffrSlaveEditController', 'gauffrSlaveEdit' ),
 
             // User
             new ezcMvcRailsRoute( '/user', 'GauffrAdminUserCredentialController', 'userCredential' ),
@@ -41,4 +44,5 @@ class GauffrAdminRouter extends ezcMvcRouter
         );
     }
 }
+
 ?>

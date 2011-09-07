@@ -29,6 +29,7 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
     {
         $parser = new ezcMvcHttpRequestParser;
         $parser->prefix = GauffrAdmin::getInstallRoot(false);
+
         return $parser;
     }
 
@@ -60,17 +61,21 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
      */
     function createView( ezcMvcRoutingInformation $routeInfo, ezcMvcRequest $request, ezcMvcResult $result )
     {
-    	$routeInfo->matchedRoute = str_replace( 'index.php', '', $routeInfo->matchedRoute );
-        switch ( $routeInfo->matchedRoute )
+        switch ( str_replace( 'index.php', '', $routeInfo->matchedRoute ) )
         {
+            // Misc
             case '/':
                 return new GauffrAdminRootView( $request, $result );
             case '/ajax/:function':
                 return new GauffrAdminAjaxView( $request, $result );
             case '/log':
                 return new GauffrAdminLogView( $request, $result );
+
+            // GauffrSlave
             case '/gauffrslave':
                 return new GauffrAdminGauffrSlaveView( $request, $result );
+            case '/gauffrslave/edit/:gauffrSlaveID':
+                return new GauffrAdminGauffrSlaveEditView( $request, $result );
 
             // User
             case '/user':
@@ -85,10 +90,11 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
                 return new GauffrAdminUserSearchView( $request, $result );
 
             // System
-            case '/login':
-                return new GauffrAdminLoginView( $request, $result );
             case '/ERROR':
                 return new GauffrAdminErrorView( $request, $result );
+            case '/login':
+                return new GauffrAdminLoginView( $request, $result );
+
         }
     }
 
@@ -128,8 +134,8 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
     function createFatalRedirectRequest( ezcMvcRequest $request, ezcMvcResult $result, Exception $response )
     {
         $req = clone $request;
-
         $cfg = ezcConfigurationManager::getInstance();
+
         if ( $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminSettings', 'Debug' ) == true )
         {
             $GLOBALS['DEBUG_DUMP'] = array(
@@ -184,6 +190,7 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
     {
 
         $auth = new GauffrMvcAuthenticationFilter();
+
     	switch ( $routeInfo->matchedRoute )
         {
 	        case '/login-required':
@@ -211,15 +218,20 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
         // Inject configuration in $result
         $cfg = ezcConfigurationManager::getInstance();
 
-        list( $lang ) =  $cfg->getSettingsAsList( GauffrAdmin::CONF_FILE, 'GauffrAdminSettings',
-            array( 'Language' ) );
-        $result->variables['lang'] = $lang;
-
-        list( $charset ) =  $cfg->getSettingsAsList( GauffrAdmin::CONF_FILE, 'GauffrAdminTemplatesSettings',
-            array( 'Charset' ) );
-        $result->variables['charset'] = $charset;
+        list( $lang ) =  $cfg->getSettingsAsList(
+            GauffrAdmin::CONF_FILE,
+            'GauffrAdminSettings',
+            array( 'Language' )
+        );
+        list( $charset ) =  $cfg->getSettingsAsList(
+            GauffrAdmin::CONF_FILE,
+            'GauffrAdminTemplatesSettings',
+            array( 'Charset' )
+        );
 
         // Inject informations in $result
+        $result->variables['lang'] = $lang;
+        $result->variables['charset'] = $charset;
         $result->variables['matchedRoute'] = $routeInfo->matchedRoute;
 
         // Inject session informations in $result
@@ -227,7 +239,6 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
         $options->idKey = 'gauffrAuth_id';
         $options->timestampKey = 'gauffrAuth_timestamp';
         $session = new ezcAuthenticationSession($options);
-
         $result->variables['username'] = $session->load();
     }
 

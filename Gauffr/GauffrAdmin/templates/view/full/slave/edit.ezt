@@ -1,0 +1,31 @@
+{use $gauffrSlave}
+{tr_context "view/full/slave/edit.ezt"}
+
+<h2>{tr "Edit GauffrSlave \"%slave_name\""
+        vars 'slave_name' => $gauffrSlave->Name}</h2>
+
+<form class="formedit" method="post" action="">
+    <p>
+        <label for="GauffrSlave_Name">{tr "Name"}</label>
+        <input type="text" name="GauffrSlave[Name]" id="GauffrSlave_Name" value="{if is_set($gauffrSlave->Name)}{$gauffrSlave->Name}{/if}" />
+    </p>
+
+    <p>
+        <label for="GauffrSlave_Identifier">{tr "Identifier"}</label>
+        <input type="text" name="GauffrSlave[Identifier]" id="GauffrSlave_Identifier" value="{if is_set($gauffrSlave->Identifier)}{$gauffrSlave->Identifier}{/if}" />
+    </p>
+
+    <p>
+        <label for="GauffrSlave_Location">{tr "URL"}</label>
+        <input type="text" name="GauffrSlave[Location]" id="GauffrSlave_Location" value="{if is_set($gauffrSlave->Location)}{$gauffrSlave->Location}{/if}" />
+    </p>
+
+    <p>
+        <label for="GauffrSlave_HasCredential">{tr "Has credential"}</label>
+        <input type="checkbox" name="GauffrSlave[HasCredential]" id="GauffrSlave_HasCredential" {if $gauffrSlave->HasCredential}checked="checked"{/if} />
+    </p>
+
+    <p class="buttons">
+        <input type="submit" class="submit" value="{tr "Submit"}" />
+    </p>
+</form>

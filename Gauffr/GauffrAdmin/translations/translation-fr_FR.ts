@@ -234,6 +234,32 @@
 
     <context>
         <name>view/full/slave/edit.ezt</name>
+        <message>
+            <source>Edit GauffrSlave "%slave_name"</source>
+            <translation>Edition du GauffrSlave "%slave_name"</translation>
+        </message>
+        <message>
+            <source>Submit</source>
+            <translation>Valider</translation>
+        </message>
+        <message>
+            <source>Name</source>
+            <translation>Nom</translation>
+        </message>
+        <message>
+            <source>Identifier</source>
+            <translation>Identifiant</translation>
+        </message>
+        <message>
+            <source>URL</source>
+            <translation>URL</translation>
+        </message>
+        <message>
+            <source>Has credential</source>
+            <translation>Soumis à des droits</translation>
+        </message>
+
+
     </context>
 
     <context>
@@ -363,7 +389,7 @@
         </message>
         <message>
             <source>Name</source>
-            <translation>Name</translation>
+            <translation>Nom</translation>
         </message>
         <message>
             <source>Identifier</source>

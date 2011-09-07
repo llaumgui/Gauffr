@@ -21,8 +21,8 @@
         {/if}</td>
         <td class="picto"><a href="{$slave->Location}"><img src="{build_url('media/images/link.png')}" alt="{tr "Go to URL"}" /></a></td>
         <td class="picto picto_edit">
-            <img src="{build_url('media/images/edit.png')}" alt="{tr "Edit"}" />&nbsp;&nbsp;
-            <img src="{build_url('media/images/delete.png')}" alt="{tr "Delete"}" />
+            <a href="{build_url('gauffrslave/edit/'.$slave->ID)}"><img src="{build_url('/media/images/edit.png')}" alt="{tr "Edit"}" /></a>&nbsp;&nbsp;
+            <!-- img src="{build_url('media/images/delete.png')}" alt="{tr "Delete"}" / -->
         </td>
     </tr>
 {/foreach}
