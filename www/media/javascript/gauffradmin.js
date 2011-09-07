@@ -38,6 +38,9 @@ $(document).ready
 
 	// AJAX
 	$('#searchUser').gauffrSearchUser({ q:'#q', tbody:'#ajax_result tbody' });
+
+	//
+	$(".validate").validate();
 });
 
 
@@ -75,6 +78,9 @@ $.fn.gauffrGoOnChange = function () {
 
 /**
  * AJAX search a GauffrUSer
+ * <code>
+ * $('#searchUser').gauffrSearchUser({ q:'#q', tbody:'#ajax_result tbody' });
+ * </code>
  */
 $.fn.gauffrSearchUser = function ( $params ) {
 	var input = $($params.q);
@@ -83,9 +89,7 @@ $.fn.gauffrSearchUser = function ( $params ) {
     input.keydown(function() {
     	tbody.load(
 			$gauffrAdmin.url + 'ajax/searchUser',
-			{
-				q: input.val(),
-			},
+			{ q: input.val() },
 			function() {
 				$('.sortable').trigger("update");
 			}

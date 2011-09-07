@@ -324,6 +324,12 @@ form span.label {
     float: left;
 }
 
+form label.error {
+    width: auto;
+    float: right;
+    color: #C24949;
+}
+
 form input,
 form span.input  {
     width: 250px;
@@ -335,10 +341,14 @@ form span.input  {
 form input {
     background: #EFEFDF;
     border: 1px solid #c9c9bb;
-    border-radius: 8px;
-     -webkit-border-radius: 8px;
-     -moz-border-radius: 8px;
+    border-radius: 4px;
+     -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+}
 
+form input.error {
+    background: #FFBCBC;
+    border: 1px solid #C24949;
 }
 
 form p.buttons {
