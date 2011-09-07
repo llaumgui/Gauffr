@@ -225,11 +225,15 @@
     </context>
 
     <context>
-        <name>view/full/gauffrslave.ezt</name>
+        <name>view/full/slave/gauffrslave.ezt</name>
         <message>
             <source>GauffrSlave</source>
             <translation>GauffrSlave</translation>
         </message>
+    </context>
+
+    <context>
+        <name>view/full/slave/edit.ezt</name>
     </context>
 
     <context>
@@ -494,6 +498,14 @@
         <message>
             <source>Search user</source>
             <translation>Recherche utilisateurs</translation>
+        </message>
+    </context>
+
+    <context>
+        <name>view/slave/edit</name>
+        <message>
+            <source>Edit GauffrSlave "%slave_name"</source>
+            <translation>Edition du GauffrSlave "%slave_name"</translation>
         </message>
     </context>
 

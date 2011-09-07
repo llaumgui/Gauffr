@@ -1,5 +1,5 @@
 {use $gauffrSlave}
-{tr_context "view/full/gauffrslave.ezt"}
+{tr_context "view/full/slave/gauffrslave.ezt"}
 
 <h2>{tr "GauffrSlave"}</h2>
 
