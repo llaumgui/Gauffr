@@ -66,13 +66,7 @@ class GauffrAdminUserEditController extends ezcMvcController
 
             return $ret;
         }
-
-        // Redirect on error
-        $req = new ezcMvcRequest;
-        $req->uri = '/ERROR';
-
-        return new ezcMvcInternalRedirect($req);
-
     }
 }
+
 ?>
