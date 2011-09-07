@@ -115,6 +115,25 @@ class GauffrAdminI18n
         return $i18n->currentLanguage;
     }
 
+
+
+    /**
+     * Load localized javascript
+     *
+     * @param string $js
+     *
+     * @return string
+     */
+    public static function JavascriptsLocalizer( $js )
+    {
+        $i18n = self::getInstance();
+        $locale = explode('_', $i18n->currentLanguage);
+
+        $js = str_replace('%LOCALE%', $locale[0], $js);
+
+        return $js;
+    }
+
 }
 
 ?>

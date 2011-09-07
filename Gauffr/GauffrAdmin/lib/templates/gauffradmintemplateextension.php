@@ -109,6 +109,7 @@ class GauffrAdminTemplateExtension implements ezcTemplateCustomFunction
     {
         $cfg = ezcConfigurationManager::getInstance();
         $javascriptsList = $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminTemplatesSettings', 'JavascriptsList' );
+        $javascriptsList = array_map("GauffrAdminI18n::JavascriptsLocalizer", $javascriptsList);
 
         // Use minify
         if ( $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminTemplatesSettings', 'MinifyStylesheets' ) === true )
