@@ -20,7 +20,7 @@ class GauffrAdminGauffrSlaveController extends ezcMvcController
 {
 
 	/**
-	 * Do users
+	 * Do GauffrSlave
 	 */
 	public function doGauffrSlave()
     {
