@@ -9,6 +9,7 @@
         <span class="label">{tr "Login"}</span>
         <span class="input">{$gauffrUser->Login}</span>
     </p>
+
     <p>
         <span class="label">{tr "Email"}</span>
         <span class="input">{$gauffrUser->Mail}</span>
