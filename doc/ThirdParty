@@ -35,6 +35,13 @@ jQuery URL:
  * Copyright (c) 2009 Matthias Jäggli
  * Dual licensed under the MIT or GPL Version 2 licenses.
 
+jQuery Validate:
+===============
+ * Version: 1.8.1
+ * URL: http://bassistance.de/jquery-plugins/jquery-plugin-validation/
+ * Copyright (c) 2006 - 2011 Jörn Zaefferer
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+
 Minify:
 ======
  * Version: 2.1.3
