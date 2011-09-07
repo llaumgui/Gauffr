@@ -39,7 +39,7 @@ $(document).ready
 	// AJAX
 	$('#searchUser').gauffrSearchUser({ q:'#q', tbody:'#ajax_result tbody' });
 
-	//
+	// jQuery validate
 	$(".validate").validate();
 });
 
