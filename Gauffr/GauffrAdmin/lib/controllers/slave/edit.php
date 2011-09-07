@@ -32,11 +32,34 @@ class GauffrAdminGauffrSlaveEditController extends ezcMvcController
             return new ezcMvcInternalRedirect($req);
         }
 
-        $ret = new ezcMvcResult;
-        $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/slave/edit', 'Edit GauffrSlave "%slave_name"', array('slave_name' => $gauffrSlave->Name) );
-        $ret->variables['gauffrSlave'] = $gauffrSlave;
+        // Form
+        if ( empty($_POST) )
+        {
+            $ret = new ezcMvcResult;
+            $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/slave/edit', 'Edit GauffrSlave "%slave_name"', array('slave_name' => $gauffrSlave->Name) );
+            $ret->variables['gauffrSlave'] = $gauffrSlave;
 
-        return $ret;
+            return $ret;
+        }
+        // Edition
+        else
+        {
+            $session = GauffrSlave::getPersistentSessionInstance();
+            $gauffrSlave->Name = $_POST['GauffrSlave']['Name'];
+            $gauffrSlave->Identifier = $_POST['GauffrSlave']['Identifier'];
+            $gauffrSlave->Location = $_POST['GauffrSlave']['Location'];
+            $gauffrSlave->HasCredential = isset($_POST['GauffrSlave']['HasCredential']) ? $_POST['GauffrSlave']['HasCredential'] : 0;
+            $session->update($gauffrSlave);
+
+            Gauffr::log( 'Update GauffrSlave "' . $gauffrSlave->Name . '" by ' . $_SESSION['gauffrAuth_id'],
+                'GauffrAdmin', GauffrLog::SYSTEM, array( "category" => "GauffrSlave", "file" => __FILE__, "line" => __LINE__ ) );
+
+            $ret = new ezcMvcResult;
+            $ret->status = new ezcMvcExternalRedirect( GauffrAdmin::buildURL('gauffrslave?edit=ok') );
+
+            return $ret;
+        }
     }
 }
+
 ?>
