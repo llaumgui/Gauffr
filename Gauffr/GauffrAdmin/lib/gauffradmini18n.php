@@ -71,17 +71,22 @@ class GauffrAdminI18n
 
     /**
      * Get translation for $string in $context
-     * Enter description here ...
+     *
      * @param string $context Translation context
      * @param string $string String to translate
+     * @param array $params Pass parameter to translation
      *
      * @return String translated
      */
-    public static function getTranslation( $context, $string )
+    public static function getTranslation( $context, $string, $params = false )
     {
     	$i18n = self::getInstance();
         $context = $i18n->manager->getContext( $i18n->currentLanguage, $context );
-        return $context->getTranslation( $string );
+
+        if ( !$params )
+            return $context->getTranslation( $string );
+        else
+            return $context->getTranslation( $string, $params );
     }
 
 
