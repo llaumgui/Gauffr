@@ -1,7 +1,10 @@
-{use $gauffrSlave}
+{use $gauffrSlave, $messages}
 {tr_context "view/full/slave/gauffrslave.ezt"}
 
 <h2>{tr "GauffrSlave"}</h2>
+
+{include "parts/msgbox.ezt"
+    send $messages as $messages}
 
 {include "view/list/gauffrslave.ezt"
     send $gauffrSlave as $gauffrSlave}

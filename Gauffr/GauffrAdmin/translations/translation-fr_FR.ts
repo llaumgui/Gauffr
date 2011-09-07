@@ -541,6 +541,10 @@
             <source>GauffrSlave</source>
             <translation>GauffrSlave</translation>
         </message>
+        <message>
+            <source>The GauffrSlave has been edited.</source>
+            <translation>Le GauffrSlave a bien été édité.</translation>
+        </message>
     </context>
 
 </TS>
