@@ -482,6 +482,14 @@
     </context>
 
     <context>
+        <name>view/user/edit</name>
+        <message>
+            <source>Edit user "%username"</source>
+            <translation>Edition de l'utilisateur "%username"</translation>
+        </message>
+    </context>
+
+    <context>
         <name>view/user/search</name>
         <message>
             <source>Search user</source>
@@ -490,7 +498,7 @@
     </context>
 
     <context>
-        <name>view/gauffrslave</name>
+        <name>view/slave/gauffrslave</name>
         <message>
             <source>GauffrSlave</source>
             <translation>GauffrSlave</translation>

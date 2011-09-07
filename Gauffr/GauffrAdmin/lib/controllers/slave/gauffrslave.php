@@ -29,7 +29,7 @@ class GauffrAdminGauffrSlaveController extends ezcMvcController
         ( isset($_GET['offset']) ) ? $offset = $_GET['offset'] : $offset = 0;
 
         $ret = new ezcMvcResult;
-        $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/gauffrslave', 'GauffrSlave' );
+        $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/slave/gauffrslave', 'GauffrSlave' );
         $ret->variables['gauffrSlave'] = GauffrSlave::fetch( );
 
         return $ret;
