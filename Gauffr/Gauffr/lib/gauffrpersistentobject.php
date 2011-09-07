@@ -138,6 +138,28 @@ abstract class GauffrPersistentObject
 
 
 
+    /**
+     * Fetch Persistant object by ID
+     *
+     * @param string $persistantobject
+     * @param mixed $id
+     *
+     * @return GauffrPersistentObject
+     */
+    protected static function fetchByID( $persistantobject, $id )
+    {
+        $session = self::getPersistentSessionInstance();
+
+        try {
+            return  $session->load( $persistantobject, $id );
+        }
+        catch ( ezcPersistentObjectNotFoundException $e ) {
+            return false;
+        }
+    }
+
+
+
 
 
 /* ____________________________________________________ Function use by fetch */

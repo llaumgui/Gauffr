@@ -76,19 +76,14 @@ class GauffrUser extends GauffrPersistentObject
      * <code>
      * $user = GauffrUser::fetchUserByID( 1 );
      * </code>
+     *
      * @param mixed $id
+     *
      * @return GauffrUser
      */
     public static function fetchUserByID( $id )
     {
-        $session = self::getPersistentSessionInstance();
-
-        try {
-            return  $session->load( 'GauffrUser', $id );
-        }
-        catch ( ezcPersistentObjectNotFoundException $e ) {
-            return false;
-        }
+        return self::fetchByID( 'GauffrUser', $id);
     }
 
 

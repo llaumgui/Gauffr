@@ -44,6 +44,24 @@ class GauffrSlave extends GauffrPersistentObject
 
 
     /**
+     * Fetch GauffrSlave by ID
+     *
+     * <code>
+     * $gauffrSlave = GauffrSlave::fetchGauffrSlaveByID( 1 );
+     * </code>
+     *
+     * @param mixed $id
+     *
+     * @return GauffrSlave
+     */
+    public static function fetchGauffrSlaveByID( $id )
+    {
+        return self::fetchByID( 'GauffrSlave', $id);
+    }
+
+
+
+    /**
      * fetch user by Login
      *
      * @return GauffrSlave
