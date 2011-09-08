@@ -230,6 +230,10 @@
             <source>GauffrSlave</source>
             <translation>GauffrSlave</translation>
         </message>
+        <message>
+            <source>Add a GauffrSlave</source>
+            <translation>Ajouter un GauffrSlave</translation>
+        </message>
     </context>
 
     <context>
@@ -261,6 +265,10 @@
         <message>
             <source>This identifier is already used</source>
             <translation>Cet identifiant est déjà utilisé</translation>
+        </message>
+        <message>
+            <source>Add a GauffrSlave</source>
+            <translation>Ajouter un GauffrSlave</translation>
         </message>
     </context>
 
@@ -534,6 +542,10 @@
         <message>
             <source>Edit GauffrSlave "%slave_name"</source>
             <translation>Edition du GauffrSlave "%slave_name"</translation>
+        </message>
+        <message>
+            <source>Add a GauffrSlave</source>
+            <translation>Ajouter un GauffrSlave</translation>
         </message>
     </context>
 

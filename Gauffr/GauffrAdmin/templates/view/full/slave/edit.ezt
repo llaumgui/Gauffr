@@ -1,28 +1,31 @@
 {use $gauffrSlave}
 {tr_context "view/full/slave/edit.ezt"}
 
-<h2>{tr "Edit GauffrSlave \"%slave_name\""
-        vars 'slave_name' => $gauffrSlave->Name}</h2>
-
+{if $gauffrSlave}
+    <h2>{tr "Edit GauffrSlave \"%slave_name\""
+            vars 'slave_name' => $gauffrSlave->Name}</h2>
+{else}
+    <h2>{tr "Add a GauffrSlave"}</h2>
+{/if}
 <form class="formedit validate" method="post" action="">
     <p>
         <label for="GauffrSlave_Name">{tr "Name"}</label>
-        <input type="text" class="required" name="GauffrSlave[Name]" id="GauffrSlave_Name" value="{if is_set($gauffrSlave->Name)}{$gauffrSlave->Name}{/if}" />
+        <input type="text" class="required" name="GauffrSlave[Name]" id="GauffrSlave_Name" value="{if $gauffrSlave && is_set($gauffrSlave->Name)}{$gauffrSlave->Name}{/if}" />
     </p>
 
     <p>
         <label for="GauffrSlave_Identifier">{tr "Identifier"}</label>
-        <input type="text" class="required" name="GauffrSlave[Identifier]" id="GauffrSlave_Identifier" value="{if is_set($gauffrSlave->Identifier)}{$gauffrSlave->Identifier}{/if}" />
+        <input type="text" class="required" name="GauffrSlave[Identifier]" id="GauffrSlave_Identifier" value="{if $gauffrSlave && is_set($gauffrSlave->Identifier)}{$gauffrSlave->Identifier}{/if}" />
     </p>
 
     <p>
         <label for="GauffrSlave_Location">{tr "URL"}</label>
-        <input type="text" class="required url" name="GauffrSlave[Location]" id="GauffrSlave_Location" value="{if is_set($gauffrSlave->Location)}{$gauffrSlave->Location}{/if}" />
+        <input type="text" class="required url" name="GauffrSlave[Location]" id="GauffrSlave_Location" value="{if $gauffrSlave && is_set($gauffrSlave->Location)}{$gauffrSlave->Location}{/if}" />
     </p>
 
     <p>
         <label for="GauffrSlave_HasCredential">{tr "Has credential"}</label>
-        <input type="checkbox" name="GauffrSlave[HasCredential]" id="GauffrSlave_HasCredential" {if $gauffrSlave->HasCredential}checked="checked"{/if} value="1" />
+        <input type="checkbox" name="GauffrSlave[HasCredential]" id="GauffrSlave_HasCredential" {if $gauffrSlave && $gauffrSlave->HasCredential}checked="checked"{/if} value="1" />
     </p>
 
     <p class="buttons">
@@ -37,7 +40,7 @@
                     url: $gauffrAdmin.url + 'ajax/checkGauffrSlave',
                     type: 'post',
                     data: {
-                        current_id: '{/literal}{$gauffrSlave->ID}{literal}'
+                        current_id: '{/literal}{if $gauffrSlave}$gauffrSlave->ID}{else}0{/if}{literal}'
                     }
                 }
             }

@@ -24,8 +24,10 @@ class GauffrAdminGauffrSlaveEditController extends ezcMvcController
 	 */
 	public function doGauffrSlaveEdit()
     {
+        $gauffrSlave = false;
+
         // Redirect on error
-        if ( !($gauffrSlave = GauffrSlave::fetchGauffrSlaveByID( (int)$this->gauffrSlaveID ) ) )
+        if ( (int)$this->gauffrSlaveID > 0 && !($gauffrSlave = GauffrSlave::fetchGauffrSlaveByID( (int)$this->gauffrSlaveID ) ) )
         {
             $req = new ezcMvcRequest;
             $req->uri = '/ERROR';
@@ -36,7 +38,9 @@ class GauffrAdminGauffrSlaveEditController extends ezcMvcController
         if ( empty($_POST) )
         {
             $ret = new ezcMvcResult;
-            $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/slave/edit', 'Edit GauffrSlave "%slave_name"', array('slave_name' => $gauffrSlave->Name) );
+            $ret->variables['pageName'] = $gauffrSlave !== false ?
+                GauffrAdminI18n::getTranslation( 'view/slave/edit', 'Edit GauffrSlave "%slave_name"', array('slave_name' => $gauffrSlave->Name) ) :
+                GauffrAdminI18n::getTranslation( 'view/slave/edit', 'Add a GauffrSlave');
             $ret->variables['gauffrSlave'] = $gauffrSlave;
 
             return $ret;
@@ -44,15 +48,28 @@ class GauffrAdminGauffrSlaveEditController extends ezcMvcController
         // Edition
         else
         {
+            if ( (int)$this->gauffrSlaveID == 0 )
+                $gauffrSlave = new GauffrSlave();
+
             $session = GauffrSlave::getPersistentSessionInstance();
             $gauffrSlave->Name = $_POST['GauffrSlave']['Name'];
             $gauffrSlave->Identifier = $_POST['GauffrSlave']['Identifier'];
             $gauffrSlave->Location = $_POST['GauffrSlave']['Location'];
             $gauffrSlave->HasCredential = isset($_POST['GauffrSlave']['HasCredential']) ? $_POST['GauffrSlave']['HasCredential'] : 0;
-            $session->update($gauffrSlave);
 
-            Gauffr::log( 'Update GauffrSlave "' . $gauffrSlave->Name . '" by ' . $_SESSION['gauffrAuth_id'],
-                'GauffrAdmin', GauffrLog::SYSTEM, array( "category" => "GauffrSlave", "file" => __FILE__, "line" => __LINE__ ) );
+            if ( (int)$this->gauffrSlaveID == 0 )
+            {
+                $session->save($gauffrSlave);
+
+                Gauffr::log( 'Add GauffrSlave "' . $gauffrSlave->Name . '" by ' . $_SESSION['gauffrAuth_id'],
+                	'GauffrAdmin', GauffrLog::SYSTEM, array( "category" => "GauffrSlave", "file" => __FILE__, "line" => __LINE__ ) );
+            }
+            else
+            {
+                $session->update($gauffrSlave);
+                Gauffr::log( 'Update GauffrSlave "' . $gauffrSlave->Name . '" by ' . $_SESSION['gauffrAuth_id'],
+                	'GauffrAdmin', GauffrLog::SYSTEM, array( "category" => "GauffrSlave", "file" => __FILE__, "line" => __LINE__ ) );
+            }
 
             $ret = new ezcMvcResult;
             $ret->status = new ezcMvcExternalRedirect( GauffrAdmin::buildURL('gauffrslave?edit=ok') );
