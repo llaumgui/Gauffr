@@ -28,7 +28,8 @@ class GauffrAdminRouter extends ezcMvcRouter
 
             // GauffrSlave
             new ezcMvcRailsRoute( '/gauffrslave', 'GauffrAdminGauffrSlaveController', 'gauffrSlave' ),
-            new ezcMvcRailsRoute( '/gauffrslave/edit/:gauffrSlaveID', 'GauffrAdminGauffrSlaveEditController', 'gauffrSlaveEdit' ),
+            new ezcMvcRailsRoute( '/gauffrslave/add', 'GauffrAdminGauffrSlaveCRUDController', 'gauffrSlaveAdd' ),
+            new ezcMvcRailsRoute( '/gauffrslave/edit/:gauffrSlaveID', 'GauffrAdminGauffrSlaveCRUDController', 'gauffrSlaveEdit' ),
 
             // User
             new ezcMvcRailsRoute( '/user', 'GauffrAdminUserCredentialController', 'userCredential' ),

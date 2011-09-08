@@ -10,5 +10,5 @@
     send $gauffrSlave as $gauffrSlave}
 
 <p class="buttons">
-    <a href="{build_url('gauffrslave/edit')}">{tr "Add a GauffrSlave"}</a>
+    <a href="{build_url('gauffrslave/add')}">{tr "Add a GauffrSlave"}</a>
 </p>

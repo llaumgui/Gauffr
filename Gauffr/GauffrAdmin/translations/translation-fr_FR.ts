@@ -538,7 +538,7 @@
     </context>
 
     <context>
-        <name>view/slave/edit</name>
+        <name>view/slave/crud</name>
         <message>
             <source>Edit GauffrSlave "%slave_name"</source>
             <translation>Edition du GauffrSlave "%slave_name"</translation>
