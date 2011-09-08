@@ -463,10 +463,6 @@
             <source>User credential</source>
             <translation>Droits utilisateur</translation>
         </message>
-        <message>
-            <source>The user has been edited.</source>
-            <translation>L'utilisateur a bien été édité.</translation>
-        </message>
     </context>
 
     <context>
@@ -475,10 +471,6 @@
             <source>User extended informations</source>
             <translation>Informations étendues sur les utilisateurs</translation>
         </message>
-        <message>
-            <source>The user has been edited.</source>
-            <translation>L'utilisateur a bien été édité.</translation>
-        </message>
     </context>
 
     <context>
@@ -486,6 +478,10 @@
         <message>
             <source>Edit user "%username"</source>
             <translation>Edition de l'utilisateur "%username"</translation>
+        </message>
+        <message>
+            <source>The user has been edited.</source>
+            <translation>L'utilisateur a bien été édité.</translation>
         </message>
     </context>
 

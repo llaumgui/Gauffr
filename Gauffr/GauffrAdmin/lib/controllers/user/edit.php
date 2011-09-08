@@ -86,7 +86,7 @@ class GauffrAdminUserEditController extends ezcMvcController
 
     	$edit = isset( $_GET['edit'] ) ? $_GET['edit'] : false;
     	if ( $edit == 'ok' )
-    	    $messages['ok'][] = GauffrAdminI18n::getTranslation( 'view/user/extended', 'The user has been edited.' );
+    	    $messages['ok'][] = GauffrAdminI18n::getTranslation( 'view/user/edit', 'The user has been edited.' );
 
 	    return $messages;
     }
