@@ -29,3 +29,23 @@
         <input type="submit" class="submit" value="{tr "Submit"}" />
     </p>
 </form>
+{literal}<script type="text/javascript"><!--
+    $gauffrAdmin.validate = {
+        rules: {
+            'GauffrSlave[Identifier]': {
+                remote: {
+                    url: $gauffrAdmin.url + 'ajax/checkGauffrSlave',
+                    type: 'post',
+                    data: {
+                        current_id: '{/literal}{$gauffrSlave->ID}{literal}'
+                    }
+                }
+            }
+        },
+        messages: {
+            'GauffrSlave[Identifier]': {
+                remote: '{/literal}{tr "This identifier is already used"}{literal}'
+            }
+        }
+    }
+--></script>{/literal}

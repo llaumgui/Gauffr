@@ -258,8 +258,10 @@
             <source>Has credential</source>
             <translation>Soumis à des droits</translation>
         </message>
-
-
+        <message>
+            <source>This identifier is already used</source>
+            <translation>Cet identifiant est déjà utilisé</translation>
+        </message>
     </context>
 
     <context>

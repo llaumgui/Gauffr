@@ -40,7 +40,37 @@ class GauffrAdminAjaxController extends ezcMvcController
 	private function searchUser()
     {
         $ret = new ezcMvcResult;
-        $ret->variables['gauffrUsers'] = GauffrUser::findUser($_POST['q']);
+        $ret->variables['gauffrUsers'] = isset($_POST['q']) ? GauffrUser::findUser($_POST['q']) : false;
+
+        return $ret;
+    }
+
+
+    /**
+     * AJAX function who check if the GauffrUser Identifier is already set.
+	 *
+	 * @return ezcMvcResult
+     */
+	private function checkGauffrSlave()
+    {
+        if ( !isset($_POST['GauffrSlave']['Identifier']) OR !isset($_POST['current_id']) )
+        {
+            $check = 'false';
+        }
+        else
+        {
+            if ( !($gauffrSlave = GauffrSlave::unique(GauffrSlave::fetchSlaveByIdentifier($_POST['GauffrSlave']['Identifier']))) )
+            {
+                $check = 'true';
+            }
+            else
+            {
+                $check = ($gauffrSlave->ID == $_POST['current_id'] ? 'true' : 'false');
+            }
+        }
+
+        $ret = new ezcMvcResult;
+        $ret->variables['check'] = $check;
 
         return $ret;
     }
