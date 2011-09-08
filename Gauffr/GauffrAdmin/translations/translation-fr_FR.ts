@@ -122,10 +122,6 @@
     <context>
         <name>view/full/log.ezt</name>
         <message>
-            <source>Log</source>
-            <translation>Log</translation>
-        </message>
-        <message>
             <source>Display %limit logs of %count.</source>
             <translation>Affichage de %limit logs sur %count.</translation>
         </message>
@@ -173,19 +169,7 @@
     </context>
 
     <context>
-        <name>view/full/user/credential.ezt</name>
-        <message>
-            <source>Users</source>
-            <translation>Utilisateurs</translation>
-        </message>
-    </context>
-
-    <context>
         <name>view/full/user/search.ezt</name>
-        <message>
-            <source>Search user</source>
-            <translation>Recherche utilisateurs</translation>
-        </message>
         <message>
             <source>User login or email</source>
             <translation>Login ou email de l'utilisateur</translation>
@@ -217,19 +201,7 @@
     </context>
 
     <context>
-        <name>view/full/user/extended.ezt</name>
-        <message>
-            <source>User extended informations</source>
-            <translation>Informations étendues sur les utilisateurs</translation>
-        </message>
-    </context>
-
-    <context>
         <name>view/full/slave/gauffrslave.ezt</name>
-        <message>
-            <source>GauffrSlave</source>
-            <translation>GauffrSlave</translation>
-        </message>
         <message>
             <source>Add a GauffrSlave</source>
             <translation>Ajouter un GauffrSlave</translation>
@@ -238,10 +210,6 @@
 
     <context>
         <name>view/full/slave/edit.ezt</name>
-        <message>
-            <source>Edit GauffrSlave "%slave_name"</source>
-            <translation>Edition du GauffrSlave "%slave_name"</translation>
-        </message>
         <message>
             <source>Submit</source>
             <translation>Valider</translation>
@@ -266,10 +234,6 @@
             <source>This identifier is already used</source>
             <translation>Cet identifiant est déjà utilisé</translation>
         </message>
-        <message>
-            <source>Add a GauffrSlave</source>
-            <translation>Ajouter un GauffrSlave</translation>
-        </message>
     </context>
 
     <context>
@@ -277,10 +241,6 @@
         <message>
             <source>Login</source>
             <translation>Login</translation>
-        </message>
-        <message>
-            <source>Edit user "%username"</source>
-            <translation>Edition de l'utilisateur "%username"</translation>
         </message>
         <message>
             <source>Edit credentials</source>

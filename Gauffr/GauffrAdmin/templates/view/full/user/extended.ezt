@@ -1,7 +1,7 @@
-{use $gauffrUsers, $gauffrUserExtendedDisplayed, $messages}
+{use $gauffrUsers, $gauffrUserExtendedDisplayed, $messages, $pageName}
 {tr_context "view/full/user/extended.ezt"}
 
-<h2>{tr "User extended informations"}</h2>
+<h2>{$pageName}</h2>
 
 {include "parts/msgbox.ezt"
     send $messages as $messages}

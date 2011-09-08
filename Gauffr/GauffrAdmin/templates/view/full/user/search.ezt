@@ -1,6 +1,7 @@
+{use $pageName}
 {tr_context "view/full/user/search.ezt"}
 
-<h2>{tr "Search user"}</h2>
+<h2>{$pageName}</h2>
 
 <form id="searchUser" class="formedit" method="post" action="">
     <p>

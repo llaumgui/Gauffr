@@ -1,12 +1,8 @@
-{use $gauffrSlave}
+{use $gauffrSlave, $pageName}
 {tr_context "view/full/slave/edit.ezt"}
 
-{if $gauffrSlave}
-    <h2>{tr "Edit GauffrSlave \"%slave_name\""
-            vars 'slave_name' => $gauffrSlave->Name}</h2>
-{else}
-    <h2>{tr "Add a GauffrSlave"}</h2>
-{/if}
+<h2>{$pageName}</h2>
+
 <form class="formedit validate" method="post" action="">
     <p>
         <label for="GauffrSlave_Name">{tr "Name"}</label>
