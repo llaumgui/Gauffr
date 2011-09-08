@@ -503,6 +503,18 @@
             <source>Add a GauffrSlave</source>
             <translation>Ajouter un GauffrSlave</translation>
         </message>
+        <message>
+            <source>The GauffrSlave has been edited.</source>
+            <translation>Le GauffrSlave a bien été édité.</translation>
+        </message>
+        <message>
+            <source>The GauffrSlave has been added.</source>
+            <translation>Le GauffrSlave a bien été ajouté.</translation>
+        </message>
+        <message>
+            <source>The GauffrSlave has been deleted.</source>
+            <translation>Le GauffrSlave a bien été effacé.</translation>
+        </message>
     </context>
 
     <context>
@@ -510,10 +522,6 @@
         <message>
             <source>GauffrSlave</source>
             <translation>GauffrSlave</translation>
-        </message>
-        <message>
-            <source>The GauffrSlave has been edited.</source>
-            <translation>Le GauffrSlave a bien été édité.</translation>
         </message>
     </context>
 

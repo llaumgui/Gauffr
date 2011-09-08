@@ -107,6 +107,34 @@ class GauffrAdminGauffrSlaveCRUDController extends ezcMvcController
             return $ret;
         }
     }
+
+
+
+    /**
+     * Messages management
+     *
+     * @return array
+     */
+    public static function message()
+    {
+    	// Confirmation message
+    	$messages = array(
+    	    'misc' => array(),
+    	    'ok' => array(),
+    		'ko' => array()
+    	);
+
+    	$edit = isset( $_GET['edit'] ) ? $_GET['edit'] : false;
+    	$add = isset( $_GET['add'] ) ? $_GET['add'] : false;
+
+    	if ( $edit == 'ok' )
+    	    $messages['ok'][] = GauffrAdminI18n::getTranslation( 'view/slave/crud', 'The GauffrSlave has been edited.' );
+    	if ( $add == 'ok' )
+    	    $messages['ok'][] = GauffrAdminI18n::getTranslation( 'view/slave/crud', 'The GauffrSlave has been added.' );
+
+	    return $messages;
+    }
+
 }
 
 ?>

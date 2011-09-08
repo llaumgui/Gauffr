@@ -36,7 +36,7 @@
                     url: $gauffrAdmin.url + 'ajax/checkGauffrSlave',
                     type: 'post',
                     data: {
-                        current_id: '{/literal}{if $gauffrSlave}$gauffrSlave->ID}{else}0{/if}{literal}'
+                        current_id: '{/literal}{$gauffrSlave->ID}{literal}'
                     }
                 }
             }

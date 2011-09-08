@@ -41,10 +41,7 @@ $(document).ready
 
 	// jQuery validate
 	if ( typeof $gauffrAdmin.validate !== "undefined"  ) {
-		console.log($gauffrAdmin.validate);
-		$(".validate").validate(
-			$gauffrAdmin.validate
-		);
+		$(".validate").validate( $gauffrAdmin.validate );
 	}
 	else {
 		$(".validate").validate();

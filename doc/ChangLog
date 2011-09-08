@@ -6,6 +6,7 @@ Gauffr 0.9 (2011-??-??)
     - Can edit credentials,
     - Can edit extended informations,
     - Can read logs,
+    - Can CRUD GauffrSlave
  - Add an install script.
  - Add an update script.
  - A lot of enhancements and fixes.

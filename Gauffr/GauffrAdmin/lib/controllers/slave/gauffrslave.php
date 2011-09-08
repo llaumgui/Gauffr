@@ -28,20 +28,9 @@ class GauffrAdminGauffrSlaveController extends ezcMvcController
         $limit = $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrAdminLimit', 'GauffrSlave' );
         ( isset($_GET['offset']) ) ? $offset = $_GET['offset'] : $offset = 0;
 
-        // Confirmation message
-    	$messages = array(
-    	    'misc' => array(),
-    	    'ok' => array(),
-    		'ko' => array()
-    	);
-
-    	$edit = isset( $_GET['edit'] ) ? $_GET['edit'] : false;
-    	if ( $edit == 'ok' )
-    	    $messages['ok'][] = GauffrAdminI18n::getTranslation( 'view/slave/gauffrslave', 'The GauffrSlave has been edited.' );
-
         $ret = new ezcMvcResult;
         $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/slave/gauffrslave', 'GauffrSlave' );
-        $ret->variables['messages'] = $messages;
+        $ret->variables['messages'] = GauffrAdminGauffrSlaveCRUDController::message();
         $ret->variables['gauffrSlave'] = GauffrSlave::fetch( );
 
         return $ret;
