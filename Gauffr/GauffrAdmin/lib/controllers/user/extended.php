@@ -38,20 +38,9 @@ class GauffrAdminUserExtendedController extends ezcMvcController
             $i++;
         }
 
-    	// Confirmation message
-    	$messages = array(
-    	    'misc' => array(),
-    	    'ok' => array(),
-    		'ko' => array()
-    	);
-
-    	$edit = isset( $_GET['edit'] ) ? $_GET['edit'] : false;
-    	if ( $edit == 'ok' )
-    	    $messages['ok'][] = GauffrAdminI18n::getTranslation( 'view/user/extended', 'The user has been edited.' );
-
         $ret = new ezcMvcResult;
         $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/user/extended', 'User extended informations' );
-        $ret->variables['messages'] = $messages;
+        $ret->variables['messages'] = GauffrAdminUserEditController::message();;
         $ret->variables['gauffrUserExtendedDisplayed'] = $cfg->getSetting( GauffrAdmin::CONF_FILE, 'GauffrUserExtended', 'DisplayedInTable' );
         $ret->variables['gauffrUsers'] = $gauffrUsers;
 

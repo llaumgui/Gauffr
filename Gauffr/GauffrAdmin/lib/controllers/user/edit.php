@@ -67,6 +67,29 @@ class GauffrAdminUserEditController extends ezcMvcController
             return $ret;
         }
     }
+
+
+
+    /**
+     * Messages management
+     *
+     * @return array
+     */
+    public static function message()
+    {
+    	// Confirmation message
+    	$messages = array(
+    	    'misc' => array(),
+    	    'ok' => array(),
+    		'ko' => array()
+    	);
+
+    	$edit = isset( $_GET['edit'] ) ? $_GET['edit'] : false;
+    	if ( $edit == 'ok' )
+    	    $messages['ok'][] = GauffrAdminI18n::getTranslation( 'view/user/extended', 'The user has been edited.' );
+
+	    return $messages;
+    }
 }
 
 ?>
