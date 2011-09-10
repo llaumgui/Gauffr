@@ -23,6 +23,7 @@ class GauffrSlave extends GauffrPersistentObject
     public $Name;
     public $Location;
     public $HasCredential;
+    public $GauffrCredential;
 
 
     /**
@@ -37,7 +38,8 @@ class GauffrSlave extends GauffrPersistentObject
             'Identifier' => $this->Identifier,
             'Name' => $this->Name,
             'Location' => $this->Location,
-            'HasCredential' => $this->HasCredential
+            'HasCredential' => $this->HasCredential,
+        	'GauffrCredential' => $this->GauffrCredential
         );
     }
 

@@ -40,6 +40,16 @@ $def->properties['HasCredential']->columnName = 'has_credential';
 $def->properties['HasCredential']->propertyName = 'HasCredential';
 $def->properties['HasCredential']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
+/* Relation with credential */
+$def->relations["GauffrCredential"] = new ezcPersistentOneToManyRelation(
+    $gauffr->gauffrTables['GauffrSlave'],
+    $gauffr->gauffrTables['GauffrCredential']
+);
+$def->relations["GauffrCredential"]->columnMap = array(
+    new ezcPersistentSingleTableMap( 'id', "gauffrslave_id" )
+);
+$def->relations["GauffrCredential"]->cascade = true;
+
 return $def;
 
 ?>
