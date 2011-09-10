@@ -75,9 +75,12 @@ class GauffrAdminMvcConfiguration implements ezcMvcDispatcherConfiguration
             case '/gauffrslave':
                 return new GauffrAdminGauffrSlaveView( $request, $result );
             case '/gauffrslave/add':
-                return new GauffrAdminGauffrSlaveCRUDView( $request, $result );
+                return new GauffrAdminGauffrSlaveCreateUpdateView( $request, $result );
+            case '/gauffrslave/delete/:gauffrSlaveID':
+                return new GauffrAdminGauffrSlaveDeleteView( $request, $result );
             case '/gauffrslave/edit/:gauffrSlaveID':
-                return new GauffrAdminGauffrSlaveCRUDView( $request, $result );
+                return new GauffrAdminGauffrSlaveCreateUpdateView( $request, $result );
+
 
             // User
             case '/user':

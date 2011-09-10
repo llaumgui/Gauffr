@@ -20,7 +20,7 @@ class GauffrAdminGauffrSlaveCRUDController extends ezcMvcController
 {
 
 	/**
-	 * Do users edition
+	 * Do GauffrSlave edition
 	 */
 	public function doGauffrSlaveEdit()
     {
@@ -66,7 +66,7 @@ class GauffrAdminGauffrSlaveCRUDController extends ezcMvcController
 
 
     /**
-     * Do a User addition
+     * Do a GauffrSlave addition
      */
 	public function doGauffrSlaveAdd()
     {
@@ -111,6 +111,49 @@ class GauffrAdminGauffrSlaveCRUDController extends ezcMvcController
 
 
     /**
+     * Do a GauffrSlave deletion
+     */
+    public function doGauffrSlaveDelete()
+    {
+        // Redirect on error
+        if ( !($gauffrSlave = GauffrSlave::fetchGauffrSlaveByID( (int)$this->gauffrSlaveID ) ) )
+        {
+            $req = new ezcMvcRequest;
+            $req->uri = '/ERROR';
+
+            return new ezcMvcInternalRedirect($req);
+        }
+                // Form
+        if ( empty($_POST) )
+        {
+            $ret = new ezcMvcResult;
+            $ret->variables['pageName'] = GauffrAdminI18n::getTranslation( 'view/slave/crud', 'Delete a GauffrSlave');
+            $ret->variables['gauffrSlave'] = $gauffrSlave;
+
+            return $ret;
+        }
+        else
+        {
+            if ( $_POST['gauffrSlaveID'] = $this->gauffrSlaveID )
+            {
+                $name = $gauffrSlave->Name;
+                $session = GauffrSlave::getPersistentSessionInstance();
+                $session->delete( $gauffrSlave );
+
+                Gauffr::log( 'Remove GauffrSlave "' . $name . '" by ' . $_SESSION['gauffrAuth_id'],
+    				'GauffrAdmin', GauffrLog::SYSTEM, array( "category" => "GauffrSlave", "file" => __FILE__, "line" => __LINE__ ) );
+
+                $ret = new ezcMvcResult;
+                $ret->status = new ezcMvcExternalRedirect( GauffrAdmin::buildURL('gauffrslave?delete=ok') );
+
+                return $ret;
+            }
+        }
+    }
+
+
+
+    /**
      * Messages management
      *
      * @return array
@@ -126,11 +169,14 @@ class GauffrAdminGauffrSlaveCRUDController extends ezcMvcController
 
     	$edit = isset( $_GET['edit'] ) ? $_GET['edit'] : false;
     	$add = isset( $_GET['add'] ) ? $_GET['add'] : false;
+    	$delete = isset( $_GET['delete'] ) ? $_GET['delete'] : false;
 
     	if ( $edit == 'ok' )
     	    $messages['ok'][] = GauffrAdminI18n::getTranslation( 'view/slave/crud', 'The GauffrSlave has been edited.' );
     	if ( $add == 'ok' )
     	    $messages['ok'][] = GauffrAdminI18n::getTranslation( 'view/slave/crud', 'The GauffrSlave has been added.' );
+    	if ( $delete == 'ok' )
+    	    $messages['ok'][] = GauffrAdminI18n::getTranslation( 'view/slave/crud', 'The GauffrSlave has been deleted.' );
 
 	    return $messages;
     }

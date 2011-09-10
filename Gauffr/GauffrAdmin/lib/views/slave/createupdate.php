@@ -1,6 +1,6 @@
 <?php
 /**
- * File containing the GauffrAdminGauffrSlaveCRUDView class.
+ * File containing the GauffrAdminGauffrSlaveCreateUpdateView class.
  *
  * @version //autogentag//
  * @package GauffrAdmin
@@ -9,14 +9,14 @@
  */
 
 /**
- * The GauffrAdminGauffrSlaveCRUDView classes.
+ * The GauffrAdminGauffrSlaveCreateUpdateView classes.
  *
- * GauffrSlave edit viewer
+ * GauffrSlave create and update viewer
  *
  * @package GauffrAdmin
  * @version //autogentag//
  */
-class GauffrAdminGauffrSlaveCRUDView extends ezcMvcView
+class GauffrAdminGauffrSlaveCreateUpdateView extends ezcMvcView
 {
     function createZones( $layout )
     {

@@ -209,6 +209,54 @@
     </context>
 
     <context>
+        <name>view/full/slave/delete.ezt</name>
+        <message>
+            <source>Are you sure you want to delete this GauffrSlave ?</source>
+            <translation>Etes vous sur de vouloir effacer ce GauffreSlave ?</translation>
+        </message>
+        <message>
+            <source>Delete</source>
+            <translation>Supprimer</translation>
+        </message>
+        <message>
+            <source>GauffrSlave</source>
+            <translation>GauffrSlave</translation>
+        </message>
+        <message>
+            <source>Name</source>
+            <translation>Nom</translation>
+        </message>
+        <message>
+            <source>Identifier</source>
+            <translation>Identifiant</translation>
+        </message>
+        <message>
+            <source>Has credential</source>
+            <translation>Droits</translation>
+        </message>
+        <message>
+            <source>URL</source>
+            <translation>URL</translation>
+        </message>
+        <message>
+            <source>Yes</source>
+            <translation>Oui</translation>
+        </message>
+        <message>
+            <source>No</source>
+            <translation>Non</translation>
+        </message>
+        <message>
+            <source>Edit</source>
+            <translation>Editer</translation>
+        </message>
+        <message>
+            <source>user(s)</source>
+            <translation>utilisateurs</translation>
+        </message>
+    </context>
+
+    <context>
         <name>view/full/slave/edit.ezt</name>
         <message>
             <source>Submit</source>
@@ -502,6 +550,10 @@
         <message>
             <source>Add a GauffrSlave</source>
             <translation>Ajouter un GauffrSlave</translation>
+        </message>
+        <message>
+            <source>Delete a GauffrSlave</source>
+            <translation>Supprimer un GauffrSlave</translation>
         </message>
         <message>
             <source>The GauffrSlave has been edited.</source>
