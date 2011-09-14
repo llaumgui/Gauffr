@@ -26,9 +26,13 @@ php install.php
 With YUM
 ========
  * Use [my repository](http://www.llaumgui.com/pages/depot-llaumgui).
- * Install Gauffr:
+ * Install Gauffr on RHEL:
 ~~~
-yum --enablerepo=remi install gauffr
+yum --enablerepo=remi,llaumgui,epel install gauffr gauffr-gauffradmin
+~~~
+ * Install Gauffr on Fedora:
+~~~
+yum --enablerepo=llaumgui install gauffr gauffr-gauffradmin
 ~~~
  * [[ConfigureGauffr]] in __/etc/gauffr/__.
  * Use the install.php scripts:
