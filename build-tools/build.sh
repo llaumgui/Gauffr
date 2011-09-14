@@ -48,7 +48,7 @@ ${ECHO} "# Create package - End\n"
 # Use gauffr.ini
 ${ECHO} "# Use gauffr.ini - Start"
 rm -f  ${BUILD_PATH}/Gauffr/conf/gauffr.ini
-mv ${BUILD_PATH}/Gauffr/conf/gauffr.ini.exemple \
+mv ${BUILD_PATH}/Gauffr/conf/gauffr.ini.example \
      ${BUILD_PATH}/Gauffr/conf/gauffr.ini
 ${ECHO} "# Use gauffr.ini - End\n"
 
