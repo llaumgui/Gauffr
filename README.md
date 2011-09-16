@@ -9,9 +9,9 @@ Gauffr is initially a project designed for the website [Fedora-Fr.org](http://ww
 
 What is Gauffr ?
 ----------------
-Gauffr is an unified authentication system who using a unique and already existant application for referent: the GauffrMaster.
+Gauffr is an unified authentication system for multiple applications relying on a existing application (GauffrMaster) to manage the authentication.
 
-Gauffr allow different applications (call GauffrSlave) to interrogate the same database of users (forum, CMS, blog, etc.). Gauffr return a GauffrUser. You must also install (or develop) a Gauffr plugin for all your GauffrSlave ([[AvailablePlugins|]]).
+Gauffr allows different application (GauffrSlave) to query a unique database for users information, centralizing the authentication through the slaves (forum, CMS, blog, etc.). Gauffr return a GauffrUser. You will need to install or develop a Gauffr plugin for all your GauffrSlave ([[AvailablePlugins|]]).
 
 ![Gauffr schema 1](http://www.llaumgui.com/public/gauffr/Gauffr_schema.png "Gauffr schema 1")
 
@@ -36,3 +36,4 @@ Version 0.9 Release Candidate.
 
 Gauffr videos on YouTube
 [See Gauffr in action on YouTube](http://www.youtube.com/user/llaumgui007#p/c/AE9E0F17191C21F1).
+
