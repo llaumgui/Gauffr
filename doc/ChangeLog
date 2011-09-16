@@ -2,10 +2,10 @@ Gauffr 0.9 (2011-??-??)
 -----------------------
 ''Realease candidate of the first stable release''
  - Move to GIT.
- - Add GauffrAdmin, the Gauffr WebUI:
-  - Can edit credentials,
-  - Can edit extended informations,
-  - Can read logs,
+ - Add GauffrAdmin, the Gauffr WebUI, it allows to:
+  - Edit credentials,
+  - Edit users' extended informations,
+  - Read logs,
  - Add an install script.
  - Add an update script.
  - A lot of others enhancements and fixes.
