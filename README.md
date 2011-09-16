@@ -11,7 +11,7 @@ What is Gauffr ?
 ----------------
 Gauffr is an unified authentication system for multiple applications relying on a existing application (GauffrMaster) to manage the authentication.
 
-Gauffr allows different application (GauffrSlave) to query a unique database for users information, centralizing the authentication through the slaves (forum, CMS, blog, etc.). Gauffr return a GauffrUser. You will need to install or develop a Gauffr plugin for all your GauffrSlave ([[AvailablePlugins|]]).
+Gauffr allows different application (GauffrSlave) to query a unique database for users information, centralizing the authentication through the slaves (forum, CMS, blog, etc.). Gauffr return a GauffrUser. You will need to install or develop a Gauffr plugin for all your GauffrSlave ([[AvailablePlugins]]).
 
 ![Gauffr schema 1](http://www.llaumgui.com/public/gauffr/Gauffr_schema.png "Gauffr schema 1")
 
