@@ -48,6 +48,7 @@ GauffrAdmin is a the Gauffr WebUI.
 mv Gauffr/conf/*.ini ./
 rm doc/api/installdox
 rm www/.htaccess
+rm www/media/min/.htaccess
 
 # Configure cache
 sed -i -e "s|dirname( __FILE__ ) . '\/..\/..\/cache'|'%{_localstatedir}/lib/%{name}admin/cache'|g" Gauffr/GauffrAdmin/bootstrap.php
