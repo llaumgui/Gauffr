@@ -362,7 +362,7 @@ class GauffrUser extends GauffrPersistentObject
             if ( !($gauffrUserExtended = $this->Extended) )
             {
                 $gauffrUserExtended = new GauffrUserExtended();
-                $gauffrUserExtended->setID( $gauffrUser->getID() );
+                $gauffrUserExtended->setID( $this->getID() );
                 $gauffrUserExtended->AltLogin = $altLogin;
                 $session->save($gauffrUserExtended);
             }
