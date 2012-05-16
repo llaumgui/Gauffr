@@ -30,10 +30,7 @@ Futures (1.1 ?)
  * Synchronisation between GauffrSlave and GauffrMaster emails
  * OpenID support
 
-Statut
-======
-Version 0.9 Release Candidate.
-
 Gauffr videos on YouTube
+========================
 [See Gauffr in action on YouTube](http://www.youtube.com/user/llaumgui007#p/c/AE9E0F17191C21F1).
 
